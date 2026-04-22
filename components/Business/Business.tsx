@@ -46,7 +46,7 @@ export default function Business() {
           {/* TRADING カード */}
           <div className={styles.card}>
             <div className={styles.cardImg}>
-              <img src="/images/trading_img@2x.jpg" alt="TRADING" />
+              <img src="/images/nophoto.png" alt="TRADING" />
             </div>
             <div className={styles.cardBody}>
               <p className={styles.cardEn}>TRADING</p>
@@ -83,7 +83,7 @@ export default function Business() {
           {/* MANUFACTURING カード */}
           <div className={styles.card}>
             <div className={styles.cardImg}>
-              <img src="/images/manufacturing_img@2x.jpg" alt="MANUFACTURING" />
+              <img src="/images/nophoto.png" alt="MANUFACTURING" />
             </div>
             <div className={styles.cardBody}>
               <p className={styles.cardEn}>MANUFACTURING</p>

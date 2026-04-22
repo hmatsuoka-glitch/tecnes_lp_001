@@ -5,7 +5,7 @@ export default function Discovery() {
   return (
     <section id="discovery" className={styles.discovery}>
       <div className={styles.discoveryBg}>
-        <Image src="/images/discovery_bg@2x.jpg" alt="" fill style={{ objectFit: 'cover' }} unoptimized />
+        <Image src="/images/nophoto.png" alt="" fill style={{ objectFit: 'cover' }} unoptimized />
       </div>
       <div className={`l-inner ${styles.discoveryInner}`}>
         <h2 className={`${styles.ttl01} js-animate fadeIn01`}>

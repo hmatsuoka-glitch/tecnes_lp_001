@@ -28,14 +28,14 @@ export default function Read() {
           <p className={styles.imageWrap}>
             <span className={styles.image01}>
               <picture>
-                <source srcSet="/images/read_img01@2x.jpg" />
-                <img src="/images/read_img01@2x.jpg" alt="" />
+                <source srcSet="/images/nophoto.png" />
+                <img src="/images/nophoto.png" alt="" />
               </picture>
             </span>
             <span className={styles.image02}>
               <picture>
-                <source srcSet="/images/read_img01@2x.jpg" />
-                <img src="/images/read_img01@2x.jpg" alt="" />
+                <source srcSet="/images/nophoto.png" />
+                <img src="/images/nophoto.png" alt="" />
               </picture>
             </span>
           </p>
