@@ -49,17 +49,17 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a href="/people/">
+            <a href="#people">
               <span className={styles.menuJpn}>働く社員を知る</span>
             </a>
           </li>
           <li>
-            <a href="/culture/">
+            <a href="#environment">
               <span className={styles.menuJpn}>働く環境を知る</span>
             </a>
           </li>
           <li>
-            <a href="/recruitment/">
+            <a href="#entry">
               <span className={styles.menuJpn}>採用情報</span>
             </a>
           </li>
@@ -68,7 +68,7 @@ export default function Header() {
         {/* PC ボタン群 */}
         <ul className={styles.btn}>
           <li className={styles.btnRecruit}>
-            <a href="/recruitment/#requirements">募集要項</a>
+            <a href="#entry">募集要項</a>
           </li>
           <li className={styles.btnEntry}>
             <span>ENTRY</span>

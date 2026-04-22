@@ -28,24 +28,24 @@ export default function Gnav({ isOpen, onClose }: GnavProps) {
                 </ul>
               </li>
               <li className={styles.w02}>
-                <a href="/people/" className={styles.menuTtl}>働く社員を知る</a>
+                <a href="#people" className={styles.menuTtl} onClick={onClose}>働く社員を知る</a>
               </li>
               <li className={styles.w01}>
-                <a href="/culture/" className={styles.menuTtl}>働く環境を知る</a>
+                <a href="#environment" className={styles.menuTtl} onClick={onClose}>働く環境を知る</a>
                 <ul className={styles.subMenu}>
-                  <li><a href="/culture/">ENVIRONMENT 働く環境を知る</a></li>
+                  <li><a href="#environment" onClick={onClose}>ENVIRONMENT 働く環境を知る</a></li>
                 </ul>
               </li>
               <li className={styles.w02}>
-                <a href="/recruitment/" className={styles.menuTtl}>採用情報</a>
+                <a href="#entry" className={styles.menuTtl} onClick={onClose}>採用情報</a>
                 <ul className={styles.subMenu}>
-                  <li><a href="/recruitment/#requirements">募集要項</a></li>
-                  <li><a href="/recruitment/#flow">応募方法・選考フロー</a></li>
+                  <li><a href="#entry" onClick={onClose}>募集要項</a></li>
+                  <li><a href="#entry" onClick={onClose}>応募方法・選考フロー</a></li>
                 </ul>
               </li>
             </ul>
             <p className={styles.btn01}>
-              <a href="/recruitment/#requirements" onClick={onClose}>
+              <a href="#entry" onClick={onClose}>
                 <span className="txt">募集要項</span>
                 <span className="ico c-ico c-ico-arrow01"></span>
               </a>

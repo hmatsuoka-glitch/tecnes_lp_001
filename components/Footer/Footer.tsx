@@ -19,22 +19,22 @@ export default function Footer() {
               </ul>
             </li>
             <li>
-              <a href="/people/" className={styles.menuTtl}>働く社員を知る</a>
+              <a href="#people" className={styles.menuTtl}>働く社員を知る</a>
             </li>
             <li>
-              <a href="/culture/" className={styles.menuTtl}>働く環境を知る</a>
+              <a href="#environment" className={styles.menuTtl}>働く環境を知る</a>
               <ul className={styles.subMenu}>
-                <li><a href="/culture/">ENVIRONMENT 働く環境を知る</a></li>
+                <li><a href="#environment">ENVIRONMENT 働く環境を知る</a></li>
               </ul>
             </li>
             <li>
-              <a href="/recruitment/" className={styles.menuTtl}>採用情報</a>
+              <a href="#entry" className={styles.menuTtl}>採用情報</a>
               <ul className={styles.subMenu}>
-                <li><a href="/recruitment/#requirements">募集要項</a></li>
-                <li><a href="/recruitment/#flow">応募方法・選考フロー</a></li>
-                <li><a href="/recruitment/#message">採用担当者メッセージ</a></li>
-                <li><a href="/recruitment/#personality">求める人物像</a></li>
-                <li><a href="/recruitment/#faq">よくあるご質問</a></li>
+                <li><a href="#entry">募集要項</a></li>
+                <li><a href="#entry">応募方法・選考フロー</a></li>
+                <li><a href="#entry">採用担当者メッセージ</a></li>
+                <li><a href="#entry">求める人物像</a></li>
+                <li><a href="#entry">よくあるご質問</a></li>
               </ul>
             </li>
           </ul>
