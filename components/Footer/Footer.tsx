@@ -40,12 +40,12 @@ export default function Footer() {
           </ul>
           <ul className={styles.menu02}>
             <li>
-              <a href="https://www.chiyodakohan.co.jp/privacy.html" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 <span>プライバシーポリシー</span>
               </a>
             </li>
             <li>
-              <a href="https://www.chiyodakohan.co.jp/" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 <span>コーポレートサイト</span>
               </a>
             </li>
@@ -56,59 +56,57 @@ export default function Footer() {
         <div className={styles.leftBox}>
           <p className={styles.footerLogo}>
             <a href="/">
-              <img src="/images/logo.png" alt="千代田工販株式会社" />
+              <img src="/images/logo.png" alt="株式会社TECNES" />
             </a>
           </p>
           <ul className={styles.list01}>
             <li>
-              <span className={styles.itemTtl}>創立</span>
-              <span>1947年（昭和22年）2月</span>
+              <span className={styles.itemTtl}>設立</span>
+              <span>1995年（平成7年）</span>
             </li>
             <li>
               <span className={styles.itemTtl}>資本金</span>
-              <span>200,000,000円</span>
+              <span>1,000万円</span>
             </li>
           </ul>
           <p className={styles.address}>
-            〒104-0031 東京都中央区京橋2-8-7 読売京橋ビル
+            〒577-0063 大阪府東大阪市川俣1-6-10
             <br className="u-sm-max" />
           </p>
           <a
-            href="https://maps.app.goo.gl/kyobashi"
+            href="https://maps.app.goo.gl/tecnes"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.mapLink}
           >
             <span>Googleマップ</span>
           </a>
-          <p className={styles.tel}>03-3564-5511</p>
+          <p className={styles.tel}>06-6618-7307</p>
           <ul className={styles.list02}>
             <li>
-              <span className={styles.stationIco}>地</span>
-              <span>浅草線「宝町駅」より</span>
-              <span className={styles.time}>徒歩4分</span>
+              <span className={styles.stationIco}>JR</span>
+              <span>おおさか東線「高井田中央駅」より</span>
+              <span className={styles.time}>徒歩圏内</span>
             </li>
             <li>
               <span className={styles.stationIco}>地</span>
-              <span>銀座線「京橋駅」より</span>
-              <span className={styles.time}>徒歩4分</span>
+              <span>大阪メトロ中央線「高井田駅」より</span>
+              <span className={styles.time}>徒歩圏内</span>
             </li>
             <li>
-              <span className={styles.stationIco}>地</span>
-              <span>東西線「日本橋駅」より</span>
-              <span className={styles.time}>徒歩5分</span>
+              <span className={styles.stationIco}>近</span>
+              <span>近鉄奈良線「河内永和駅」より</span>
+              <span className={styles.time}>徒歩圏内</span>
             </li>
           </ul>
           <p className={styles.copyright}>
-            © Chiyoda Kohan Co., LTD. All rights reserved.
+            © TECNES Inc. All rights reserved.
           </p>
         </div>
       </div>
 
       {/* 巨大装飾コピー */}
-      <p className={styles.footerCopy}>
-        <Image src="/images/footer_copy.png" alt="キミの想いが未来をともす" width={1280} height={300} unoptimized style={{ width: '100%', height: 'auto' }} />
-      </p>
+      <p className={styles.footerCopy}>技術と絆で、未来を支える。</p>
     </footer>
   );
 }

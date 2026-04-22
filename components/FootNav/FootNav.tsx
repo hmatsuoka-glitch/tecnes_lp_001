@@ -17,14 +17,14 @@ export default function FootNav() {
 
         <div className={styles.cta}>
           <p className={styles.ctaLead}>
-            ともに新しい未来を築くチームメイトを探しています。<br className="u-sm-min" />
+            「技・絆・支」を一緒に体現する仲間を探しています。<br className="u-sm-min" />
             あなたのご応募をお待ちしています。
           </p>
           <div className={styles.ctaBtns}>
             <a href="/recruitment/" className={styles.btnEntry}>エントリーする</a>
             <div className={styles.externalBtns}>
               <a
-                href="https://job.mynavi.jp/27/pc/search/corp7"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.btnExternal}
@@ -32,7 +32,7 @@ export default function FootNav() {
                 マイナビからエントリー
               </a>
               <a
-                href="https://job.career-tasu.jp/corp/00200776"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.btnExternal}

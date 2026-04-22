@@ -35,7 +35,7 @@ export default function Header() {
         <p className={styles.logo}>
           <a href="/" className={styles.logoLink}>
             <span className={styles.logoImage}>
-              <Image src="/images/logo.png" alt="千代田工販株式会社" width={200} height={50} unoptimized />
+              <Image src="/images/logo.png" alt="株式会社TECNES" width={200} height={50} unoptimized />
             </span>
             <span className={styles.logoTxt}>RECRUIT SITE</span>
           </a>
@@ -75,12 +75,12 @@ export default function Header() {
             <div className={styles.entryBox}>
               <ul className={styles.entryBoxList}>
                 <li>
-                  <a href="https://job.mynavi.jp/27/pc/search/corp7" target="_blank" rel="noopener noreferrer">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
                     <Image src="/images/header_btn_mynavi.png" alt="マイナビ" width={200} height={60} unoptimized />
                   </a>
                 </li>
                 <li>
-                  <a href="https://job.career-tasu.jp/corp/00200776" target="_blank" rel="noopener noreferrer">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
                     <Image src="/images/header_btn_career-tasu.png" alt="キャリタス" width={200} height={60} unoptimized />
                   </a>
                 </li>

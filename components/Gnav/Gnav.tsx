@@ -57,12 +57,12 @@ export default function Gnav({ isOpen, onClose }: GnavProps) {
             </h2>
             <ul className={styles.list02}>
               <li>
-                <a href="https://job.mynavi.jp/27/pc/search/corp7" target="_blank" rel="noopener noreferrer">
+                <a href="#" target="_blank" rel="noopener noreferrer">
                   マイナビからエントリー
                 </a>
               </li>
               <li>
-                <a href="https://job.career-tasu.jp/corp/00200776" target="_blank" rel="noopener noreferrer">
+                <a href="#" target="_blank" rel="noopener noreferrer">
                   キャリタスからエントリー
                 </a>
               </li>

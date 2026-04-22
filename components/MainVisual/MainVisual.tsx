@@ -115,9 +115,7 @@ export default function MainVisual() {
             <Image src="/images/mv_screen.png" alt="" fill style={{ objectFit: 'cover' }} unoptimized />
           </p>
 
-          <h1 className={styles.mvCopy}>
-            <Image src="/images/mv_copy.png" alt="キミの想いが未来をともす" width={600} height={120} unoptimized />
-          </h1>
+          <h1 className={styles.mvCopy}>技術と絆で、未来を支える。</h1>
 
           <div className={styles.progressWrap}>
             <div className={styles.progressInner}>

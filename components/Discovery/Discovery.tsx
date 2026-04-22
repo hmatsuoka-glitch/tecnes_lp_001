@@ -10,14 +10,14 @@ export default function Discovery() {
       <div className={`l-inner ${styles.discoveryInner}`}>
         <h2 className={`${styles.ttl01} js-animate fadeIn01`}>
           <span className={styles.ttl01En}>DISCOVERY</span>
-          <span className={styles.ttl01Ja}>街に広がる千代田工販</span>
+          <span className={styles.ttl01Ja}>街を支えるTECNES</span>
         </h2>
         <p className={styles.leadTxt}>
-          社会のさまざまな領域で活躍している千代田工販の事業についてご紹介します。
+          電気・通信・空調衛生工事を通じて、大阪の街と社会インフラを支えるTECNESの工事実績をご覧ください。
         </p>
-        <a href="/#business" className={styles.ctaBtn}>詳細を見る</a>
+        <a href="/#business" className={styles.ctaBtn}>工事実績を見る</a>
         <p className={styles.decorCopy}>
-          個性と想いが<br />響き合うことで<br />わくわくする
+          技術と絆で<br />未来の街を<br />支えていく
         </p>
       </div>
     </section>

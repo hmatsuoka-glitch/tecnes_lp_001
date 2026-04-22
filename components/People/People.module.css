@@ -156,13 +156,12 @@
 
 .decorCopy {
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
-}
-
-.decorCopy img {
-  width: 100%;
-  height: auto;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(28, 44, 67);
+  line-height: 1.6;
 }
 
 /* ===== タブレット（〜1024px）===== */
