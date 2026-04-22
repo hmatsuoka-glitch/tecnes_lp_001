@@ -1,0 +1,244 @@
+/* ===== MV ===== */
+.mv {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.mvInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== SCROLL 表示 ===== */
+.mvScroll {
+  position: absolute;
+  bottom: 4rem;
+  left: 4rem;
+  z-index: 10;
+  writing-mode: vertical-rl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px 0;
+}
+
+.mvScrollEn {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.2em;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+}
+
+/* ===== Splide カスタム ===== */
+.mvSlider {
+  width: 100%;
+  height: 100%;
+}
+
+.mvSlider :global(.splide__track) {
+  width: 100%;
+  height: 100%;
+}
+
+.mvSlider :global(.splide__list) {
+  width: 100%;
+  height: 100%;
+}
+
+.mvSlider :global(.splide__slide) {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* スライド背景 */
+.slideBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(28, 44, 67);
+}
+
+/* テキストループラッパー */
+.txtWrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.txtWrapInner {
+  display: inline-block;
+  flex-shrink: 0;
+  animation: txtloop02 20s linear infinite;
+}
+
+.txtWrapInner img {
+  height: 60px;
+  width: auto;
+  display: inline-block;
+}
+
+/* スライド画像 */
+.slideImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.slideImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* キャッチコピー */
+.mvCopy {
+  position: absolute;
+  bottom: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.mvCopy img {
+  width: auto;
+  height: auto;
+  max-width: 600px;
+}
+
+/* スクリーンオーバーレイ */
+.mvScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.mvScreen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== プログレスバー ===== */
+.progressWrap {
+  position: absolute;
+  bottom: 4rem;
+  right: 4rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0 12px;
+}
+
+.progressInner {
+  display: flex;
+  align-items: center;
+  gap: 0 12px;
+}
+
+.splideToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: rgb(255, 255, 255);
+}
+
+.splideToggle :global(.splide__toggle__pause) {
+  display: none;
+}
+
+.splideToggle:global(.is-active) :global(.splide__toggle__play) {
+  display: none;
+}
+
+.splideToggle:global(.is-active) :global(.splide__toggle__pause) {
+  display: block;
+}
+
+.splideProgress {
+  width: 120px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.splideProgressBar {
+  height: 100%;
+  width: 0%;
+  background-color: rgb(255, 255, 255);
+  transition: width 0.1s linear;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .mv {
+    min-height: 500px;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .mv {
+    padding-top: 14.9333vw;
+    min-height: auto;
+    height: 100svh;
+  }
+
+  .mvInner {
+    margin-left: 10.6667vw;
+  }
+
+  .mvScroll {
+    bottom: 8vw;
+    left: 4vw;
+  }
+
+  .mvScrollEn {
+    font-size: 2.66667vw;
+  }
+
+  .progressWrap {
+    bottom: 8vw;
+    right: 4vw;
+  }
+
+  .mvCopy img {
+    max-width: 80vw;
+  }
+}
+
+/* ===== 大画面（1601px 以上）===== */
+@media print, screen and (min-width: 1601px) {
+  .mv {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+}

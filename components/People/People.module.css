@@ -1,0 +1,227 @@
+/* ===== PEOPLE ===== */
+.people {
+  position: relative;
+  background-color: rgb(217, 242, 240);
+  padding-bottom: 10rem;
+  overflow: hidden;
+}
+
+.peopleTop {
+  padding-top: 12rem;
+  padding-bottom: 6rem;
+}
+
+/* ===== 見出し ===== */
+.ttl01 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px 0;
+  margin-bottom: 4rem;
+}
+
+.ttl01En {
+  font-size: 5.6rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.02em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+.ttl01Ja {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+.leadTxt {
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: rgb(28, 44, 67);
+  max-width: 700px;
+}
+
+/* ===== メイン画像 ===== */
+.mainImg {
+  width: 100%;
+  margin-bottom: 6rem;
+}
+
+.mainImg img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== Swiper カルーセル ===== */
+.swiperWrap {
+  position: relative;
+  padding-bottom: 6rem;
+}
+
+.swiperWrap :global(.swiper) {
+  padding-bottom: 5rem;
+}
+
+.swiperWrap :global(.swiper-pagination) {
+  bottom: 0;
+}
+
+.swiperWrap :global(.swiper-pagination-bullet) {
+  background-color: rgb(28, 44, 67);
+  opacity: 0.3;
+}
+
+.swiperWrap :global(.swiper-pagination-bullet-active) {
+  opacity: 1;
+}
+
+.swiperWrap :global(.swiper-button-prev),
+.swiperWrap :global(.swiper-button-next) {
+  color: rgb(28, 44, 67);
+}
+
+/* ===== スライドカード ===== */
+.card {
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  height: 100%;
+}
+
+.cardThumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.cardThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover .cardThumb img {
+  transform: scale(1.05);
+}
+
+.cardBody {
+  padding: 2.4rem 2.4rem 3.2rem;
+}
+
+.cardCatch {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgb(28, 44, 67);
+  margin-bottom: 1.6rem;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px 0;
+}
+
+.cardDept {
+  font-size: 1.2rem;
+  color: rgba(28, 44, 67, 0.6);
+}
+
+.cardRole {
+  font-size: 1.2rem;
+  color: rgba(28, 44, 67, 0.6);
+}
+
+.cardName {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  color: rgb(28, 44, 67);
+}
+
+.cardYear {
+  font-size: 1.2rem;
+  color: rgba(28, 44, 67, 0.6);
+}
+
+/* ===== 装飾コピー ===== */
+.decorSection {
+  padding: 8rem 0 0;
+  text-align: center;
+}
+
+.decorCopy {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.decorCopy img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .people {
+    padding-bottom: 8rem;
+  }
+
+  .peopleTop {
+    padding-top: 10rem;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .people {
+    padding-bottom: 25.8667vw;
+  }
+
+  .peopleTop {
+    padding-top: 13.3333vw;
+    padding-bottom: 6.4vw;
+  }
+
+  .ttl01En {
+    font-size: 9.6vw;
+  }
+
+  .ttl01Ja {
+    font-size: 3.2vw;
+  }
+
+  .ttl01 {
+    margin-bottom: 6.4vw;
+  }
+
+  .leadTxt {
+    font-size: 3.73333vw;
+  }
+
+  .mainImg {
+    margin-bottom: 6.4vw;
+  }
+
+  .cardCatch {
+    font-size: 3.73333vw;
+  }
+
+  .cardDept,
+  .cardRole,
+  .cardYear {
+    font-size: 3.2vw;
+  }
+
+  .cardName {
+    font-size: 4.26667vw;
+  }
+
+  .decorSection {
+    padding: 10.6667vw 0 0;
+  }
+}
