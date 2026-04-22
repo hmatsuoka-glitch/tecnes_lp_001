@@ -91,7 +91,7 @@ export default function About() {
         </div>
 
         <div className={styles.mainImg}>
-          <img src="/images/nophoto.png" alt="ABOUT US" />
+          <img src="/images/TECNES_007.jpg" alt="ABOUT US" />
         </div>
       </div>
     </section>
