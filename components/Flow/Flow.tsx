@@ -14,7 +14,7 @@ export default function Flow() {
 
         {/* PC：全幅 */}
         <figure className={styles.flowImg}>
-          <Image src={FLOW_IMG} alt="仕事の流れ図" width={1100} height={600} unoptimized />
+          <Image src={FLOW_IMG} alt="仕事の流れ図" width={1600} height={700} unoptimized />
         </figure>
 
         {/* SP：横スクロール */}
