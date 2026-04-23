@@ -1,7 +1,6 @@
 import Header from '@/components/Header/Header';
 import ScrollAnimator from '@/components/ScrollAnimator/ScrollAnimator';
 import MainVisual from '@/components/MainVisual/MainVisual';
-import Read from '@/components/Read/Read';
 import Business from '@/components/Business/Business';
 import Flow from '@/components/Flow/Flow';
 import About from '@/components/About/About';
@@ -16,7 +15,6 @@ export default function Page() {
       <Header />
       <main className="l-main">
         <MainVisual />
-        <Read />
         <Business />
         <Flow />
         <About />
