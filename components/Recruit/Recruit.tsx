@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import styles from './Recruit.module.css';
 
 const jobs = [
@@ -100,6 +102,9 @@ const jobs = [
 ];
 
 export default function Recruit() {
+  const [activeId, setActiveId] = useState(jobs[0].id);
+  const activeJob = jobs.find((j) => j.id === activeId)!;
+
   return (
     <section id="recruit" className={styles.recruit}>
       <div className={`l-inner ${styles.recruitInner}`}>
@@ -108,24 +113,35 @@ export default function Recruit() {
           <span className={styles.ttl01Ja}>募集要項</span>
         </h2>
 
-        <div className={styles.jobGrid}>
+        {/* タブ */}
+        <div className={styles.tabs} role="tablist">
           {jobs.map((job) => (
-            <div key={job.id} className={styles.jobCard}>
-              <h3 className={styles.jobCategory}>{job.category}</h3>
-              <dl className={styles.jobList}>
-                {job.items.map((item) => (
-                  <div key={item.label} className={styles.jobRow}>
-                    <dt className={styles.jobLabel}>{item.label}</dt>
-                    <dd className={styles.jobContent}>
-                      {item.content.map((line, i) => (
-                        <p key={i} className={styles.jobLine}>{line}</p>
-                      ))}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+            <button
+              key={job.id}
+              role="tab"
+              aria-selected={activeId === job.id}
+              className={`${styles.tab} ${activeId === job.id ? styles.tabActive : ''}`}
+              onClick={() => setActiveId(job.id)}
+            >
+              {job.category}
+            </button>
           ))}
+        </div>
+
+        {/* 詳細テーブル */}
+        <div className={styles.jobCard}>
+          <dl className={styles.jobList}>
+            {activeJob.items.map((item) => (
+              <div key={item.label} className={styles.jobRow}>
+                <dt className={styles.jobLabel}>{item.label}</dt>
+                <dd className={styles.jobContent}>
+                  {item.content.map((line, i) => (
+                    <p key={i} className={styles.jobLine}>{line}</p>
+                  ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

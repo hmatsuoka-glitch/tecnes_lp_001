@@ -14,7 +14,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px 0;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 
 .ttl01En {
@@ -34,32 +34,48 @@
   line-height: 1;
 }
 
-/* ===== 2カラムグリッド ===== */
-.jobGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+/* ===== タブ ===== */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
-/* ===== 各職種カード ===== */
-.jobCard {
-  background-color: rgb(255, 255, 255);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+.tab {
+  flex: 1;
+  max-width: 240px;
+  padding: 1.6rem 2rem;
+  background-color: rgb(220, 230, 235);
+  color: rgb(100, 115, 130);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.jobCategory {
+.tab:first-child {
+  border-radius: 4px 0 0 0;
+}
+
+.tab:last-child {
+  border-radius: 0 4px 0 0;
+}
+
+.tabActive {
   background-color: rgb(43, 185, 176);
   color: rgb(255, 255, 255);
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 2rem 3rem;
-  margin: 0;
 }
 
-/* ===== 詳細リスト ===== */
+/* ===== 詳細カード ===== */
+.jobCard {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 0 4px 4px 4px;
+}
+
 .jobList {
   margin: 0;
   padding: 0;
@@ -67,7 +83,7 @@
 
 .jobRow {
   display: grid;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 12rem 1fr;
   border-bottom: 1px solid rgb(235, 240, 243);
 }
 
@@ -96,8 +112,8 @@
 }
 
 .jobLine {
-  font-size: 1.4rem;
-  line-height: 1.7;
+  font-size: 1.45rem;
+  line-height: 1.75;
   color: rgb(50, 65, 85);
   margin: 0;
 }
@@ -108,9 +124,8 @@
     padding: 10rem 0;
   }
 
-  .jobGrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  .tab {
+    max-width: none;
   }
 }
 
@@ -129,25 +144,25 @@
   }
 
   .ttl01 {
-    margin-bottom: 8vw;
+    margin-bottom: 6.4vw;
   }
 
-  .jobCategory {
-    font-size: 4.8vw;
-    padding: 4vw 5.33333vw;
+  .tab {
+    font-size: 3.73333vw;
+    padding: 3.2vw 2vw;
   }
 
   .jobRow {
-    grid-template-columns: 8rem 1fr;
+    grid-template-columns: 7rem 1fr;
   }
 
   .jobLabel {
-    font-size: 3vw;
-    padding: 4vw 2.66667vw;
+    font-size: 2.93333vw;
+    padding: 3.2vw 2vw;
   }
 
   .jobContent {
-    padding: 4vw 3.73333vw;
+    padding: 3.2vw 3.2vw;
   }
 
   .jobLine {
