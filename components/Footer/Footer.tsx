@@ -56,7 +56,7 @@ export default function Footer() {
         <div className={styles.leftBox}>
           <p className={styles.footerLogo}>
             <a href="/">
-              <img src="/images/logo.png" alt="株式会社TECNES" />
+              <img src="/images/tecnes_icon.png" alt="株式会社TECNES" />
             </a>
           </p>
           <ul className={styles.list01}>

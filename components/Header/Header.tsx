@@ -35,7 +35,7 @@ export default function Header() {
         <p className={styles.logo}>
           <a href="/" className={styles.logoLink}>
             <span className={styles.logoImage}>
-              <Image src="/images/logo.png" alt="株式会社TECNES" width={200} height={50} unoptimized />
+              <Image src="/images/tecnes_icon.png" alt="株式会社TECNES" width={200} height={50} unoptimized />
             </span>
             <span className={styles.logoTxt}>RECRUIT SITE</span>
           </a>
