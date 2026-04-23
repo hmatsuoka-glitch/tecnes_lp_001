@@ -2,12 +2,12 @@ import Image from 'next/image';
 import styles from './Environment.module.css';
 
 const cards = [
-  { id: 1, img: '/images/environment_img01@2x.jpg', label: '福利厚生' },
-  { id: 2, img: '/images/environment_img02@2x.jpg', label: '教育制度' },
-  { id: 3, img: '/images/environment_img03@2x.jpg', label: 'オフィス紹介' },
-  { id: 4, img: '/images/environment_img04@2x.jpg', label: '社員座談会 パパ・ママトーク' },
-  { id: 5, img: '/images/environment_img05@2x.jpg', label: '社員座談会 社風トーク' },
-  { id: 6, img: '/images/environment_img06@2x.jpg', label: '先輩たちの声' },
+  { id: 1, img: '/images/nophoto.png', label: '福利厚生' },
+  { id: 2, img: '/images/nophoto.png', label: '資格取得支援' },
+  { id: 3, img: '/images/nophoto.png', label: '研修・教育制度' },
+  { id: 4, img: '/images/nophoto.png', label: 'オフィス・現場紹介' },
+  { id: 5, img: '/images/nophoto.png', label: '社員インタビュー' },
+  { id: 6, img: '/images/nophoto.png', label: 'キャリアパス' },
 ];
 
 export default function Environment() {
@@ -19,7 +19,7 @@ export default function Environment() {
           <span className={styles.ttl01Ja}>働く環境を知る</span>
         </h2>
         <p className={styles.leadTxt}>
-          みなさんが安心して働くことのできる環境、会社とともに成長できる環境を整えております。
+          資格取得支援・研修制度・充実した福利厚生など、TECNESで安心して長く働けるサポートを整えています。
         </p>
         <div className={styles.grid}>
           {cards.map((card) => (

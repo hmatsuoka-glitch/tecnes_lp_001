@@ -116,12 +116,12 @@
   transform: translateX(-50%);
   z-index: 10;
   white-space: nowrap;
-}
-
-.mvCopy img {
-  width: auto;
-  height: auto;
-  max-width: 600px;
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 
 /* スクリーンオーバーレイ */
@@ -230,8 +230,9 @@
     right: 4vw;
   }
 
-  .mvCopy img {
-    max-width: 80vw;
+  .mvCopy {
+    font-size: 6.4vw;
+    bottom: 8vw;
   }
 }
 

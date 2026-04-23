@@ -5,17 +5,17 @@ import styles from './Business.module.css';
 import BusinessModal, { tradingModals, manufacturingModals } from './BusinessModal';
 
 const tradingCategories = [
-  { label: 'エネルギー・電力関連', id: 'trading-01' },
-  { label: 'プラント産業・電機関連', id: 'trading-02' },
-  { label: '交通・施設関連', id: 'trading-03' },
-  { label: '環境機械関連', id: 'trading-04' },
-  { label: '情報・通信関連', id: 'trading-05' },
-  { label: '国際事業', id: 'trading-06' },
+  { label: '電気工事', id: 'trading-01' },
+  { label: '通信工事', id: 'trading-02' },
+  { label: '電気土木工事', id: 'trading-03' },
+  { label: '消防施設工事', id: 'trading-04' },
+  { label: '太陽光・省エネ', id: 'trading-05' },
+  { label: '官公庁・公共工事', id: 'trading-06' },
 ];
 
 const manufacturingCategories = [
-  { label: '自動車部品事業', id: 'mfg-01' },
-  { label: 'UVシステム事業', id: 'mfg-02' },
+  { label: '空調設備工事', id: 'mfg-01' },
+  { label: '衛生設備工事', id: 'mfg-02' },
 ];
 
 export default function Business() {
@@ -39,23 +39,23 @@ export default function Business() {
         </h2>
 
         <p className={styles.leadTxt}>
-          商社のネットワークを活かし、自社製品も販売しています。私たちはお客さまから必要とされるパートナーであり続けるため、クリエイティブな発想で解決策を提案します。
+          電気・通信・空調衛生の幅広い工事を手がけ、社会インフラを支えています。安全・品質・スピードを追求し、お客さまの信頼に応え続けます。
         </p>
 
         <div className={styles.cards}>
           {/* TRADING カード */}
           <div className={styles.card}>
             <div className={styles.cardImg}>
-              <img src="/images/trading_img@2x.jpg" alt="TRADING" />
+              <img src="/images/TECNES_008.jpg" alt="TRADING" />
             </div>
             <div className={styles.cardBody}>
-              <p className={styles.cardEn}>TRADING</p>
-              <p className={styles.cardJa}>商社のしごと</p>
+              <p className={styles.cardEn}>ELECTRIC &amp; INFRA</p>
+              <p className={styles.cardJa}>電気・インフラのしごと</p>
               <h3 className={styles.cardTtl}>
-                幅広い領域に精通した<br />電機機械の専門商社
+                街と産業を動かす<br />電気・通信・土木の総合力
               </h3>
               <p className={styles.cardLead}>
-                電気機器や一般産業機械のシステム販売を手掛けています。
+                電気工事・通信工事・電気土木・消防・太陽光など幅広く対応します。
               </p>
               <ul className={styles.cardCategories}>
                 {tradingCategories.map((cat) => (
@@ -83,16 +83,16 @@ export default function Business() {
           {/* MANUFACTURING カード */}
           <div className={styles.card}>
             <div className={styles.cardImg}>
-              <img src="/images/manufacturing_img@2x.jpg" alt="MANUFACTURING" />
+              <img src="/images/TECNES_009.jpg" alt="MANUFACTURING" />
             </div>
             <div className={styles.cardBody}>
-              <p className={styles.cardEn}>MANUFACTURING</p>
-              <p className={styles.cardJa}>モノづくりのしごと</p>
+              <p className={styles.cardEn}>BUILDING &amp; COMFORT</p>
+              <p className={styles.cardJa}>快適空間のしごと</p>
               <h3 className={styles.cardTtl}>
-                長年培った信頼と技術力で<br />自社事業を展開
+                人が集まる空間を支える<br />空調・衛生設備の専門力
               </h3>
               <p className={styles.cardLead}>
-                自社製品として自動車部品や紫外線応用機器を提供しています。
+                空調設備・衛生設備工事で、快適で安全な生活環境を整えます。
               </p>
               <ul className={styles.cardCategories}>
                 {manufacturingCategories.map((cat) => (

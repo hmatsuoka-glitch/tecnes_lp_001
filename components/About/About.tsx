@@ -62,14 +62,14 @@ function NumCard({ ico, label, targetNum, unit, sub, prefix, suffix }: NumCardPr
 }
 
 const numCards: NumCardProps[] = [
-  { ico: '/images/about_ico01.svg', label: '創業年数', targetNum: 78, unit: '年', sub: '1947年（昭和22年）創立' },
-  { ico: '/images/about_ico02.svg', label: '売上高', targetNum: 536, unit: '億円' },
-  { ico: '/images/about_ico03.svg', label: '拠点数', targetNum: 16, unit: '箇所', sub: '海外拠点3箇所含む' },
-  { ico: '/images/about_ico04.svg', label: '従業員人数', targetNum: 350, unit: '人' },
-  { ico: '/images/about_ico05.svg', label: '平均勤続年数', targetNum: 16, unit: '年' },
-  { ico: '/images/about_ico06.svg', label: '年間休日', targetNum: 123, unit: '日', sub: '夏季休暇5日間含む' },
-  { ico: '/images/about_ico07.svg', label: '就業時間/日', targetNum: 7, unit: '時間45分' },
-  { ico: '/images/about_ico08.svg', label: '平均残業時間/月', targetNum: 15, unit: '時間' },
+  { ico: '/images/about_ico01.svg', label: '創業年数', targetNum: 30, unit: '年', sub: '1995年（平成7年）設立' },
+  { ico: '/images/about_ico02.svg', label: '建設業許可', targetNum: 6, unit: '業種' },
+  { ico: '/images/about_ico03.svg', label: '拠点数', targetNum: 3, unit: '箇所' },
+  { ico: '/images/about_ico04.svg', label: '従業員人数', targetNum: 22, unit: '人' },
+  { ico: '/images/about_ico05.svg', label: '資本金', targetNum: 1000, unit: '万円' },
+  { ico: '/images/about_ico06.svg', label: '年間休日', targetNum: 120, unit: '日' },
+  { ico: '/images/about_ico07.svg', label: '就業時間/日', targetNum: 8, unit: '時間' },
+  { ico: '/images/about_ico08.svg', label: '平均残業時間/月', targetNum: 10, unit: '時間' },
 ];
 
 export default function About() {
@@ -78,10 +78,10 @@ export default function About() {
       <div className={`l-inner ${styles.aboutInner}`}>
         <h2 className={`${styles.ttl01} js-animate fadeIn01`}>
           <span className={styles.ttl01En}>ABOUT US</span>
-          <span className={styles.ttl01Ja}>千代田工販について</span>
+          <span className={styles.ttl01Ja}>TECNESについて</span>
         </h2>
 
-        <p className={styles.subTtl}>数字でわかる 千代田工販の今</p>
+        <p className={styles.subTtl}>数字でわかる TECNESの今</p>
         <p className={styles.note}>※2025年3月時点</p>
 
         <div className={styles.numGrid}>
@@ -91,7 +91,7 @@ export default function About() {
         </div>
 
         <div className={styles.mainImg}>
-          <img src="/images/about_img01@2x.jpg" alt="ABOUT US" />
+          <img src="/images/TECNES_007.jpg" alt="ABOUT US" />
         </div>
       </div>
     </section>

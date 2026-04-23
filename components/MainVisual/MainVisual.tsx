@@ -4,10 +4,10 @@ import Image from 'next/image';
 import styles from './MainVisual.module.css';
 
 const slides = [
-  { id: 1, img1: '/images/mv_slide01-01.png', img2: '/images/mv_slide01-02.png' },
-  { id: 2, img1: '/images/mv_slide02-01.png', img2: '/images/mv_slide02-02.png' },
-  { id: 3, img1: '/images/mv_slide03-01.png', img2: '/images/mv_slide03-02.png' },
-  { id: 4, img1: '/images/mv_slide04-01.png', img2: '/images/mv_slide04-02.png' },
+  { id: 1, img1: '/images/TECNES_001.jpg', img2: '/images/TECNES_001.jpg' },
+  { id: 2, img1: '/images/TECNES_002.jpg', img2: '/images/TECNES_002.jpg' },
+  { id: 3, img1: '/images/TECNES_003.jpg', img2: '/images/TECNES_003.jpg' },
+  { id: 4, img1: '/images/TECNES_004.jpg', img2: '/images/TECNES_004.jpg' },
 ];
 
 export default function MainVisual() {
@@ -115,9 +115,7 @@ export default function MainVisual() {
             <Image src="/images/mv_screen.png" alt="" fill style={{ objectFit: 'cover' }} unoptimized />
           </p>
 
-          <h1 className={styles.mvCopy}>
-            <Image src="/images/mv_copy.png" alt="キミの想いが未来をともす" width={600} height={120} unoptimized />
-          </h1>
+          <h1 className={styles.mvCopy}>技術と絆で、未来を支える。</h1>
 
           <div className={styles.progressWrap}>
             <div className={styles.progressInner}>

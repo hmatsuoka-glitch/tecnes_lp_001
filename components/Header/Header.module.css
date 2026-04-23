@@ -36,6 +36,7 @@
   position: relative;
   z-index: 10;
   flex-shrink: 0;
+  background-color: inherit;
 }
 
 .logoLink {
@@ -74,14 +75,13 @@
 .menu {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 377px;
+  right: 270px;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 0 10px;
-  padding-right: 40.5996vw;
 }
 
 .menu li a {
@@ -266,7 +266,15 @@ body.is-menu-open .btnMenuLine:nth-child(3) {
 /* ===== タブレット（〜1024px）===== */
 @media screen and (max-width: 1024px) {
   .menu {
-    padding-right: 35vw;
+    display: none;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .btnMenu {
+    display: flex;
   }
 }
 

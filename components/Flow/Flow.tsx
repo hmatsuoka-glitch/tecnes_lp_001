@@ -9,12 +9,12 @@ export default function Flow() {
       <div className={`l-inner ${styles.flowInner}`}>
         <h2 className={`${styles.flowTtl01} js-animate fadeIn01`}>仕事の流れ</h2>
         <p className={styles.flowTxt01}>
-          私たちはお客さまの課題解決を通して、社会インフラの発展を支えることで豊かな暮らしを実現します。
+          現場調査から設計・施工・検査・メンテナンスまで、TECNESはお客さまの安心を一貫してサポートします。
         </p>
 
         {/* PC：全幅 */}
         <figure className={styles.flowImg}>
-          <Image src={FLOW_IMG} alt="仕事の流れ図" width={1100} height={600} unoptimized />
+          <Image src={FLOW_IMG} alt="仕事の流れ図" width={1600} height={700} unoptimized />
         </figure>
 
         {/* SP：横スクロール */}

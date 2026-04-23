@@ -6,66 +6,66 @@ import styles from './People.module.css';
 const members = [
   {
     id: 1,
-    thumb: '/images/people_thumbs01@2x.jpg',
-    catch: '先輩に支えられ始まった千代田工販での挑戦 次は私が後輩を支える番だ',
-    dept: '電機システム部',
-    role: '営業職',
-    name: 'M.M',
-    year: '2017年入社',
+    thumb: '/images/nophoto.png',
+    catch: '現場で育まれた技術と絆が 私をTECNESで輝かせてくれた',
+    dept: '電気工事部',
+    role: '施工管理',
+    name: 'T.N',
+    year: '2020年入社',
   },
   {
     id: 2,
-    thumb: '/images/people_thumbs02@2x.jpg',
-    catch: '関わるすべての人のベクトルを合わせて 大型プロジェクトに挑む',
-    dept: 'プラント産業システム部',
-    role: '営業職',
-    name: 'Y.T',
-    year: '2014年入社',
+    thumb: '/images/nophoto.png',
+    catch: 'チームで乗り越えた困難が 自分の大きな自信になった',
+    dept: '通信工事部',
+    role: '施工管理',
+    name: 'K.S',
+    year: '2018年入社',
   },
   {
     id: 3,
-    thumb: '/images/people_thumbs03@2x.jpg',
-    catch: '顧客利益だけでなく その先にある「社会に良いこと」を追求',
-    dept: '環境・機械システム営業部',
-    role: '営業職',
-    name: 'N.S',
-    year: '2017年入社',
-  },
-  {
-    id: 4,
-    thumb: '/images/people_thumbs04@2x.jpg',
-    catch: '主体性を持って企業と向き合い提案し、感謝される それが私の成長サイクル',
-    dept: '新潟支店',
-    role: '営業職',
-    name: 'O.T',
-    year: '2017年入社',
-  },
-  {
-    id: 5,
-    thumb: '/images/people_thumbs05@2x.jpg',
-    catch: '商社ならではの価値を追求し 幅広い業界へ提案 次は本社でさらなる挑戦へ',
-    dept: '九州支店',
-    role: '営業職',
-    name: 'J.A',
+    thumb: '/images/nophoto.png',
+    catch: '地道な積み重ねが 街のインフラを形づくる喜び',
+    dept: '電気土木部',
+    role: '現場監督',
+    name: 'M.H',
     year: '2019年入社',
   },
   {
+    id: 4,
+    thumb: '/images/nophoto.png',
+    catch: 'お客さまの「ありがとう」が 工事への誇りを育てる',
+    dept: '空調衛生部',
+    role: '施工管理',
+    name: 'Y.K',
+    year: '2021年入社',
+  },
+  {
+    id: 5,
+    thumb: '/images/nophoto.png',
+    catch: '資格取得を全力支援してくれる 仲間と会社が私の成長を後押し',
+    dept: '電気工事部',
+    role: '電気工事士',
+    name: 'R.T',
+    year: '2022年入社',
+  },
+  {
     id: 6,
-    thumb: '/images/people_thumbs06@2x.jpg',
-    catch: '何事も全力で楽しむ 自社製品の海外展開という「未知なる挑戦」も楽しみたい',
-    dept: '自動車部品部',
-    role: '営業職',
-    name: 'W.R',
-    year: '2005年入社',
+    thumb: '/images/nophoto.png',
+    catch: '女性でも活躍できる現場 TECNESなら挑戦し続けられる',
+    dept: '設計・積算部',
+    role: '積算担当',
+    name: 'A.O',
+    year: '2020年入社',
   },
   {
     id: 7,
-    thumb: '/images/people_thumbs07@2x.jpg',
-    catch: 'UVシステムの営業が切り拓く 「社会インフラ」と「持続可能な未来」への貢献',
-    dept: 'UVシステム営業部',
-    role: '営業職',
-    name: 'E.M',
-    year: '2012年入社',
+    thumb: '/images/nophoto.png',
+    catch: '若手でも責任ある仕事を任せてもらえる それがTECNESの魅力',
+    dept: '電気工事部',
+    role: '施工管理',
+    name: 'H.M',
+    year: '2023年入社',
   },
 ];
 
@@ -122,12 +122,12 @@ export default function People() {
           <span className={styles.ttl01Ja}>働く社員を知る</span>
         </h2>
         <p className={styles.leadTxt}>
-          千代田工販で新しい自分に出会い、変わらない自分の信念を持って活躍している先輩たち。どんな想いで働いているのか、エピソードを交えてご紹介します。
+          TECNESで技術を磨き、仲間とともに挑戦し続ける先輩たち。どんな想いで現場に立ち、どう成長してきたのか、リアルなエピソードをご紹介します。
         </p>
       </div>
 
       <div className={styles.mainImg}>
-        <Image src="/images/people_img01@2x.jpg" alt="" width={1280} height={400} unoptimized style={{ width: '100%', height: 'auto' }} />
+        <Image src="/images/nophoto.png" alt="" width={1280} height={400} unoptimized style={{ width: '100%', height: 'auto' }} />
       </div>
 
       <div className={styles.swiperWrap}>
@@ -158,9 +158,7 @@ export default function People() {
       </div>
 
       <div className={`l-inner ${styles.decorSection}`}>
-        <p className={styles.decorCopy}>
-          <Image src="/images/people_copy.svg" alt="あなたの成長を全力でサポート" width={400} height={100} unoptimized />
-        </p>
+        <p className={styles.decorCopy}>あなたの挑戦を、TECNESが全力でサポートします。</p>
       </div>
     </section>
   );

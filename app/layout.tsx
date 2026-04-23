@@ -17,8 +17,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: '新卒採用情報｜千代田工販株式会社',
-  description: '千代田工販株式会社の新卒採用情報サイトです。',
+  title: '採用情報｜株式会社TECNES',
+  description: '大阪・東大阪を拠点とする電気工事・通信・電気土木・空調衛生の総合工事会社、株式会社TECNESの採用サイトです。',
   icons: {
     icon: '/images/tecnes_icon.png',
   },
