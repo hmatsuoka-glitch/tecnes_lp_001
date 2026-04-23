@@ -89,10 +89,6 @@ export default function About() {
             <NumCard key={card.label} {...card} />
           ))}
         </div>
-
-        <div className={styles.mainImg}>
-          <img src="/images/TECNES_007.jpg" alt="ABOUT US" />
-        </div>
       </div>
     </section>
   );
