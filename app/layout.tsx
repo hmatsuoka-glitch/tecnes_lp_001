@@ -19,6 +19,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: '新卒採用情報｜千代田工販株式会社',
   description: '千代田工販株式会社の新卒採用情報サイトです。',
+  icons: {
+    icon: '/images/tecnes_icon.png',
+  },
 };
 
 export const viewport = {
