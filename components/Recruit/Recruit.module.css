@@ -1,0 +1,156 @@
+/* ===== RECRUIT ===== */
+.recruit {
+  background-color: rgb(245, 248, 250);
+  padding: 12rem 0 12rem;
+}
+
+.recruitInner {
+  position: relative;
+}
+
+/* ===== 見出し ===== */
+.ttl01 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px 0;
+  margin-bottom: 6rem;
+}
+
+.ttl01En {
+  font-size: 5.6rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.02em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+.ttl01Ja {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+/* ===== 2カラムグリッド ===== */
+.jobGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+/* ===== 各職種カード ===== */
+.jobCard {
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.jobCategory {
+  background-color: rgb(43, 185, 176);
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2rem 3rem;
+  margin: 0;
+}
+
+/* ===== 詳細リスト ===== */
+.jobList {
+  margin: 0;
+  padding: 0;
+}
+
+.jobRow {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  border-bottom: 1px solid rgb(235, 240, 243);
+}
+
+.jobRow:last-child {
+  border-bottom: none;
+}
+
+.jobLabel {
+  background-color: rgb(240, 249, 248);
+  color: rgb(43, 185, 176);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2rem 1.6rem;
+  display: flex;
+  align-items: flex-start;
+  border-right: 2px solid rgb(43, 185, 176);
+}
+
+.jobContent {
+  padding: 2rem 2.4rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem 0;
+}
+
+.jobLine {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: rgb(50, 65, 85);
+  margin: 0;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .recruit {
+    padding: 10rem 0;
+  }
+
+  .jobGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .recruit {
+    padding: 13.3333vw 0 16vw;
+  }
+
+  .ttl01En {
+    font-size: 9.6vw;
+  }
+
+  .ttl01Ja {
+    font-size: 3.2vw;
+  }
+
+  .ttl01 {
+    margin-bottom: 8vw;
+  }
+
+  .jobCategory {
+    font-size: 4.8vw;
+    padding: 4vw 5.33333vw;
+  }
+
+  .jobRow {
+    grid-template-columns: 8rem 1fr;
+  }
+
+  .jobLabel {
+    font-size: 3vw;
+    padding: 4vw 2.66667vw;
+  }
+
+  .jobContent {
+    padding: 4vw 3.73333vw;
+  }
+
+  .jobLine {
+    font-size: 3.46667vw;
+  }
+}

@@ -6,6 +6,7 @@ import Flow from '@/components/Flow/Flow';
 import About from '@/components/About/About';
 import People from '@/components/People/People';
 import Environment from '@/components/Environment/Environment';
+import Recruit from '@/components/Recruit/Recruit';
 import FootNav from '@/components/FootNav/FootNav';
 import Footer from '@/components/Footer/Footer';
 
@@ -20,6 +21,7 @@ export default function Page() {
         <About />
         <People />
         <Environment />
+        <Recruit />
         <FootNav />
       </main>
       <Footer />
