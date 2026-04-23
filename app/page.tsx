@@ -5,7 +5,6 @@ import Read from '@/components/Read/Read';
 import Business from '@/components/Business/Business';
 import Flow from '@/components/Flow/Flow';
 import About from '@/components/About/About';
-import Discovery from '@/components/Discovery/Discovery';
 import People from '@/components/People/People';
 import Environment from '@/components/Environment/Environment';
 import FootNav from '@/components/FootNav/FootNav';
@@ -21,7 +20,6 @@ export default function Page() {
         <Business />
         <Flow />
         <About />
-        <Discovery />
         <People />
         <Environment />
         <FootNav />
