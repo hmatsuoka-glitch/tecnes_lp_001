@@ -7,6 +7,7 @@ import About from '@/components/About/About';
 import People from '@/components/People/People';
 import Environment from '@/components/Environment/Environment';
 import Recruit from '@/components/Recruit/Recruit';
+import ApplyForm from '@/components/ApplyForm/ApplyForm';
 import FootNav from '@/components/FootNav/FootNav';
 import Footer from '@/components/Footer/Footer';
 
@@ -22,6 +23,7 @@ export default function Page() {
         <People />
         <Environment />
         <Recruit />
+        <ApplyForm />
         <FootNav />
       </main>
       <Footer />
