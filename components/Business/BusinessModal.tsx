@@ -20,7 +20,7 @@ const tradingModals: ModalData[] = [
     subTitle: '街に電気を届ける、あらゆる場所で',
     body: 'ビル・工場・公共施設など多様な施設の電気設備を設計・施工・メンテナンスします。受変電設備から照明・コンセント配線まで、確かな技術と安全管理で社会を支えます。',
     keywords: ['＃受変電設備', '＃幹線・動力設備', '＃照明・コンセント工事'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_008.jpg',
   },
   {
     id: 'trading-02',
@@ -29,7 +29,7 @@ const tradingModals: ModalData[] = [
     subTitle: '情報をつなぐ、くらしをつなぐ',
     body: '通信ケーブルや光ファイバー、LAN・電話設備の敷設から各種放送・セキュリティシステムの構築まで、高品質な通信インフラを提供します。',
     keywords: ['＃LAN・通信配線', '＃TV共聴設備', '＃セキュリティシステム'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_008.jpg',
   },
   {
     id: 'trading-03',
@@ -38,7 +38,7 @@ const tradingModals: ModalData[] = [
     subTitle: '地下から街を支えるインフラ整備',
     body: '道路・鉄道・河川などの公共インフラに関わる電気土木工事を担います。管路や埋設ケーブルの施工を通じ、都市機能を安定的に維持するライフラインを整備します。',
     keywords: ['＃管路工事', '＃ケーブル埋設', '＃公共インフラ整備'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_008.jpg',
   },
   {
     id: 'trading-04',
@@ -47,7 +47,7 @@ const tradingModals: ModalData[] = [
     subTitle: '命と財産を守る防災設備',
     body: 'スプリンクラー・自動火災報知設備・誘導灯など、万一の事態に備えた防災設備を設計・施工します。法令に基づく定期点検・更新工事まで総合的にサポートします。',
     keywords: ['＃自動火災報知設備', '＃スプリンクラー設備', '＃誘導灯・非常照明'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_008.jpg',
   },
   {
     id: 'trading-05',
@@ -56,7 +56,7 @@ const tradingModals: ModalData[] = [
     subTitle: '再生可能エネルギーで未来へ',
     body: '太陽光発電システムの設計・施工から蓄電池の導入、LED照明への切り替えなど省エネソリューションを提案。カーボンニュートラルへの取り組みを技術面から支援します。',
     keywords: ['＃太陽光発電システム', '＃蓄電池', '＃LED・省エネ改修'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_008.jpg',
   },
   {
     id: 'trading-06',
@@ -65,7 +65,7 @@ const tradingModals: ModalData[] = [
     subTitle: '地域社会のインフラを担う',
     body: '国・地方自治体・公共機関が発注する電気・通信・設備工事を幅広く受注。厳格な品質・安全管理のもと、公共施設の整備・更新を通じて地域社会に貢献します。',
     keywords: ['＃官公庁工事', '＃公共施設整備', '＃インフラ更新'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_008.jpg',
   },
 ];
 
@@ -77,7 +77,7 @@ const manufacturingModals: ModalData[] = [
     subTitle: '快適な温熱環境を設計・構築する',
     body: 'ビル・病院・学校・商業施設など各種建物の空調設備を設計・施工します。省エネ性能の高いシステム選定から施工・保守まで、年間を通じた快適な室内環境を実現します。',
     keywords: ['＃空調機器設置', '＃ダクト工事', '＃省エネ空調システム'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_009.jpg',
   },
   {
     id: 'mfg-02',
@@ -86,7 +86,7 @@ const manufacturingModals: ModalData[] = [
     subTitle: '安全で清潔な水まわりを支える',
     body: '給排水・給湯・衛生器具の設置など、建物に欠かせない衛生設備工事を手がけます。設計段階からの提案で、使いやすく衛生的な水まわり環境を構築します。',
     keywords: ['＃給排水配管', '＃給湯設備', '＃衛生器具取付'],
-    img: '/images/nophoto.png',
+    img: '/images/TECNES_009.jpg',
   },
 ];
 
