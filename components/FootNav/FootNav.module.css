@@ -103,6 +103,26 @@
   color: rgb(255, 255, 255);
 }
 
+.btnLine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 10px;
+  padding: 20px 60px;
+  background-color: #06C755;
+  color: rgb(255, 255, 255);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s;
+  min-width: 360px;
+}
+
+.btnLine:hover {
+  background-color: #05a849;
+}
+
 .externalBtns {
   display: flex;
   gap: 0 2rem;
@@ -140,6 +160,13 @@
   }
 
   .btnEntry {
+    font-size: 4.8vw;
+    padding: 5.33333vw 10.6667vw;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .btnLine {
     font-size: 4.8vw;
     padding: 5.33333vw 10.6667vw;
     min-width: 0;
