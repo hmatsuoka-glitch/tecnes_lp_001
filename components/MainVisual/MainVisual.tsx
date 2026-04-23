@@ -111,9 +111,7 @@ export default function MainVisual() {
             </ul>
           </div>
 
-          <p className={styles.mvScreen}>
-            <Image src="/images/mv_screen.png" alt="" fill style={{ objectFit: 'cover' }} unoptimized />
-          </p>
+          <div className={styles.mvScreen} />
 
           <h1 className={styles.mvCopy}>技術と絆で、未来を支える。</h1>
 

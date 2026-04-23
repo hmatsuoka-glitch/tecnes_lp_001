@@ -124,7 +124,7 @@
   margin: 0;
 }
 
-/* スクリーンオーバーレイ */
+/* スクリーンオーバーレイ（半透明グラデーション） */
 .mvScreen {
   position: absolute;
   top: 0;
@@ -133,12 +133,12 @@
   height: 100%;
   z-index: 8;
   pointer-events: none;
-}
-
-.mvScreen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
 }
 
 /* ===== プログレスバー ===== */
