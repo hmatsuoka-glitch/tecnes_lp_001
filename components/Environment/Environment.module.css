@@ -132,6 +132,7 @@
 
 .accordionBody > ul {
   overflow: hidden;
+  min-height: 0;
 }
 
 /* ===== 詳細リスト ===== */
