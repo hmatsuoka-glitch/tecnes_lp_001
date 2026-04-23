@@ -63,12 +63,12 @@ function NumCard({ ico, label, targetNum, unit, sub, prefix, suffix }: NumCardPr
 
 const numCards: NumCardProps[] = [
   { ico: '/images/Gemini_Generated_Image_55qq3c55qq3c55qq.png', label: '創業年数', targetNum: 30, unit: '年', sub: '1995年（平成7年）設立' },
-  { ico: '/images/Gemini_Generated_Image_lsjdolsjdolsjdol.png', label: '建設業許可', targetNum: 6, unit: '業種' },
-  { ico: '/images/Gemini_Generated_Image_qpv2jrqpv2jrqpv2.png', label: '拠点数', targetNum: 3, unit: '箇所' },
-  { ico: '/images/Gemini_Generated_Image_s4eg2ds4eg2ds4eg.png', label: '従業員人数', targetNum: 22, unit: '人' },
-  { ico: '/images/Gemini_Generated_Image_t4z8v1t4z8v1t4z8.png', label: '資本金', targetNum: 1000, unit: '万円' },
+  { ico: '/images/Gemini_Generated_Image_qpv2jrqpv2jrqpv2.png', label: '建設業許可', targetNum: 6, unit: '業種' },
+  { ico: '/images/Gemini_Generated_Image_s4eg2ds4eg2ds4eg.png', label: '拠点数', targetNum: 3, unit: '箇所' },
+  { ico: '/images/Gemini_Generated_Image_lsjdolsjdolsjdol.png', label: '従業員人数', targetNum: 22, unit: '人' },
+  { ico: '/images/Gemini_Generated_Image_y2lsy1y2lsy1y2ls.png', label: '資本金', targetNum: 1000, unit: '万円' },
   { ico: '/images/Gemini_Generated_Image_ugcc1sugcc1sugcc.png', label: '年間休日', targetNum: 120, unit: '日' },
-  { ico: '/images/Gemini_Generated_Image_y2lsy1y2lsy1y2ls.png', label: '就業時間/日', targetNum: 8, unit: '時間' },
+  { ico: '/images/Gemini_Generated_Image_t4z8v1t4z8v1t4z8.png', label: '就業時間/日', targetNum: 8, unit: '時間' },
   { ico: '/images/Gemini_Generated_Image_zfcwefzfcwefzfcw.png', label: '平均残業時間/月', targetNum: 10, unit: '時間' },
 ];
 
