@@ -127,7 +127,7 @@ export default function People() {
       </div>
 
       <div className={styles.mainImg}>
-        <Image src="/images/nophoto.png" alt="" width={1280} height={400} unoptimized style={{ width: '100%', height: 'auto' }} />
+        <Image src="/images/people_img01@2x.jpg" alt="" width={1280} height={400} unoptimized style={{ width: '100%', height: 'auto' }} />
       </div>
 
       <div className={styles.swiperWrap}>
