@@ -1,0 +1,121 @@
+/* ===== READ ===== */
+.read {
+  position: relative;
+  background-color: rgb(43, 185, 176);
+  padding: 20rem 0 12rem;
+  overflow: hidden;
+}
+
+.readInner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0 60px;
+}
+
+/* ===== 左ボックス ===== */
+.leftBox {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem 0;
+}
+
+.ttl {
+  font-size: 2.8rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  color: rgb(255, 255, 255);
+}
+
+.txt {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2;
+  color: rgb(255, 255, 255);
+}
+
+/* ===== 右ボックス（縦ループ画像）===== */
+.rightBox {
+  width: 320px;
+  flex-shrink: 0;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageWrap {
+  position: relative;
+  height: 100%;
+}
+
+.image01,
+.image02 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.image01 {
+  top: 0;
+  animation: imgloop01 30s linear infinite;
+}
+
+.image02 {
+  top: 100%;
+  animation: imgloop01 30s linear infinite;
+  animation-delay: -15s;
+}
+
+.image01 img,
+.image02 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .read {
+    padding: 16rem 0 10rem;
+  }
+
+  .rightBox {
+    width: 240px;
+    height: 480px;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .read {
+    padding: 42.6667vw 0 0;
+    margin-top: -21.3333vw;
+    overflow: hidden;
+  }
+
+  .readInner {
+    display: block;
+  }
+
+  .leftBox {
+    gap: 6.4vw 0;
+  }
+
+  .ttl {
+    font-size: 5.86667vw;
+    letter-spacing: 0.05em;
+  }
+
+  .txt {
+    font-size: 3.73333vw;
+    line-height: 1.8;
+  }
+
+  .rightBox {
+    width: 100%;
+    height: 64vw;
+    margin-top: 10.6667vw;
+  }
+}

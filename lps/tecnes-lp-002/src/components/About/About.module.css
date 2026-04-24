@@ -1,0 +1,220 @@
+/* ===== ABOUT ===== */
+.about {
+  position: relative;
+  background-color: rgb(43, 185, 176);
+  padding: 12rem 0 20.8rem;
+  overflow: hidden;
+}
+
+.aboutInner {
+  position: relative;
+}
+
+/* ===== 見出し ===== */
+.ttl01 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px 0;
+  margin-bottom: 4rem;
+}
+
+.ttl01En {
+  font-size: 5.6rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.02em;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+}
+
+.ttl01Ja {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+}
+
+/* ===== サブ見出し ===== */
+.subTtl {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+.note {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 6rem;
+}
+
+/* ===== 数字グリッド ===== */
+.numGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 4rem;
+  margin-bottom: 8rem;
+}
+
+.numCard {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 4rem 3.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem 0;
+}
+
+.numCardIco {
+  width: 56px;
+  height: 56px;
+}
+
+.numCardIco img {
+  width: 100%;
+  height: auto;
+}
+
+.numCardLabel {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+}
+
+.numCardValue {
+  display: flex;
+  align-items: baseline;
+  gap: 0 4px;
+}
+
+.numCardNum {
+  font-size: 5.6rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+}
+
+.numCardUnit {
+  font-size: 2rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+}
+
+.numCardSub {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+/* ===== 横流れテキスト ===== */
+.txtLoopWrap {
+  overflow: hidden;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.txtLoopInner {
+  display: inline-block;
+  animation: txtloop 50s linear infinite;
+}
+
+.txtLoopInner2 {
+  display: inline-block;
+  animation: txtloop 50s linear infinite;
+  animation-delay: -25s;
+}
+
+/* ===== メイン画像 ===== */
+.mainImg {
+  width: 100%;
+  margin-top: 8rem;
+}
+
+.mainImg img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .numGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .numCardNum {
+    font-size: 4.8rem;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .about {
+    padding: 13.3333vw 0 0;
+    padding-bottom: 0;
+  }
+
+  .ttl01En {
+    font-size: 9.6vw;
+  }
+
+  .ttl01Ja {
+    font-size: 3.2vw;
+  }
+
+  .ttl01 {
+    margin-bottom: 8vw;
+  }
+
+  .subTtl {
+    font-size: 5.33333vw;
+    margin-bottom: 2.66667vw;
+  }
+
+  .note {
+    font-size: 3.2vw;
+    margin-bottom: 10.6667vw;
+  }
+
+  .numGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vw;
+    margin-bottom: 13.3333vw;
+  }
+
+  .numCard {
+    padding: 5.33333vw 4vw;
+    gap: 3.2vw 0;
+  }
+
+  .numCardIco {
+    width: 10.6667vw;
+    height: 10.6667vw;
+  }
+
+  .numCardLabel {
+    font-size: 3.2vw;
+  }
+
+  .numCardNum {
+    font-size: 9.6vw;
+  }
+
+  .numCardUnit {
+    font-size: 4vw;
+  }
+
+  .numCardSub {
+    font-size: 2.93333vw;
+  }
+
+  .mainImg {
+    margin-top: 10.6667vw;
+  }
+}

@@ -1,0 +1,278 @@
+/* ===== l-footer ===== */
+.lFooter {
+  position: relative;
+  background-color: rgb(28, 44, 67);
+  padding: 0 0 114.667vw;
+}
+
+@media print, screen and (min-width: 768px) {
+  .lFooter {
+    padding: 0;
+  }
+}
+
+.lFooterInner {
+  display: flex;
+  gap: 0 6rem;
+  padding: 8rem 4rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== 右ボックス（サイトマップ）===== */
+.rightBox {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu01 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 4rem;
+}
+
+.menu01 > li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.6rem 0;
+}
+
+.menuTtl {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  transition: color 0.2s;
+}
+
+.menuTtl:hover {
+  color: rgb(43, 185, 176);
+}
+
+.subMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.subMenu li a {
+  display: block;
+  padding: 6px 0 6px 16px;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.subMenu li a:hover {
+  color: rgb(43, 185, 176);
+}
+
+.menu02 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.menu02 li a {
+  display: flex;
+  align-items: center;
+  gap: 0 4px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menu02 li a:hover {
+  color: rgb(255, 255, 255);
+}
+
+/* ===== 左ボックス（企業情報）===== */
+.leftBox {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.footerLogo {
+  margin-bottom: 3.2rem;
+}
+
+.footerLogo img {
+  width: 160px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.list01 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+  margin-bottom: 2.4rem;
+}
+
+.list01 li {
+  display: flex;
+  gap: 0 12px;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.list01 .itemTtl {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.address {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0 4px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  margin-bottom: 2.4rem;
+}
+
+.mapLink:hover {
+  color: rgb(255, 255, 255);
+}
+
+.tel {
+  font-size: 2.8rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  color: rgb(255, 255, 255);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.list02 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+  margin-bottom: 4rem;
+}
+
+.list02 li {
+  display: flex;
+  align-items: center;
+  gap: 0 8px;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.stationIco {
+  width: 18px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+}
+
+.time {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.2rem;
+}
+
+.copyright {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+}
+
+/* ===== フッターコピー（巨大装飾）===== */
+.footerCopy {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.footerCopy img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .lFooterInner {
+    flex-direction: column;
+    gap: 4rem 0;
+  }
+
+  .leftBox {
+    width: 100%;
+  }
+
+  .rightBox {
+    order: 2;
+  }
+
+  .leftBox {
+    order: 1;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .lFooter {
+    padding: 0 0 114.667vw;
+  }
+
+  .lFooterInner {
+    display: block;
+    padding: 10.6667vw 5.33333vw 0;
+  }
+
+  .rightBox {
+    margin-bottom: 10.6667vw;
+  }
+
+  .leftBox {
+    width: 100%;
+  }
+
+  .footerLogo img {
+    width: 42.6667vw;
+  }
+
+  .tel {
+    font-size: 7.46667vw;
+  }
+
+  .copyright {
+    font-size: 2.93333vw;
+  }
+
+  .menuTtl {
+    font-size: 3.73333vw;
+  }
+
+  .subMenu li a {
+    font-size: 3.2vw;
+  }
+
+  .list01 li,
+  .address,
+  .list02 li {
+    font-size: 3.2vw;
+  }
+
+  .menu02 li a {
+    font-size: 2.93333vw;
+  }
+}
