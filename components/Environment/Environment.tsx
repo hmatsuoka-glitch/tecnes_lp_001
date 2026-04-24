@@ -1,16 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import styles from './Environment.module.css';
-
-const photos = [
-  '/images/environment_img01@2x.jpg',
-  '/images/environment_img02@2x.jpg',
-  '/images/environment_img03@2x.jpg',
-  '/images/environment_img04@2x.jpg',
-  '/images/environment_img05@2x.jpg',
-  '/images/environment_img06@2x.jpg',
-];
 
 const items = [
   {
@@ -59,14 +49,6 @@ export default function Environment() {
         <p className={styles.leadTxt}>
           資格取得支援・充実した福利厚生など、TECNESで安心して長く働けるサポートを整えています。
         </p>
-        <div className={styles.photoGrid}>
-          {photos.map((src, i) => (
-            <div key={i} className={styles.photoItem}>
-              <Image src={src} alt="" fill style={{ objectFit: 'cover' }} unoptimized />
-            </div>
-          ))}
-        </div>
-
         <ul className={styles.accordion}>
           {items.map((item) => {
             const isOpen = openId === item.id;
