@@ -6,7 +6,7 @@ import styles from './People.module.css';
 const members = [
   {
     id: 1,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/tn.jpg',
     catch: '現場で育まれた技術と絆が 私をTECNESで輝かせてくれた',
     dept: '電気工事部',
     role: '施工管理',
@@ -15,7 +15,7 @@ const members = [
   },
   {
     id: 2,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/ks.jpg',
     catch: 'チームで乗り越えた困難が 自分の大きな自信になった',
     dept: '通信工事部',
     role: '施工管理',
@@ -24,7 +24,7 @@ const members = [
   },
   {
     id: 3,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/mh.jpg',
     catch: '地道な積み重ねが 街のインフラを形づくる喜び',
     dept: '電気土木部',
     role: '現場監督',
@@ -33,7 +33,7 @@ const members = [
   },
   {
     id: 4,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/yk.jpg',
     catch: 'お客さまの「ありがとう」が 工事への誇りを育てる',
     dept: '空調衛生部',
     role: '施工管理',
@@ -42,7 +42,7 @@ const members = [
   },
   {
     id: 5,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/rt.jpg',
     catch: '資格取得を全力支援してくれる 仲間と会社が私の成長を後押し',
     dept: '電気工事部',
     role: '電気工事士',
@@ -51,7 +51,7 @@ const members = [
   },
   {
     id: 6,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/ao.jpg',
     catch: '女性でも活躍できる現場 TECNESなら挑戦し続けられる',
     dept: '設計・積算部',
     role: '積算担当',
@@ -60,7 +60,7 @@ const members = [
   },
   {
     id: 7,
-    thumb: '/images/nophoto.png',
+    thumb: '/images/hm.jpg',
     catch: '若手でも責任ある仕事を任せてもらえる それがTECNESの魅力',
     dept: '電気工事部',
     role: '施工管理',
