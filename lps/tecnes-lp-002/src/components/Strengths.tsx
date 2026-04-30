@@ -8,6 +8,8 @@ type Item = {
   images?: string[];
   donut?: { label: string; value: number; sub: string };
   bars?: { label: string; value: string }[];
+  quote?: string;
+  kpis?: { label: string; value: string; unit?: string }[];
 };
 
 const items: Item[] = [
@@ -35,6 +37,13 @@ const items: Item[] = [
     body:
       "TECNESは、製造業のお客様にとっての「もう一つの開発部門」を志向しています。長く伴走するからこそ、技術が形になる瞬間も、量産が立ち上がる瞬間も、クライアントと一緒に味わえます。",
     images: ["/images/TECNES_004.jpg"],
+    quote:
+      "「外注先」ではなく、隣で一緒に汗をかく開発チーム。TECNESの仕事の手応えは、そこにあります。",
+    kpis: [
+      { label: "5年以上の継続取引", value: "78", unit: "%" },
+      { label: "年間プロジェクト数", value: "120", unit: "+" },
+      { label: "リピート受注率", value: "92", unit: "%" },
+    ],
   },
 ];
 
@@ -160,6 +169,41 @@ export default function Strengths() {
                         ))}
                       </div>
                     </div>
+                  )}
+
+                  {it.quote && (
+                    <figure className="mt-7 bg-navy text-white rounded-2xl px-6 py-7 md:px-8 md:py-8 relative overflow-hidden">
+                      <span
+                        aria-hidden
+                        className="absolute -top-3 left-5 font-serif text-7xl text-sky/40 leading-none select-none"
+                      >
+                        “
+                      </span>
+                      <blockquote className="relative font-sans font-bold text-base md:text-lg leading-[1.8] pl-6">
+                        {it.quote}
+                      </blockquote>
+                    </figure>
+                  )}
+
+                  {it.kpis && (
+                    <dl className="mt-4 grid grid-cols-3 gap-3">
+                      {it.kpis.map((k) => (
+                        <div
+                          key={k.label}
+                          className="bg-white rounded-xl px-4 py-5 text-center"
+                        >
+                          <dt className="text-[10px] tracking-widest text-muted leading-tight">
+                            {k.label}
+                          </dt>
+                          <dd className="mt-2 font-sans font-black text-brand">
+                            <span className="text-2xl md:text-3xl">{k.value}</span>
+                            {k.unit && (
+                              <span className="text-base ml-0.5">{k.unit}</span>
+                            )}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
                   )}
                 </div>
               </article>

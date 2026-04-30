@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-16 md:py-20">
+    <footer className="bg-ink text-white overflow-hidden">
+      <div className="mx-auto max-w-[1280px] px-6 md:px-10 pt-16 md:pt-20">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
             <p className="font-sans font-black tracking-[0.18em] text-2xl">
@@ -20,18 +20,18 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-4">
-            <p className="text-[10px] tracking-[0.4em] text-accent">SITEMAP</p>
+            <p className="text-[10px] tracking-[0.4em] text-sky">SITEMAP</p>
             <ul className="mt-4 space-y-3 text-sm">
-              <li><a href="#why" className="hover:text-accent transition">私たちの強み</a></li>
-              <li><a href="#members" className="hover:text-accent transition">メンバー</a></li>
-              <li><a href="#office" className="hover:text-accent transition">オフィス</a></li>
-              <li><a href="#values" className="hover:text-accent transition">8つの価値観</a></li>
-              <li><a href="#jobs" className="hover:text-accent transition">募集職種・エントリー</a></li>
+              <li><a href="#why" className="hover:text-sky transition">私たちの強み</a></li>
+              <li><a href="#members" className="hover:text-sky transition">メンバー</a></li>
+              <li><a href="#office" className="hover:text-sky transition">オフィス</a></li>
+              <li><a href="#values" className="hover:text-sky transition">8つの価値観</a></li>
+              <li><a href="#jobs" className="hover:text-sky transition">募集職種・エントリー</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-[10px] tracking-[0.4em] text-accent">CONTACT</p>
+            <p className="text-[10px] tracking-[0.4em] text-sky">CONTACT</p>
             <p className="mt-4 text-sm leading-loose text-white/75">
               採用に関するお問い合わせは、
               <br />
@@ -45,8 +45,16 @@ export default function Footer() {
             </a>
           </div>
         </div>
+      </div>
 
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[11px] text-white/50">
+      <div className="relative mt-16 md:mt-24" aria-hidden>
+        <p className="font-sans font-black leading-[0.85] tracking-[-0.03em] text-white/[0.06] text-[26vw] md:text-[20vw] whitespace-nowrap text-center select-none">
+          TECNES
+        </p>
+      </div>
+
+      <div className="mx-auto max-w-[1280px] px-6 md:px-10 pb-10 -mt-6 md:-mt-10">
+        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[11px] text-white/50">
           <p>© {new Date().getFullYear()} TECNES Inc. All rights reserved.</p>
           <p className="tracking-widest">RECRUIT SITE</p>
         </div>

@@ -18,6 +18,16 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto max-w-[1280px] w-full px-6 md:px-10 pb-24 md:pb-36 pt-32">
         <Reveal>
+          <div className="inline-flex items-center gap-2 bg-white/95 text-navy rounded-full pl-2 pr-4 py-1.5 mb-8 shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky text-white text-[10px] font-black tracking-wider">
+              NEW
+            </span>
+            <span className="text-[11px] md:text-xs font-bold tracking-[0.12em]">
+              九州拠点・新オフィス始動／2026年度 採用エントリー受付中
+            </span>
+          </div>
+        </Reveal>
+        <Reveal>
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-white/70 mb-6">
             RECRUIT 2026
           </p>
