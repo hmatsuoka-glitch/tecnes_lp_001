@@ -107,7 +107,7 @@ export default function Jobs() {
                       <span className="text-[10px] tracking-[0.3em] text-accent shrink-0">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="font-serif font-black text-base md:text-xl text-ink">
+                      <span className="font-sans font-black text-base md:text-xl text-navy">
                         {job.title}
                       </span>
                       <span className="hidden md:inline text-xs text-muted border border-line px-3 py-1 rounded-full">

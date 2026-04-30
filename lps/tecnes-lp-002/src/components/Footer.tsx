@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-16 md:py-20">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <p className="font-serif font-black tracking-[0.18em] text-2xl">
+            <p className="font-sans font-black tracking-[0.18em] text-2xl">
               TECNES
             </p>
             <p className="mt-4 text-xs tracking-[0.3em] text-white/60">

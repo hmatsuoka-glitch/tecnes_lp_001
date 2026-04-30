@@ -27,8 +27,8 @@ const offices = [
 
 export default function Office() {
   return (
-    <section id="office" className="bg-white py-24 md:py-36">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+    <section id="office" className="bg-soft py-24 md:py-36">
+      <div className="mx-auto max-w-[1180px] px-6 md:px-10">
         <SectionTitle
           eyebrow="OFFICE"
           title={
@@ -45,17 +45,23 @@ export default function Office() {
         <div className="mt-14 md:mt-20 grid md:grid-cols-3 gap-6 md:gap-8">
           {offices.map((o, i) => (
             <Reveal as="article" key={o.label} delay={(i + 1) as 1 | 2 | 3}>
-              <div
-                className="aspect-[4/3] bg-cover bg-center rounded-lg"
-                style={{ backgroundImage: `url('${o.image}')` }}
-              />
-              <p className="mt-5 text-[10px] tracking-[0.4em] text-accent">
-                {o.label}
-              </p>
-              <h3 className="mt-2 font-serif font-black text-lg leading-[1.6] text-ink">
-                {o.title}
-              </h3>
-              <p className="mt-3 text-sm leading-loose text-ink/75">{o.body}</p>
+              <div className="bg-white rounded-2xl overflow-hidden">
+                <div
+                  className="aspect-[4/3] bg-cover bg-center"
+                  style={{ backgroundImage: `url('${o.image}')` }}
+                />
+                <div className="p-6 md:p-7">
+                  <p className="text-[10px] tracking-[0.4em] text-brand">
+                    {o.label}
+                  </p>
+                  <h3 className="mt-2 font-sans font-black text-base md:text-lg leading-[1.55] text-navy">
+                    {o.title}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-loose text-ink/75">
+                    {o.body}
+                  </p>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>

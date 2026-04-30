@@ -29,7 +29,7 @@ export default function SectionTitle({
       </Reveal>
       <Reveal delay={1}>
         <h2
-          className={`font-serif font-black leading-[1.35] text-2xl md:text-4xl ${colorTitle}`}
+          className={`font-sans font-black leading-[1.4] tracking-tight text-2xl md:text-[2.5rem] ${colorTitle}`}
         >
           {title}
         </h2>

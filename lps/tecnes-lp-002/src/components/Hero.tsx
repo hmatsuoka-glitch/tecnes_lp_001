@@ -11,16 +11,19 @@ export default function Hero() {
         style={{ backgroundImage: "url('/images/TECNES_001.jpg')" }}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/40 to-ink/80" aria-hidden />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/40 to-ink/85"
+        aria-hidden
+      />
 
-      <div className="relative z-10 mx-auto max-w-[1280px] w-full px-6 md:px-10 pb-20 md:pb-32 pt-32">
+      <div className="relative z-10 mx-auto max-w-[1280px] w-full px-6 md:px-10 pb-24 md:pb-36 pt-32">
         <Reveal>
-          <p className="text-xs md:text-sm tracking-[0.4em] text-accent mb-6">
+          <p className="text-[10px] md:text-xs tracking-[0.5em] text-white/70 mb-6">
             RECRUIT 2026
           </p>
         </Reveal>
         <Reveal delay={1}>
-          <h1 className="font-serif font-black leading-[1.25] text-[2.2rem] md:text-[4.5rem]">
+          <h1 className="font-sans font-black leading-[1.2] tracking-tight text-[2.4rem] md:text-[5rem]">
             <span className="block">技術でつなぐ、</span>
             <span className="block">ものづくりの未来。</span>
           </h1>
@@ -33,12 +36,12 @@ export default function Hero() {
           </p>
         </Reveal>
         <Reveal delay={3}>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-3 md:gap-4">
             <a
               href="#jobs"
-              className="inline-flex items-center gap-3 bg-white text-ink text-sm font-bold px-7 py-4 rounded-full hover:bg-accent hover:text-white transition"
+              className="inline-flex items-center gap-3 bg-white text-ink text-sm font-bold px-7 py-4 rounded-full hover:bg-sky hover:text-white transition"
             >
-              募集要項を見る <span aria-hidden>→</span>
+              募集職種・エントリー <span aria-hidden>→</span>
             </a>
             <a
               href="#why"
@@ -50,7 +53,20 @@ export default function Hero() {
         </Reveal>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] text-white/60 hidden md:block">
+      <div className="hidden md:flex absolute right-10 top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-4">
+        <div
+          className="w-44 h-44 rounded-full bg-cover bg-center shadow-[0_20px_60px_rgba(0,0,0,0.35)] ring-4 ring-white/30"
+          style={{ backgroundImage: "url('/images/TECNES_002.jpg')" }}
+          aria-hidden
+        />
+        <p className="text-[11px] tracking-[0.3em] text-white/80 text-center leading-relaxed">
+          ENGINEERING
+          <br />
+          THE NEXT
+        </p>
+      </div>
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.5em] text-white/60 hidden md:block">
         SCROLL
       </div>
     </section>

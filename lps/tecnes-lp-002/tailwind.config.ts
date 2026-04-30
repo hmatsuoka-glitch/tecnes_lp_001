@@ -6,8 +6,12 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#0d1b2a",
-        navy: "#13294b",
-        accent: "#c9a25a",
+        navy: "#0a1f44",
+        brand: "#1a3a8f",
+        sky: "#3563e9",
+        accent: "#3563e9",
+        cream: "#f4efe6",
+        soft: "#eef1f7",
         line: "#e6e8ec",
         muted: "#6b7280",
       },

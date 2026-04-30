@@ -3,7 +3,7 @@ export default function Header() {
     <header className="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur-md border-b border-line">
       <div className="mx-auto max-w-[1280px] px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <span className="font-serif font-black tracking-[0.18em] text-ink text-lg md:text-xl">
+          <span className="font-sans font-black tracking-[0.18em] text-navy text-lg md:text-xl">
             TECNES
           </span>
           <span className="hidden md:inline text-[11px] tracking-[0.3em] text-muted">

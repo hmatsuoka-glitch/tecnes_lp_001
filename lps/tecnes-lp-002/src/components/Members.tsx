@@ -24,9 +24,10 @@ const members = [
 
 export default function Members() {
   return (
-    <section id="members" className="bg-[#f5f6f8] py-24 md:py-36">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+    <section id="members" className="bg-navy py-24 md:py-36 text-white">
+      <div className="mx-auto max-w-[1180px] px-6 md:px-10">
         <SectionTitle
+          invert
           eyebrow="MEMBERS"
           title={
             <>
@@ -37,46 +38,47 @@ export default function Members() {
           }
         />
 
-        <div className="mt-14 md:mt-20 grid md:grid-cols-2 gap-8 md:gap-10">
+        <div className="mt-14 md:mt-20 grid md:grid-cols-2 gap-8 md:gap-12">
           {members.map((m, i) => (
             <Reveal as="article" key={m.name} delay={(i + 1) as 1 | 2}>
-              <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_24px_rgba(13,27,42,0.06)]">
+              <div className="flex items-start gap-5 md:gap-7">
                 <div
-                  className="aspect-[5/4] bg-cover bg-center"
+                  className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-cover bg-center shrink-0 ring-4 ring-white/15"
                   style={{ backgroundImage: `url('${m.image}')` }}
                 />
-                <div className="p-7 md:p-9">
-                  <p className="font-serif text-lg md:text-xl leading-[1.7] text-ink">
+                <div className="pt-2">
+                  <p className="text-[10px] tracking-[0.4em] text-sky">
+                    INTERVIEW {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-3 font-sans font-black text-base md:text-xl leading-[1.7]">
                     「{m.quote}」
                   </p>
-                  <p className="mt-6 text-sm leading-loose text-ink/75">{m.body}</p>
-                  <div className="mt-6 pt-5 border-t border-line text-sm">
-                    <p className="font-bold text-ink">{m.name}</p>
-                    <p className="text-muted text-xs mt-1">{m.role}</p>
-                  </div>
                 </div>
+              </div>
+              <p className="mt-6 text-sm leading-loose text-white/75">{m.body}</p>
+              <div className="mt-6 pt-5 border-t border-white/15 text-sm">
+                <p className="font-bold">{m.name}</p>
+                <p className="text-white/60 text-xs mt-1">{m.role}</p>
               </div>
             </Reveal>
           ))}
         </div>
 
         <Reveal>
-          <div className="mt-12 md:mt-16 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 bg-white rounded-2xl px-8 py-10 md:px-12 md:py-12">
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-dashed border-ink/30 flex items-center justify-center shrink-0">
-              <span className="text-[10px] tracking-widest text-ink/60">
+          <div className="mt-14 md:mt-20 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 bg-white/[0.04] border border-white/10 rounded-2xl px-8 py-10 md:px-12 md:py-12">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-dashed border-white/30 flex items-center justify-center shrink-0">
+              <span className="text-[10px] tracking-widest text-white/60 text-center">
                 COMING
                 <br />
                 SOON
               </span>
             </div>
             <div>
-              <p className="text-[11px] tracking-[0.4em] text-accent">
-                STAFF DAILY
-              </p>
-              <p className="mt-2 font-serif font-black text-xl md:text-2xl text-ink">
+              <p className="text-[10px] tracking-[0.4em] text-sky">STAFF DAILY</p>
+              <p className="mt-2 font-sans font-black text-xl md:text-2xl">
                 スタッフの1日
               </p>
-              <p className="mt-3 text-sm text-muted leading-loose">
+              <p className="mt-3 text-sm text-white/70 leading-loose">
                 エンジニアの一日のスケジュールを近日公開予定。出社から退勤まで、現場のリアルをお届けします。
               </p>
             </div>

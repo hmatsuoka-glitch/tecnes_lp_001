@@ -1,7 +1,16 @@
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 
-const items = [
+type Item = {
+  no: string;
+  title: string;
+  body: string;
+  images?: string[];
+  donut?: { label: string; value: number; sub: string };
+  bars?: { label: string; value: string }[];
+};
+
+const items: Item[] = [
   {
     no: "01",
     title: "現場と技術をつなぐ\nハイブリッドな専門集団",
@@ -11,28 +20,67 @@ const items = [
   },
   {
     no: "02",
-    title: "数字で証明される\n働きやすさへの投資",
+    title: "数字で証明される、\n働きやすさへの投資。",
     body:
       "残業時間の見える化、フレキシブルな勤務時間、有給取得の推奨。ものづくりの現場でありながら、IT企業並みのワークライフバランスを目指して制度をアップデートし続けています。",
-    stats: [
-      { label: "20代・30代の比率", value: "62%", unit: "" },
-      { label: "平均残業時間（月）", value: "12", unit: "h" },
-      { label: "有給取得率", value: "84", unit: "%" },
+    donut: { label: "20代・30代の比率", value: 62, sub: "若手中心のチーム構成" },
+    bars: [
+      { label: "平均残業時間（月）", value: "12h" },
+      { label: "有給取得率", value: "84%" },
     ],
   },
   {
     no: "03",
-    title: "クライアントの成長を\n自分の喜びにできる仕事",
+    title: "クライアントの成長を\n自分の喜びにできる仕事。",
     body:
       "TECNESは、製造業のお客様にとっての「もう一つの開発部門」を志向しています。長く伴走するからこそ、技術が形になる瞬間も、量産が立ち上がる瞬間も、クライアントと一緒に味わえます。",
     images: ["/images/TECNES_004.jpg"],
   },
 ];
 
+function Donut({ value }: { value: number }) {
+  const r = 56;
+  const c = 2 * Math.PI * r;
+  const offset = c * (1 - value / 100);
+  return (
+    <svg viewBox="0 0 140 140" className="w-32 h-32 md:w-40 md:h-40">
+      <circle
+        cx="70"
+        cy="70"
+        r={r}
+        fill="none"
+        stroke="#dbe2f3"
+        strokeWidth="14"
+      />
+      <circle
+        cx="70"
+        cy="70"
+        r={r}
+        fill="none"
+        stroke="#3563e9"
+        strokeWidth="14"
+        strokeDasharray={c}
+        strokeDashoffset={offset}
+        strokeLinecap="round"
+        transform="rotate(-90 70 70)"
+      />
+      <text
+        x="70"
+        y="78"
+        textAnchor="middle"
+        className="fill-navy font-black"
+        style={{ fontSize: "26px" }}
+      >
+        {value}%
+      </text>
+    </svg>
+  );
+}
+
 export default function Strengths() {
   return (
     <section id="why" className="bg-white py-24 md:py-36">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1180px] px-6 md:px-10">
         <SectionTitle
           eyebrow="WHY TECNES"
           title={
@@ -44,54 +92,73 @@ export default function Strengths() {
           }
         />
 
-        <ul className="mt-16 md:mt-24 space-y-16 md:space-y-24">
+        <ul className="mt-14 md:mt-20 space-y-6 md:space-y-8">
           {items.map((it) => (
             <Reveal as="li" key={it.no}>
-              <article className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+              <article className="bg-cream rounded-2xl p-7 md:p-12 grid md:grid-cols-12 gap-8 md:gap-10">
                 <div className="md:col-span-5">
                   <div className="flex items-baseline gap-4">
-                    <span className="font-serif text-5xl md:text-7xl text-accent leading-none">
+                    <span className="font-sans font-black text-5xl md:text-6xl text-brand leading-none">
                       {it.no}
                     </span>
-                    <span className="h-px flex-1 bg-line mt-6" />
+                    <span className="text-[10px] tracking-[0.4em] text-brand/70 mb-2">
+                      POINT
+                    </span>
                   </div>
-                  <h3 className="mt-6 font-serif font-black text-xl md:text-2xl leading-[1.6] whitespace-pre-line text-ink">
+                  <h3 className="mt-6 font-sans font-black text-xl md:text-[1.65rem] leading-[1.55] whitespace-pre-line text-navy">
                     {it.title}
                   </h3>
                 </div>
+
                 <div className="md:col-span-7">
-                  <p className="text-sm md:text-base leading-loose text-ink/80">
+                  <p className="text-sm md:text-[15px] leading-loose text-ink/80">
                     {it.body}
                   </p>
 
                   {it.images && (
-                    <div className={`mt-8 grid gap-4 ${it.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
+                    <div
+                      className={`mt-6 grid gap-3 ${
+                        it.images.length > 1 ? "grid-cols-2" : "grid-cols-1"
+                      }`}
+                    >
                       {it.images.map((src) => (
                         <div
                           key={src}
-                          className="aspect-[4/3] bg-cover bg-center rounded-md"
+                          className="aspect-[4/3] bg-cover bg-center rounded-xl"
                           style={{ backgroundImage: `url('${src}')` }}
                         />
                       ))}
                     </div>
                   )}
 
-                  {it.stats && (
-                    <div className="mt-8 grid sm:grid-cols-3 gap-3">
-                      {it.stats.map((s) => (
-                        <div
-                          key={s.label}
-                          className="rounded-lg bg-navy text-white px-5 py-6"
-                        >
-                          <p className="text-[11px] tracking-widest text-white/70">
-                            {s.label}
+                  {it.donut && (
+                    <div className="mt-7 grid sm:grid-cols-2 gap-4">
+                      <div className="flex items-center gap-5 bg-white rounded-xl px-5 py-5">
+                        <Donut value={it.donut.value} />
+                        <div>
+                          <p className="text-[11px] tracking-widest text-muted">
+                            {it.donut.label}
                           </p>
-                          <p className="mt-2 font-serif font-black">
-                            <span className="text-3xl md:text-4xl">{s.value}</span>
-                            <span className="text-base ml-1">{s.unit}</span>
+                          <p className="mt-1 text-xs text-ink/70 leading-relaxed">
+                            {it.donut.sub}
                           </p>
                         </div>
-                      ))}
+                      </div>
+                      <div className="space-y-3">
+                        {it.bars?.map((b) => (
+                          <div
+                            key={b.label}
+                            className="bg-white rounded-xl px-5 py-4 flex items-center justify-between"
+                          >
+                            <p className="text-[11px] tracking-widest text-muted">
+                              {b.label}
+                            </p>
+                            <p className="font-sans font-black text-2xl text-brand">
+                              {b.value}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

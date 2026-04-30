@@ -37,7 +37,7 @@ const benefits = [
 export default function Benefits() {
   return (
     <section className="bg-white py-24 md:py-36">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1180px] px-6 md:px-10">
         <SectionTitle
           eyebrow="WORKING STYLE"
           title={
@@ -50,11 +50,11 @@ export default function Benefits() {
           description="「ものづくり業界だから仕方ない」をなくしたい。家族や自分自身を犠牲にせず、技術者として走り続けるための制度を整えています。"
         />
 
-        <ul className="mt-14 md:mt-20 grid md:grid-cols-2 gap-x-12 md:gap-x-20 gap-y-10">
+        <ul className="mt-14 md:mt-20 grid md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-8">
           {benefits.map((b, i) => (
             <Reveal as="li" key={b.title} delay={((i % 2) + 1) as 1 | 2}>
-              <div className="border-t border-ink pt-6">
-                <h3 className="font-serif font-black text-lg md:text-xl text-ink">
+              <div className="border-t-2 border-navy pt-6">
+                <h3 className="font-sans font-black text-lg md:text-xl text-navy">
                   {b.title}
                 </h3>
                 <p className="mt-3 text-sm leading-loose text-ink/75">{b.body}</p>
