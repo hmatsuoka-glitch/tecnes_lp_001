@@ -25,74 +25,6 @@
   max-width: 700px;
 }
 
-/* ===== PC：全幅表示 ===== */
-.flowImg {
-  width: 100%;
-  margin-bottom: 6rem;
-}
-
-.flowImg img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ===== SP 横スクロール用ラッパー ===== */
-.flowImgScroll {
-  display: none;
-}
-
-.flowImgScrollInner {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgb(43, 185, 176) rgba(43, 185, 176, 0.2);
-}
-
-.flowImgScrollInner::-webkit-scrollbar {
-  height: 4px;
-}
-
-.flowImgScrollInner::-webkit-scrollbar-track {
-  background: rgba(43, 185, 176, 0.2);
-  border-radius: 2px;
-}
-
-.flowImgScrollInner::-webkit-scrollbar-thumb {
-  background: rgb(43, 185, 176);
-  border-radius: 2px;
-}
-
-.flowImgScrollInner img {
-  display: block;
-  height: auto;
-}
-
-.scrollHint {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0 4px;
-  margin-bottom: 2.66667vw;
-  font-size: 3.2vw;
-  color: rgba(28, 44, 67, 0.5);
-}
-
-.scrollHintArrow {
-  display: inline-block;
-  width: 4vw;
-  height: 4vw;
-  border-top: 0.5vw solid rgba(28, 44, 67, 0.5);
-  border-right: 0.5vw solid rgba(28, 44, 67, 0.5);
-  transform: rotate(45deg);
-  animation: scrollArrowBounce 1.2s ease-in-out infinite;
-}
-
-@keyframes scrollArrowBounce {
-  0%, 100% { transform: rotate(45deg) translateX(0); }
-  50% { transform: rotate(45deg) translateX(1.5vw); }
-}
-
 .flowCopy {
   text-align: center;
 }
@@ -125,22 +57,5 @@
   .flowTxt01 {
     font-size: 3.73333vw;
     margin-bottom: 8vw;
-  }
-
-  /* SP でも画像全体を縮小して表示（横スクロールではなく等倍縮小） */
-  .flowImg {
-    display: block;
-    margin-bottom: 8vw;
-  }
-
-  .flowImg img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* 横スクロール用ラッパーは非表示にする */
-  .flowImgScroll {
-    display: none;
   }
 }
