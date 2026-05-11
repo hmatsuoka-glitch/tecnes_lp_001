@@ -1,0 +1,90 @@
+/* ===========================================================
+ * 仕事の流れ（Flow）セクション
+ * Next.js 版 components/Flow/Flow.module.css を WordPress 向けに
+ * グローバルクラス化したもの。
+ * =========================================================== */
+
+.flow {
+	position: relative;
+	background-color: rgb(217, 242, 240);
+	padding: 12rem 0 19.6rem;
+}
+
+.flow__inner {
+	position: relative;
+}
+
+.flow__ttl {
+	font-size: 3.2rem;
+	font-weight: 500;
+	line-height: 1;
+	color: rgb(28, 44, 67);
+	margin-bottom: 2.4rem;
+}
+
+.flow__txt {
+	font-size: 1.5rem;
+	line-height: 1.8;
+	color: rgb(28, 44, 67);
+	margin-bottom: 6rem;
+	max-width: 700px;
+}
+
+/* PC（標準）: 画像を全幅で表示 */
+.flow__img {
+	width: 100%;
+	margin: 0 0 6rem;
+}
+
+.flow__img img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.flow__copy {
+	text-align: center;
+}
+
+.flow__copy img {
+	max-width: 600px;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+	.flow {
+		padding: 10rem 0 16rem;
+	}
+}
+
+/* ===== モバイル（〜767px）=====
+ * 添付スクリーンショットの要件: 画像はそのままレスポンシブに縮小して表示
+ */
+@media screen and (max-width: 767px) {
+	.flow {
+		padding: 17.3333vw 0 32vw;
+	}
+
+	.flow__ttl {
+		font-size: 6.93333vw;
+		margin-bottom: 5.33333vw;
+	}
+
+	.flow__txt {
+		font-size: 3.73333vw;
+		margin-bottom: 8vw;
+	}
+
+	.flow__img {
+		margin-bottom: 8vw;
+	}
+
+	.flow__img img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}

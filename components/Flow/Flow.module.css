@@ -127,21 +127,20 @@
     margin-bottom: 8vw;
   }
 
-  /* PC用 flowImg を非表示にして SP 用スクロールを表示 */
+  /* SP でも画像全体を縮小して表示（横スクロールではなく等倍縮小） */
   .flowImg {
-    display: none;
-  }
-
-  .flowImgScroll {
     display: block;
     margin-bottom: 8vw;
   }
 
-  .flowImgScrollInner img {
-    /* 画像本来の幅を維持してはみ出させる（横スクロール） */
-    width: auto;
-    min-width: 160vw;
-    max-width: none;
+  .flowImg img {
+    width: 100%;
     height: auto;
+    display: block;
+  }
+
+  /* 横スクロール用ラッパーは非表示にする */
+  .flowImgScroll {
+    display: none;
   }
 }
