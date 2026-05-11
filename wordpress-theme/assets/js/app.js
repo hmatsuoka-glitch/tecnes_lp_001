@@ -155,3 +155,124 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	})();
 });
+
+/* ==== Business / Flow / About / Discovery ==== */
+(function () {
+	'use strict';
+
+	/* ---------- Business modals ---------- */
+	document.addEventListener('DOMContentLoaded', function () {
+		var modals = document.querySelectorAll('[data-modal]');
+		if (!modals.length) return;
+
+		var openModal = function (id) {
+			if (!id) return;
+			// Close any open modals first.
+			document.querySelectorAll('[data-modal].is-open').forEach(function (m) {
+				m.classList.remove('is-open');
+				m.setAttribute('aria-hidden', 'true');
+			});
+			var target = document.querySelector('[data-modal="' + id + '"]');
+			if (!target) return;
+			target.classList.add('is-open');
+			target.setAttribute('aria-hidden', 'false');
+			document.body.classList.add('is-menu-open');
+		};
+
+		var closeModal = function () {
+			document.querySelectorAll('[data-modal].is-open').forEach(function (m) {
+				m.classList.remove('is-open');
+				m.setAttribute('aria-hidden', 'true');
+			});
+			document.body.classList.remove('is-menu-open');
+		};
+
+		// Open triggers.
+		document.querySelectorAll('[data-modal-open]').forEach(function (btn) {
+			btn.addEventListener('click', function (e) {
+				e.preventDefault();
+				openModal(btn.getAttribute('data-modal-open'));
+			});
+		});
+
+		// Close triggers (X button, "閉じる" link).
+		document.querySelectorAll('[data-modal-close]').forEach(function (btn) {
+			btn.addEventListener('click', function (e) {
+				e.preventDefault();
+				closeModal();
+			});
+		});
+
+		// Prev / Next navigation.
+		document.querySelectorAll('[data-modal-prev]').forEach(function (btn) {
+			btn.addEventListener('click', function (e) {
+				e.preventDefault();
+				var id = btn.getAttribute('data-modal-prev');
+				if (id) openModal(id);
+			});
+		});
+		document.querySelectorAll('[data-modal-next]').forEach(function (btn) {
+			btn.addEventListener('click', function (e) {
+				e.preventDefault();
+				var id = btn.getAttribute('data-modal-next');
+				if (id) openModal(id);
+			});
+		});
+
+		// Click on overlay (outside .modalBox) closes.
+		modals.forEach(function (overlay) {
+			overlay.addEventListener('click', function (e) {
+				if (e.target === overlay) closeModal();
+			});
+		});
+
+		// Escape key closes.
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') closeModal();
+		});
+	});
+
+	/* ---------- About: animate number counters on scroll-into-view ---------- */
+	document.addEventListener('DOMContentLoaded', function () {
+		var cards = document.querySelectorAll('.numCard[data-num-target]');
+		if (!cards.length) return;
+
+		if (typeof IntersectionObserver === 'undefined') {
+			// Fallback: just set final value.
+			cards.forEach(function (card) {
+				var t = parseInt(card.getAttribute('data-num-target'), 10) || 0;
+				var disp = card.querySelector('[data-num-display]');
+				if (disp) disp.textContent = String(t);
+			});
+			return;
+		}
+
+		var animateCard = function (card) {
+			var target = parseInt(card.getAttribute('data-num-target'), 10) || 0;
+			var disp = card.querySelector('[data-num-display]');
+			if (!disp) return;
+			var duration = 1800;
+			var start = performance.now();
+			var step = function (now) {
+				var elapsed = now - start;
+				var progress = Math.min(elapsed / duration, 1);
+				var eased = 1 - Math.pow(1 - progress, 3);
+				disp.textContent = String(Math.round(eased * target));
+				if (progress < 1) requestAnimationFrame(step);
+			};
+			requestAnimationFrame(step);
+		};
+
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting && !entry.target.dataset.numStarted) {
+					entry.target.dataset.numStarted = '1';
+					animateCard(entry.target);
+					io.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.3 });
+
+		cards.forEach(function (card) { io.observe(card); });
+	});
+})();
