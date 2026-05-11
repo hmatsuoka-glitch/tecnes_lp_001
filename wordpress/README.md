@@ -18,7 +18,8 @@ wordpress/
 
 1. `template-parts/section-flow.php` をテーマの `template-parts/` 配下に配置。
 2. `assets/css/flow.css` をテーマの `assets/css/` に配置。
-3. `public/images/flow_txt.png` をテーマの `assets/images/` に配置。
+3. `public/images/tecnes_work_flow_preview.png` と `public/images/flow_txt.png`
+   をテーマの `assets/images/` に配置。
 4. `functions.php` で CSS を enqueue。
 
 ```php
@@ -41,8 +42,8 @@ add_action( 'wp_enqueue_scripts', function () {
 
 ## レスポンシブ仕様
 
-- PC / タブレット / SP すべて同一構成
-- フッター下部の `flow_txt.png` のみレスポンシブで `width: 100%; max-width: 600px;`
+- PC / タブレット / SP すべて同じ画像を表示
+- SP では `width: 100%` で画面幅にフィットさせ、横スクロールは発生しない
 
 子テーマで使う場合は、テンプレート内の `get_template_directory_uri()` を
 `get_stylesheet_directory_uri()` に置き換えてください。

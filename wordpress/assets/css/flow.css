@@ -30,6 +30,19 @@
 	max-width: 700px;
 }
 
+/* 全デバイス共通: 画像を画面幅にフィットさせる（横スクロールしない） */
+.flow__img {
+	width: 100%;
+	margin: 0 0 6rem;
+}
+
+.flow__img img {
+	width: 100%;
+	height: auto;
+	display: block;
+	max-width: 100%;
+}
+
 .flow__copy {
 	text-align: center;
 }
@@ -61,6 +74,10 @@
 
 	.flow__txt {
 		font-size: 3.73333vw;
+		margin-bottom: 8vw;
+	}
+
+	.flow__img {
 		margin-bottom: 8vw;
 	}
 }

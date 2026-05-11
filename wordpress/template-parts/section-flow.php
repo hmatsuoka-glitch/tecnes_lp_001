@@ -6,6 +6,7 @@
  *   <?php get_template_part( 'template-parts/section-flow' ); ?>
  *
  * 想定アセット:
+ *   - 画像: /assets/images/tecnes_work_flow_preview.png
  *   - 画像: /assets/images/flow_txt.png
  *   - CSS : /assets/css/flow.css （functions.php で wp_enqueue_style）
  *
@@ -17,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$flow_img_url  = esc_url( get_template_directory_uri() . '/assets/images/tecnes_work_flow_preview.png' );
 $flow_copy_url = esc_url( get_template_directory_uri() . '/assets/images/flow_txt.png' );
 ?>
 <section id="flow" class="flow">
@@ -25,6 +27,17 @@ $flow_copy_url = esc_url( get_template_directory_uri() . '/assets/images/flow_tx
 		<p class="flow__txt">
 			<?php esc_html_e( '私たちはお客さまの課題解決を通して、社会インフラの発展を支えることで豊かな暮らしを実現します。', 'tecnes' ); ?>
 		</p>
+
+		<figure class="flow__img">
+			<img
+				src="<?php echo $flow_img_url; ?>"
+				alt="<?php esc_attr_e( '仕事の流れ図', 'tecnes' ); ?>"
+				width="1100"
+				height="600"
+				loading="lazy"
+				decoding="async"
+			/>
+		</figure>
 
 		<p class="flow__copy">
 			<img

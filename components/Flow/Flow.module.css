@@ -25,6 +25,19 @@
   max-width: 700px;
 }
 
+/* ===== 画像表示（全デバイス共通で画面幅にフィット）===== */
+.flowImg {
+  width: 100%;
+  margin: 0 0 6rem;
+}
+
+.flowImg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
 .flowCopy {
   text-align: center;
 }
@@ -43,7 +56,9 @@
   }
 }
 
-/* ===== モバイル（〜767px）===== */
+/* ===== モバイル（〜767px）=====
+ * 横スクロールさせず、画像を画面幅に縮小して表示する
+ */
 @media screen and (max-width: 767px) {
   .flow {
     padding: 17.3333vw 0 32vw;
@@ -56,6 +71,10 @@
 
   .flowTxt01 {
     font-size: 3.73333vw;
+    margin-bottom: 8vw;
+  }
+
+  .flowImg {
     margin-bottom: 8vw;
   }
 }
