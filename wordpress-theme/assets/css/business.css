@@ -1,0 +1,473 @@
+/* ===== BUSINESS ===== */
+.business {
+	position: relative;
+	padding: 12rem 0 12rem;
+	background-color: rgb(255, 255, 255);
+}
+
+.businessInner {
+	position: relative;
+}
+
+/* ===== 見出し ===== */
+.business .ttl01 {
+	text-align: center;
+	margin-bottom: 6rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px 0;
+}
+
+.business .ttl01En {
+	font-size: 5.6rem;
+	font-weight: 700;
+	font-family: var(--font-poppins), Poppins, sans-serif;
+	letter-spacing: 0.02em;
+	color: rgb(28, 44, 67);
+	line-height: 1;
+}
+
+.business .ttl01Ja {
+	font-size: 1.4rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	color: rgb(28, 44, 67);
+	line-height: 1;
+}
+
+/* ===== リード文 ===== */
+.business .leadTxt {
+	text-align: center;
+	font-size: 1.5rem;
+	line-height: 1.8;
+	color: rgb(28, 44, 67);
+	margin-bottom: 6rem;
+}
+
+/* ===== 2カードレイアウト ===== */
+.cards {
+	display: flex;
+	gap: 0 4rem;
+	align-items: stretch;
+}
+
+.card {
+	flex: 1;
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+	border: 1px solid rgba(28, 44, 67, 0.1);
+	transition: box-shadow 0.3s;
+}
+
+.card:hover {
+	box-shadow: 0 8px 40px rgba(28, 44, 67, 0.15);
+}
+
+.cardImg {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 4/3;
+	overflow: hidden;
+}
+
+.cardImg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card:hover .cardImg img {
+	transform: scale(1.05);
+}
+
+.cardBody {
+	padding: 4rem 4rem 5rem;
+}
+
+.cardEn {
+	font-size: 1.2rem;
+	font-weight: 600;
+	font-family: var(--font-poppins), Poppins, sans-serif;
+	letter-spacing: 0.1em;
+	color: rgb(43, 185, 176);
+	line-height: 1;
+	margin-bottom: 1.2rem;
+}
+
+.cardJa {
+	font-size: 1.3rem;
+	font-weight: 500;
+	color: rgb(28, 44, 67);
+	line-height: 1;
+	margin-bottom: 2rem;
+}
+
+.cardTtl {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1.5;
+	color: rgb(28, 44, 67);
+	margin-bottom: 1.6rem;
+}
+
+.cardLead {
+	font-size: 1.4rem;
+	line-height: 1.8;
+	color: rgb(28, 44, 67);
+	margin-bottom: 2.4rem;
+}
+
+.cardCategories {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 3.2rem;
+	list-style: none;
+	padding: 0;
+}
+
+.cardCategory {
+	padding: 6px 12px;
+	border: 1px solid rgb(43, 185, 176);
+	font-size: 1.2rem;
+	color: rgb(43, 185, 176);
+	line-height: 1;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+	background: none;
+}
+
+.cardCategory:hover {
+	background-color: rgb(43, 185, 176);
+	color: rgb(255, 255, 255);
+}
+
+/* ===== Lottie 矢印 ===== */
+.arrowWrap {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0 8px;
+}
+
+.arrowTxt {
+	font-size: 1.2rem;
+	font-weight: 500;
+	font-family: var(--font-poppins), Poppins, sans-serif;
+	letter-spacing: 0.05em;
+	color: rgb(28, 44, 67);
+}
+
+.arrowIco {
+	width: 40px;
+	height: 40px;
+	position: relative;
+}
+
+.arrowIco::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 24px;
+	height: 2px;
+	background-color: rgb(28, 44, 67);
+	transform: translateY(-50%);
+	animation: arrowSlide 1.2s ease-in-out infinite;
+}
+
+.arrowIco::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 8px;
+	height: 8px;
+	border-right: 2px solid rgb(28, 44, 67);
+	border-bottom: 2px solid rgb(28, 44, 67);
+	transform: translateY(-50%) rotate(-45deg);
+	animation: arrowSlide 1.2s ease-in-out infinite;
+}
+
+@keyframes arrowSlide {
+	0%, 100% { transform: translateY(-50%) translateX(0); }
+	50% { transform: translateY(-50%) translateX(6px); }
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+	.business {
+		padding: 10rem 0 10rem;
+	}
+
+	.cards {
+		gap: 0 2rem;
+	}
+
+	.cardBody {
+		padding: 3rem 3rem 4rem;
+	}
+
+	.cardTtl {
+		font-size: 1.8rem;
+	}
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+	.business {
+		padding-top: 13.3333vw;
+		padding-bottom: 13.3333vw;
+	}
+
+	.business .ttl01En {
+		font-size: 9.6vw;
+	}
+
+	.business .ttl01Ja {
+		font-size: 3.2vw;
+	}
+
+	.business .ttl01 {
+		margin-bottom: 8vw;
+	}
+
+	.business .leadTxt {
+		font-size: 3.73333vw;
+		text-align: left;
+		margin-bottom: 8vw;
+	}
+
+	.cards {
+		flex-direction: column;
+		gap: 8vw 0;
+	}
+
+	.cardBody {
+		padding: 5.33333vw;
+	}
+
+	.cardEn {
+		font-size: 3.2vw;
+	}
+
+	.cardJa {
+		font-size: 3.46667vw;
+	}
+
+	.cardTtl {
+		font-size: 5.33333vw;
+	}
+
+	.cardLead {
+		font-size: 3.73333vw;
+	}
+
+	.cardCategory {
+		font-size: 3.2vw;
+		padding: 1.6vw 3.2vw;
+	}
+
+	.arrowTxt {
+		font-size: 3.2vw;
+	}
+}
+
+/* ===== モーダル ===== */
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(28, 44, 67, 0.8);
+	z-index: 9000;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 40px;
+	overflow-y: auto;
+}
+
+.modalOverlay.is-open {
+	display: flex;
+}
+
+.modalBox {
+	position: relative;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	max-width: 960px;
+	max-height: 90vh;
+	overflow-y: auto;
+}
+
+.modalClose {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 44px;
+	height: 44px;
+	cursor: pointer;
+	background: none;
+	border: none;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modalClose::before,
+.modalClose::after {
+	content: '';
+	position: absolute;
+	width: 24px;
+	height: 2px;
+	background-color: rgb(28, 44, 67);
+}
+
+.modalClose::before {
+	transform: rotate(45deg);
+}
+
+.modalClose::after {
+	transform: rotate(-45deg);
+}
+
+.modalImg {
+	width: 100%;
+	aspect-ratio: 16/9;
+	overflow: hidden;
+}
+
+.modalImg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.modalBody {
+	padding: 4rem 5rem 5rem;
+}
+
+.modalNum {
+	font-size: 1.2rem;
+	font-weight: 600;
+	font-family: var(--font-poppins), Poppins, sans-serif;
+	letter-spacing: 0.1em;
+	color: rgb(43, 185, 176);
+	margin-bottom: 1.6rem;
+}
+
+.modalTtl {
+	font-size: 3.2rem;
+	font-weight: 700;
+	line-height: 1.4;
+	color: rgb(28, 44, 67);
+	margin-bottom: 2rem;
+}
+
+.modalSubTtl {
+	font-size: 1.8rem;
+	font-weight: 500;
+	line-height: 1.6;
+	color: rgb(43, 185, 176);
+	margin-bottom: 2rem;
+}
+
+.modalTxt {
+	font-size: 1.5rem;
+	line-height: 1.9;
+	color: rgb(28, 44, 67);
+	margin-bottom: 3.2rem;
+}
+
+.modalKeywords {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 4rem;
+	list-style: none;
+	padding: 0;
+}
+
+.modalKeyword {
+	padding: 8px 16px;
+	background-color: rgb(217, 242, 240);
+	font-size: 1.3rem;
+	color: rgb(28, 44, 67);
+}
+
+.modalNav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid rgba(28, 44, 67, 0.1);
+	padding-top: 3.2rem;
+}
+
+.modalNavBtn {
+	display: flex;
+	align-items: center;
+	gap: 0 8px;
+	background: none;
+	border: 1px solid rgb(28, 44, 67);
+	padding: 12px 24px;
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: rgb(28, 44, 67);
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.modalNavBtn:hover {
+	background-color: rgb(28, 44, 67);
+	color: rgb(255, 255, 255);
+}
+
+.modalNavClose {
+	background: none;
+	border: none;
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: rgb(28, 44, 67);
+	cursor: pointer;
+	text-decoration: underline;
+	padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+	.modalOverlay {
+		padding: 5.33333vw;
+		align-items: flex-start;
+	}
+
+	.modalBody {
+		padding: 8vw 5.33333vw;
+	}
+
+	.modalTtl {
+		font-size: 6.4vw;
+	}
+
+	.modalSubTtl {
+		font-size: 4.8vw;
+	}
+
+	.modalTxt {
+		font-size: 3.73333vw;
+	}
+
+	.modalNav {
+		flex-wrap: wrap;
+		gap: 4vw;
+	}
+
+	.modalNavBtn {
+		font-size: 3.73333vw;
+		padding: 3.2vw 5.33333vw;
+	}
+}
