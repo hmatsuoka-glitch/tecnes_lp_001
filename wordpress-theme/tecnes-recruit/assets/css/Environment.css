@@ -1,0 +1,128 @@
+/* ===== ENVIRONMENT ===== */
+.environment {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  padding: 12rem 0 12rem;
+}
+
+.environmentInner {
+  position: relative;
+}
+
+/* ===== 見出し ===== */
+.ttl01 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px 0;
+  margin-bottom: 4rem;
+}
+
+.ttl01En {
+  font-size: 5.6rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.02em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+.ttl01Ja {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+.leadTxt {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: rgb(28, 44, 67);
+  margin-bottom: 6rem;
+}
+
+/* ===== 6 枚グリッド ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 4rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardImg {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.cardImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card:hover .cardImg img {
+  transform: scale(1.05);
+}
+
+.cardLabel {
+  padding: 2rem 0 0;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: rgb(28, 44, 67);
+  line-height: 1.4;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .environment {
+    padding: 10rem 0 10rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .environment {
+    padding: 13.3333vw 0 32vw;
+  }
+
+  .ttl01En {
+    font-size: 9.6vw;
+  }
+
+  .ttl01Ja {
+    font-size: 3.2vw;
+  }
+
+  .ttl01 {
+    margin-bottom: 6.4vw;
+  }
+
+  .leadTxt {
+    font-size: 3.73333vw;
+    margin-bottom: 8vw;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5.33333vw;
+  }
+
+  .cardLabel {
+    font-size: 4.26667vw;
+    padding-top: 3.2vw;
+  }
+}

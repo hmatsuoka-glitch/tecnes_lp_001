@@ -1,0 +1,161 @@
+/* ===== p-footNav ===== */
+.footNav {
+  position: relative;
+  background-color: rgb(217, 242, 240);
+  padding: 10rem 0 12rem;
+}
+
+.footNavInner {
+  position: relative;
+}
+
+/* ===== ナビリスト ===== */
+.navSection {
+  margin-bottom: 6rem;
+}
+
+.navTtl {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgb(28, 44, 67);
+  margin-bottom: 2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid rgb(28, 44, 67);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.navList li a {
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(28, 44, 67, 0.1);
+  font-size: 1.5rem;
+  color: rgb(28, 44, 67);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navList li a:hover {
+  color: rgb(43, 185, 176);
+}
+
+/* ===== CTAエリア ===== */
+.cta {
+  text-align: center;
+  padding-top: 8rem;
+}
+
+.ctaLead {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: rgb(28, 44, 67);
+  margin-bottom: 5rem;
+}
+
+.ctaBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem 0;
+}
+
+.btnEntry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 60px;
+  background-color: rgb(28, 44, 67);
+  color: rgb(255, 255, 255);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: background-color 0.2s;
+  min-width: 360px;
+}
+
+.btnEntry:hover {
+  background-color: rgb(43, 185, 176);
+}
+
+.btnExternal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 8px;
+  padding: 16px 40px;
+  border: 1px solid rgb(28, 44, 67);
+  color: rgb(28, 44, 67);
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  min-width: 300px;
+}
+
+.btnExternal:hover {
+  background-color: rgb(28, 44, 67);
+  color: rgb(255, 255, 255);
+}
+
+.externalBtns {
+  display: flex;
+  gap: 0 2rem;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .footNav {
+    padding: 8rem 0 10rem;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .footNav {
+    padding: 21.3333vw 0 0;
+  }
+
+  .navTtl {
+    font-size: 4.8vw;
+  }
+
+  .navList li a {
+    font-size: 3.73333vw;
+    padding: 3.2vw 0;
+  }
+
+  .cta {
+    padding-top: 13.3333vw;
+  }
+
+  .ctaLead {
+    font-size: 4.26667vw;
+    margin-bottom: 8vw;
+  }
+
+  .btnEntry {
+    font-size: 4.8vw;
+    padding: 5.33333vw 10.6667vw;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .externalBtns {
+    flex-direction: column;
+    gap: 4vw 0;
+    width: 100%;
+  }
+
+  .btnExternal {
+    font-size: 3.73333vw;
+    padding: 4vw;
+    min-width: 0;
+    width: 100%;
+  }
+}
