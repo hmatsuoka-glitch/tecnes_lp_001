@@ -1,0 +1,313 @@
+/* ===== l-header ===== */
+.lHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.lHeader.fixed {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ===== l-header__inner ===== */
+.lHeaderInner {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1),
+              height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.lHeader.fixed .lHeaderInner {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== ロゴ ===== */
+.logo {
+  width: 377px;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0 16px;
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+}
+
+.logoImage {
+  display: block;
+  width: 200px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.logoImage img {
+  width: 100%;
+  height: auto;
+}
+
+.logoTxt {
+  position: relative;
+  top: 10px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  line-height: 1;
+  color: rgb(28, 44, 67);
+  white-space: nowrap;
+}
+
+/* ===== PC ナビメニュー ===== */
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0 10px;
+  padding-right: 40.5996vw;
+}
+
+.menu li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  height: 100%;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.menu li a:hover {
+  opacity: 0.7;
+}
+
+.menuJpn {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgb(28, 44, 67);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ===== ボタン群（右端）===== */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+.btnRecruit {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.btnRecruit a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 100%;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgb(28, 44, 67);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.btnRecruit a:hover {
+  opacity: 0.7;
+}
+
+.btnEntry {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.btnEntry > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 100%;
+  background-color: rgb(28, 44, 67);
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btnEntry:hover > span {
+  background-color: rgb(43, 185, 176);
+}
+
+.entryBox {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 100;
+}
+
+.btnEntry:hover .entryBox {
+  opacity: 1;
+  visibility: visible;
+}
+
+.entryBoxList {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px 0;
+}
+
+.entryBoxList li a {
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.entryBoxList li a:hover {
+  opacity: 0.7;
+}
+
+.entryBoxList li a img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== ハンバーガーボタン ===== */
+.btnMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.btnMenuLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  gap: 6px 0;
+}
+
+.btnMenuLine {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: rgb(28, 44, 67);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.btnMenuText {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-poppins), Poppins, sans-serif;
+  letter-spacing: 0.05em;
+  color: rgb(28, 44, 67);
+  line-height: 1;
+}
+
+body.is-menu-open .btnMenuLine:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+body.is-menu-open .btnMenuLine:nth-child(2) {
+  opacity: 0;
+}
+
+body.is-menu-open .btnMenuLine:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+  .menu {
+    padding-right: 35vw;
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .lHeaderInner {
+    height: 14.9333vw;
+  }
+
+  .logo {
+    width: 70.6667vw;
+  }
+
+  .logoLink {
+    gap: 0 2.66667vw;
+    padding: 0 3.73333vw 2.66667vw;
+  }
+
+  .logoImage {
+    width: 40vw;
+  }
+
+  .logoTxt {
+    top: 1.33333vw;
+    font-size: 3.2vw;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .btnMenu {
+    display: flex;
+    width: 17.0667vw;
+    height: 17.0667vw;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2.66667vw;
+  }
+}

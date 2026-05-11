@@ -1,0 +1,16 @@
+/*
+Theme Name: TECNES LP
+Theme URI: https://tecnes-lp-001.vercel.app/
+Author: TECNES
+Description: 千代田工販株式会社 新卒採用情報サイト ランディングページ（WordPress 版）。Next.js 版 (tecnes-lp-001.vercel.app) を PHP テンプレートに移植したもの。
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+License: GPL v2 or later
+Text Domain: tecnes-lp
+*/
+
+/* このファイルは WordPress がテーマヘッダを読み取るために必要です。
+ * 実際のスタイルは assets/css/ 配下のファイルに分割されており、
+ * functions.php からそれぞれ enqueue されます。
+ */
