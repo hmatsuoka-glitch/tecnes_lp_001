@@ -1,0 +1,152 @@
+/* ===== DISCOVERY ===== */
+.discovery {
+	position: relative;
+	padding-bottom: 16rem;
+	margin-top: 0;
+	overflow: hidden;
+}
+
+.discoveryBg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.discoveryBg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.discoveryBg::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(28, 44, 67, 0.4);
+}
+
+.discoveryInner {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	padding-top: 12rem;
+}
+
+/* ===== 見出し ===== */
+.discovery .ttl01 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px 0;
+	margin-bottom: 4rem;
+}
+
+.discovery .ttl01En {
+	font-size: 5.6rem;
+	font-weight: 700;
+	font-family: var(--font-poppins), Poppins, sans-serif;
+	letter-spacing: 0.02em;
+	color: rgb(255, 255, 255);
+	line-height: 1;
+}
+
+.discovery .ttl01Ja {
+	font-size: 1.4rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	color: rgb(255, 255, 255);
+	line-height: 1;
+}
+
+.discovery .leadTxt {
+	font-size: 1.5rem;
+	line-height: 1.8;
+	color: rgb(255, 255, 255);
+	margin-bottom: 4rem;
+}
+
+.ctaBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 18px 48px;
+	background-color: rgb(43, 185, 176);
+	color: rgb(255, 255, 255);
+	font-size: 1.6rem;
+	font-weight: 500;
+	text-decoration: none;
+	letter-spacing: 0.05em;
+	transition: background-color 0.2s;
+	margin-bottom: 8rem;
+}
+
+.ctaBtn:hover {
+	background-color: rgb(255, 255, 255);
+	color: rgb(43, 185, 176);
+}
+
+.decorCopy {
+	font-size: 5.6rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.15);
+	line-height: 1.4;
+	letter-spacing: 0.05em;
+	font-family: var(--font-noto-sans-jp), 'Noto Sans JP', sans-serif;
+}
+
+/* ===== タブレット（〜1024px）===== */
+@media screen and (max-width: 1024px) {
+	.discovery {
+		padding-bottom: 12rem;
+	}
+
+	.decorCopy {
+		font-size: 4rem;
+	}
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+	.discovery {
+		margin-top: 0;
+		padding-bottom: 29.3333vw;
+	}
+
+	.discoveryInner {
+		padding-top: 17.3333vw;
+	}
+
+	.discovery .ttl01En {
+		font-size: 9.6vw;
+	}
+
+	.discovery .ttl01Ja {
+		font-size: 3.2vw;
+	}
+
+	.discovery .ttl01 {
+		margin-bottom: 6.4vw;
+	}
+
+	.discovery .leadTxt {
+		font-size: 3.73333vw;
+		margin-bottom: 8vw;
+	}
+
+	.ctaBtn {
+		font-size: 4.26667vw;
+		padding: 4.8vw 10.6667vw;
+		margin-bottom: 13.3333vw;
+	}
+
+	.decorCopy {
+		font-size: 7.46667vw;
+		line-height: 1.6;
+	}
+}

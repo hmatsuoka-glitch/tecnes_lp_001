@@ -106,3 +106,52 @@
 		}
 	}
 })();
+
+/* ==== People / Environment / FootNav / Footer / ScrollAnimator ==== */
+document.addEventListener('DOMContentLoaded', function () {
+	// ScrollAnimator: IntersectionObserver toggles .is-animate on .js-animate elements
+	(function initScrollAnimator() {
+		var targets = document.querySelectorAll('.js-animate');
+		if (!targets.length || typeof IntersectionObserver === 'undefined') return;
+
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-animate');
+					io.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+		targets.forEach(function (el) { io.observe(el); });
+	})();
+
+	// People: Swiper carousel init
+	(function initPeopleSwiper() {
+		var el = document.querySelector('.js-people-swiper');
+		if (!el || !window.Swiper) return;
+
+		new window.Swiper(el, {
+			slidesPerView: 1.2,
+			spaceBetween: 20,
+			pagination: {
+				el: el.querySelector('.swiper-pagination'),
+				clickable: true,
+			},
+			navigation: {
+				nextEl: el.querySelector('.swiper-button-next'),
+				prevEl: el.querySelector('.swiper-button-prev'),
+			},
+			breakpoints: {
+				768: {
+					slidesPerView: 2.5,
+					spaceBetween: 30,
+				},
+				1025: {
+					slidesPerView: 3.5,
+					spaceBetween: 40,
+				},
+			},
+		});
+	})();
+});
