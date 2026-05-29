@@ -17,8 +17,8 @@ const members = [
     id: 2,
     thumb: '/images/ks.jpg',
     catch: 'チームで乗り越えた困難が 自分の大きな自信になった',
-    dept: '通信工事部',
-    role: '施工管理',
+    dept: '',
+    role: '',
     name: 'K.S',
     year: '2018年入社',
   },
@@ -142,7 +142,9 @@ export default function People() {
                   <div className={styles.cardBody}>
                     <p className={styles.cardCatch}>{m.catch}</p>
                     <div className={styles.cardMeta}>
-                      <span className={styles.cardDept}>{m.dept}・{m.role}</span>
+                      {(m.dept || m.role) && (
+                        <span className={styles.cardDept}>{[m.dept, m.role].filter(Boolean).join('・')}</span>
+                      )}
                       <span className={styles.cardName}>{m.name}</span>
                       <span className={styles.cardYear}>{m.year}</span>
                     </div>
