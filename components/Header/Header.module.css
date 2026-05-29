@@ -209,6 +209,34 @@
   height: auto;
 }
 
+/* ===== LINEで応募ボタン ===== */
+.btnLine {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.btnLine a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 8px;
+  height: 100%;
+  padding: 0 24px;
+  background-color: #06C755;
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.btnLine a:hover {
+  background-color: #05a849;
+}
+
 /* ===== ハンバーガーボタン ===== */
 .btnMenu {
   position: absolute;

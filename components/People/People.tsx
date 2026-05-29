@@ -142,9 +142,6 @@ export default function People() {
                   <div className={styles.cardBody}>
                     <p className={styles.cardCatch}>{m.catch}</p>
                     <div className={styles.cardMeta}>
-                      {(m.dept || m.role) && (
-                        <span className={styles.cardDept}>{[m.dept, m.role].filter(Boolean).join('・')}</span>
-                      )}
                       <span className={styles.cardName}>{m.name}</span>
                       <span className={styles.cardYear}>{m.year}</span>
                     </div>
