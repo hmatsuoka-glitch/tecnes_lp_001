@@ -1,0 +1,130 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 48px 32px 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.35s ease;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: rgb(120, 120, 120);
+  font-size: 2.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: rgb(28, 44, 67);
+}
+
+.lead {
+  font-size: 1.4rem;
+  color: rgb(43, 185, 176);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: rgb(28, 44, 67);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.note {
+  font-size: 1.4rem;
+  color: rgb(80, 80, 80);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.btnLine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background-color: #06C755;
+  color: rgb(255, 255, 255);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.btnLine:hover {
+  background-color: #05a849;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== モバイル（〜767px）===== */
+@media screen and (max-width: 767px) {
+  .popup {
+    padding: 10.6667vw 6.4vw 9.3333vw;
+  }
+
+  .title {
+    font-size: 6.4vw;
+  }
+
+  .lead {
+    font-size: 3.46667vw;
+  }
+
+  .note {
+    font-size: 3.46667vw;
+  }
+
+  .btnLine {
+    font-size: 4.26667vw;
+    padding: 4.26667vw 6.4vw;
+  }
+}

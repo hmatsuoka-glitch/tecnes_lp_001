@@ -10,6 +10,7 @@ import Recruit from '@/components/Recruit/Recruit';
 import ApplyForm from '@/components/ApplyForm/ApplyForm';
 import FootNav from '@/components/FootNav/FootNav';
 import Footer from '@/components/Footer/Footer';
+import ApplyPopup from '@/components/ApplyPopup/ApplyPopup';
 
 export default function Page() {
   return (
@@ -27,6 +28,7 @@ export default function Page() {
         <FootNav />
       </main>
       <Footer />
+      <ApplyPopup />
       <ScrollAnimator />
     </>
   );
