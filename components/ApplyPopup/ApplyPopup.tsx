@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './ApplyPopup.module.css';
 import { trackLineClick } from '@/lib/tracking';
 
-const LINE_URL = 'https://lin.ee/Uvv8qpj';
+const LINE_URL = 'https://lmasters.aigrowthx.pro/r/cmqhi2or8000bqm1wwidx2is0';
 const STORAGE_KEY = 'tecnes_apply_popup_closed';
 
 export default function ApplyPopup() {
