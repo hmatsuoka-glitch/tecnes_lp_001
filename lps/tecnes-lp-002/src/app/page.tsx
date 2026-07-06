@@ -3,7 +3,25 @@
 import { useEffect, useRef, useState } from "react";
 
 /* ------------------------------------------------------------------
+   constants
+------------------------------------------------------------------ */
+
+// TODO: クライアント確認後、実績値に差し替え
+const STATS = {
+  inexperienced: { label: "未経験スタート", num: 80, unit: "%", note: "入社時に業界未経験" },
+  athletes: { label: "体育会系出身", num: 6, unit: "割超", note: "元運動部が活躍中" },
+  avgAge: { label: "平均年齢", num: 29, unit: "歳", note: "若手が多い現場" },
+  license: { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
+} as const;
+
+// TODO: CV手段確定後に調整（エントリーフォーム / LINE / マイナビ等のURLに差し替え）
+const ENTRY_URL = "#entry";
+const CTA_MICRO = "履歴書不要・私服OK／質問だけでも大歓迎";
+
+/* ------------------------------------------------------------------
    scroll reveal
+   - JS無効時は全コンテンツ表示（.js-anim を html に付与してから隠す）
+   - 早めのトリガー + 短いフェードで「白飛び」時間を作らない
 ------------------------------------------------------------------ */
 function useReveal() {
   useEffect(() => {
@@ -21,7 +39,7 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -29,9 +47,51 @@ function useReveal() {
 }
 
 /* ------------------------------------------------------------------
-   count up number
+   mobile sticky CTA: ヒーロー通過後に表示、最下部CTAが見えたら非表示
 ------------------------------------------------------------------ */
-function CountUp({ end, duration = 1600 }: { end: number; duration?: number }) {
+function useStickyCta() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+    const entry = document.getElementById("entry");
+    if (!hero || !entry || !("IntersectionObserver" in window)) {
+      setShow(true);
+      return;
+    }
+    let heroPassed = false;
+    let entryVisible = false;
+    const update = () => setShow(heroPassed && !entryVisible);
+
+    const heroIo = new IntersectionObserver(
+      ([e]) => {
+        heroPassed = !e.isIntersecting;
+        update();
+      },
+      { threshold: 0.05 }
+    );
+    const entryIo = new IntersectionObserver(
+      ([e]) => {
+        entryVisible = e.isIntersecting;
+        update();
+      },
+      { threshold: 0.05 }
+    );
+    heroIo.observe(hero);
+    entryIo.observe(entry);
+    return () => {
+      heroIo.disconnect();
+      entryIo.disconnect();
+    };
+  }, []);
+
+  return show;
+}
+
+/* ------------------------------------------------------------------
+   count up number（reduced-motion時・IO非対応時は即時最終値）
+------------------------------------------------------------------ */
+function CountUp({ end, duration = 1400 }: { end: number; duration?: number }) {
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const done = useRef(false);
@@ -39,22 +99,35 @@ function CountUp({ end, duration = 1600 }: { end: number; duration?: number }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    const reduced =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!("IntersectionObserver" in window)) {
+      setN(end);
+      return;
+    }
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !done.current) {
           done.current = true;
-          const start = performance.now();
-          const tick = (now: number) => {
-            const p = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            setN(Math.round(eased * end));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
+          if (reduced) {
+            setN(end);
+          } else {
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setN(Math.round(eased * end));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
           io.unobserve(el);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2, rootMargin: "0px 0px -5% 0px" }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -64,10 +137,38 @@ function CountUp({ end, duration = 1600 }: { end: number; duration?: number }) {
 }
 
 /* ------------------------------------------------------------------
+   CTAバンド（繰り返しCTA）
+   人物写真スロットあり（画像支給まで非表示フラグで制御）
+------------------------------------------------------------------ */
+const SHOW_BAND_PHOTO = false; // TODO: 人物写真支給後に true にして bandPhoto を差し替え
+
+function CtaBand() {
+  return (
+    <section className="band">
+      {SHOW_BAND_PHOTO && (
+        <div className="band__photo">
+          {/* TODO: 社員写真支給待ち（リクスポ方式の人物切り抜き想定） */}
+          <img src="/images/TECNES_002.jpg" alt="" />
+        </div>
+      )}
+      <div className="inner band__inner">
+        <p className="band__en en">NEXT INNING</p>
+        <h2 className="band__title">次の本気、はじめよう。</h2>
+        <div className="cta-stack">
+          <a href={ENTRY_URL} className="btn btn--onband">
+            まずは話を聞いてみる
+            <span className="btn__arrow">▶</span>
+          </a>
+          <p className="cta-micro">{CTA_MICRO}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------
    data
 ------------------------------------------------------------------ */
-const ENTRY_URL = "#entry"; // TODO: 実際のエントリーフォーム / マイナビ等のURLに差し替え
-
 const empathy = [
   "「引退」した日から、あの頃ほど本気になれるものに出会えていない。",
   "デスクに1日中座る仕事より、体を動かして汗をかきたい。",
@@ -138,12 +239,14 @@ const steps = [
 ];
 
 const numbers = [
-  { label: "未経験スタート", num: 80, unit: "%", note: "入社時に業界未経験" },
-  { label: "体育会系出身", num: 6, unit: "割超", note: "元運動部が活躍中" },
-  { label: "平均年齢", num: 29, unit: "歳", note: "若手が多い現場" },
-  { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
+  STATS.inexperienced,
+  STATS.athletes,
+  STATS.avgAge,
+  STATS.license,
 ];
 
+// 先輩の声
+// TODO: 実在の社員の声・写真に差し替え予定（写真は社員写真支給待ち。現在は現場写真を仮使用）
 const voices = [
   {
     img: "/images/TECNES_009.jpg",
@@ -158,6 +261,36 @@ const voices = [
     catch: "「努力が“数字”で返ってくる」",
     txt: "練習した分だけ上手くなる——野球で信じてきたことが、この仕事でもそのまま通用します。資格を取るたびに手当も上がる。頑張りがちゃんと給料に反映されるのが、やりがいです。",
     name: "入社4年目 / R.S",
+  },
+  {
+    img: "/images/TECNES_002.jpg",
+    pos: "元・シニアリーグ / 捕手",
+    catch: "「学歴の代わりに、資格が名刺になる」",
+    txt: "高卒で入社して、最初は不安しかなかったです。でも資格を取るごとに任される仕事が増えて、今は後輩の指導も担当。勉強は苦手でしたが、現場で覚える勉強なら続けられました。",
+    name: "入社3年目 / Y.M",
+  },
+];
+
+const joinSteps = [
+  {
+    no: "01",
+    title: "エントリー",
+    txt: "フォームから30秒で完了。履歴書はまだ不要です。",
+  },
+  {
+    no: "02",
+    title: "カジュアル面談",
+    txt: "私服OK・オンラインOK。仕事内容や給与のリアルを全部話します。",
+  },
+  {
+    no: "03",
+    title: "現場見学（希望者のみ）",
+    txt: "実際の現場と先輩の働き方を見てから決められます。",
+  },
+  {
+    no: "04",
+    title: "内定・入社",
+    txt: "最短2週間。入社日は相談OK。野球で言う“入団”です。",
   },
 ];
 
@@ -175,9 +308,23 @@ const faqs = [
     a: "はい。資格取得で手当が増え、現場での実力が役職・昇給に直結します。年功序列だけでなく、「やった分だけ返ってくる」評価制度。試合で結果を出せば認められる——それと同じです。",
   },
   {
+    q: "給与や休みは、実際どうなんですか？",
+    a: "カジュアル面談で、モデル年収・残業・休日の実データをすべてお見せします。入ってから「聞いてない」が一番不幸なので、先に全部話すのがTECNESのルールです。",
+  },
+  {
     q: "野球経験しかなくても、将来キャリアは築けますか？",
     a: "築けます。1年目の“素振り”から、スタメン、エース、そして現場を率いる職長（監督）へ。多くの先輩が未経験から現場のリーダーになっています。第二のキャリアの主役はあなたです。",
   },
+];
+
+// 会社概要
+// TODO: クライアント支給情報に差し替え
+const company = [
+  { label: "会社名", value: "株式会社TECNES" },
+  { label: "代表者", value: "―" },
+  { label: "所在地", value: "―" },
+  { label: "事業内容", value: "―" },
+  { label: "設立", value: "―" },
 ];
 
 /* ------------------------------------------------------------------
@@ -185,11 +332,12 @@ const faqs = [
 ------------------------------------------------------------------ */
 export default function Home() {
   useReveal();
+  const stickyShow = useStickyCta();
 
   return (
     <main className="wrap">
       {/* ============ HERO ============ */}
-      <section className="hero">
+      <section className="hero" id="hero">
         <div className="hero__bg">
           <img
             src="/images/TECNES_007.jpg"
@@ -204,13 +352,13 @@ export default function Home() {
             <span>TECNES</span>
           </div>
           <a href={ENTRY_URL} className="hero__nav-cta">
-            エントリー ▶
+            応募する ▶
           </a>
         </div>
 
         <div className="hero__inner">
           <div className="hero__tag">
-            <span>元野球部・体育会系 歓迎</span>
+            <span>高卒・大卒・既卒OK｜元野球部・体育会系 歓迎</span>
           </div>
           <h1 className="hero__copy">
             甲子園は終わった。
@@ -221,11 +369,40 @@ export default function Home() {
             引退したあの日から、本気になれるものを探しているなら。
             次の本気は、この現場にある。チームで戦い、努力が結果になる仕事——TECNES。
           </p>
+
+          <div className="hero__badges">
+            <div className="hbadge">
+              <p className="hbadge__label">{STATS.inexperienced.label}</p>
+              <p className="hbadge__num en">
+                {STATS.inexperienced.num}
+                <small>{STATS.inexperienced.unit}</small>
+              </p>
+            </div>
+            <div className="hbadge">
+              <p className="hbadge__label">{STATS.athletes.label}</p>
+              <p className="hbadge__num en">
+                {STATS.athletes.num}
+                <small>{STATS.athletes.unit}</small>
+              </p>
+            </div>
+            <div className="hbadge">
+              <p className="hbadge__label">資格費用 会社負担</p>
+              <p className="hbadge__num en">
+                {STATS.license.num}
+                <small>{STATS.license.unit}</small>
+              </p>
+            </div>
+          </div>
+
           <div className="hero__actions">
-            <a href={ENTRY_URL} className="btn btn--primary">
-              エントリーする
-              <span className="btn__arrow">▶</span>
-            </a>
+            <div className="cta-stack">
+              {/* TODO: CV手段確定後に調整 */}
+              <a href={ENTRY_URL} className="btn btn--primary btn--main">
+                まずは話を聞いてみる
+                <span className="btn__note">（30秒で応募完了）</span>
+              </a>
+              <p className="cta-micro">{CTA_MICRO}</p>
+            </div>
             <a href="#reasons" className="btn btn--ghost">
               なぜ元野球部なのか
             </a>
@@ -300,6 +477,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTAバンド 1 */}
+      <CtaBand />
+
       {/* ============ WORK ============ */}
       <section className="section work" id="work">
         <div className="inner">
@@ -370,6 +550,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTAバンド 2 */}
+      <CtaBand />
+
       {/* ============ NUMBERS ============ */}
       <section className="section numbers" id="numbers">
         <div className="inner">
@@ -392,9 +575,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="numbers__disclaimer">
-            ※ 数値はイメージです。実際の実績値に差し替えてご利用ください。
-          </p>
         </div>
       </section>
 
@@ -413,6 +593,7 @@ export default function Home() {
           <div className="voice__grid">
             {voices.map((v, i) => (
               <div className="vcard reveal" key={i}>
+                {/* TODO: 社員写真支給待ち（現在は現場写真を仮使用） */}
                 <div className="vcard__photo">
                   <img src={v.img} alt={`${v.pos}の先輩社員`} />
                 </div>
@@ -430,11 +611,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTAバンド 3 */}
+      <CtaBand />
+
+      {/* ============ HOW TO JOIN ============ */}
+      <section className="section join" id="join">
+        <div className="inner">
+          <div className="reveal" style={{ textAlign: "center" }}>
+            <span className="kicker" style={{ justifyContent: "center" }}>
+              How to join
+            </span>
+            <h2 className="sec-title">入社までは、たった4ステップ。</h2>
+            <p className="sec-lead">
+              選考というより、キャッチボール。まずは気軽に話すところから。
+            </p>
+          </div>
+
+          <div className="join__grid">
+            {joinSteps.map((s) => (
+              <div className="jcard reveal" key={s.no}>
+                <div className="jcard__no en">{s.no}</div>
+                <h3 className="jcard__title">{s.title}</h3>
+                <p className="jcard__txt">{s.txt}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ============ FAQ ============ */}
       <section className="section faq" id="faq">
         <div className="inner-narrow">
           <div className="reveal" style={{ textAlign: "center" }}>
-            <span className="kicker">Before you step up</span>
+            <span className="kicker" style={{ justifyContent: "center" }}>
+              Before you step up
+            </span>
             <h2 className="sec-title">その不安、全部つぶしておく。</h2>
           </div>
 
@@ -451,6 +662,31 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ COMPANY ============ */}
+      <section className="section company" id="company">
+        <div className="inner-narrow">
+          <div className="reveal" style={{ textAlign: "center" }}>
+            <span className="kicker" style={{ justifyContent: "center" }}>
+              Company
+            </span>
+            <h2 className="sec-title">運営会社</h2>
+          </div>
+
+          <div className="ctable reveal">
+            <table>
+              <tbody>
+                {company.map((row) => (
+                  <tr key={row.label}>
+                    <th>{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -473,10 +709,13 @@ export default function Home() {
             あなたのその全力を、TECNESのチームで待っている。
           </p>
           <div className="cta__actions reveal">
-            <a href={ENTRY_URL} className="btn btn--primary btn--lg">
-              エントリーする
-              <span className="btn__arrow">▶</span>
-            </a>
+            <div className="cta-stack">
+              <a href={ENTRY_URL} className="btn btn--primary btn--lg">
+                まずは話を聞いてみる
+                <span className="btn__arrow">▶</span>
+              </a>
+              <p className="cta-micro">{CTA_MICRO}</p>
+            </div>
             <a href="#faq" className="btn btn--ghost btn--lg">
               まず不安を解消する
             </a>
@@ -492,10 +731,11 @@ export default function Home() {
       </footer>
 
       {/* sticky CTA (mobile) */}
-      <div className="sticky-cta">
+      <div className={`sticky-cta${stickyShow ? " is-show" : ""}`}>
         <a href={ENTRY_URL} className="btn btn--primary">
-          エントリーする ▶
+          まずは話を聞いてみる ▶
         </a>
+        <p className="sticky-cta__micro">{CTA_MICRO}</p>
       </div>
     </main>
   );

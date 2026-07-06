@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  // モノレポ内の複数lockfile検出による誤ったワークスペースルート推論
+  // （と警告）を防ぐため、このプロジェクト自身をルートに固定する
+  outputFileTracingRoot: __dirname,
+};
 
 export default nextConfig;
