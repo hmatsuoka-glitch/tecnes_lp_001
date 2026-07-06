@@ -14,7 +14,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        {/* JS有効時のみ .js-anim を付与（スクロールアニメの初期非表示はこのクラス配下でのみ有効。
+            no-js環境では全コンテンツが最初から表示される） */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js-anim');",
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
