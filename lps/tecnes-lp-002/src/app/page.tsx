@@ -20,8 +20,6 @@ const CTA_MICRO = "履歴書不要・私服OK／質問だけでも大歓迎";
 
 /* ------------------------------------------------------------------
    scroll reveal
-   - JS無効時は全コンテンツ表示（.js-anim を html に付与してから隠す）
-   - 早めのトリガー + 短いフェードで「白飛び」時間を作らない
 ------------------------------------------------------------------ */
 function useReveal() {
   useEffect(() => {
@@ -47,11 +45,24 @@ function useReveal() {
 }
 
 /* ------------------------------------------------------------------
-   mobile sticky CTA: ヒーロー通過後に表示、最下部CTAが見えたら非表示
+   fixed header: スクロールで背景付与
+------------------------------------------------------------------ */
+function useScrolledHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return scrolled;
+}
+
+/* ------------------------------------------------------------------
+   mobile sticky CTA
 ------------------------------------------------------------------ */
 function useStickyCta() {
   const [show, setShow] = useState(false);
-
   useEffect(() => {
     const hero = document.getElementById("hero");
     const entry = document.getElementById("entry");
@@ -84,12 +95,11 @@ function useStickyCta() {
       entryIo.disconnect();
     };
   }, []);
-
   return show;
 }
 
 /* ------------------------------------------------------------------
-   count up number（reduced-motion時・IO非対応時は即時最終値）
+   count up number
 ------------------------------------------------------------------ */
 function CountUp({ end, duration = 1400 }: { end: number; duration?: number }) {
   const [n, setN] = useState(0);
@@ -99,7 +109,6 @@ function CountUp({ end, duration = 1400 }: { end: number; duration?: number }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const reduced =
       typeof window.matchMedia === "function" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -137,27 +146,42 @@ function CountUp({ end, duration = 1400 }: { end: number; duration?: number }) {
 }
 
 /* ------------------------------------------------------------------
-   CTAバンド（繰り返しCTA）
-   人物写真スロットあり（画像支給まで非表示フラグで制御）
+   NEXT INNING（中間CTA帯・波形境界＋緑CTA）
 ------------------------------------------------------------------ */
-const SHOW_BAND_PHOTO = false; // TODO: 人物写真支給後に true にして bandPhoto を差し替え
+const SHOW_BAND_PHOTO = false; // TODO: 切り抜き人物写真支給後に true にして差し替え
+
+function Wave({ className }: { className: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 1440 60"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path d="M0,32 C240,62 480,0 720,22 C960,44 1200,6 1440,36 L1440,0 L0,0 Z" />
+    </svg>
+  );
+}
 
 function CtaBand() {
   return (
     <section className="band">
+      <Wave className="band__wave band__wave--top" />
+      <Wave className="band__wave band__wave--bottom" />
       {SHOW_BAND_PHOTO && (
         <div className="band__photo">
-          {/* TODO: 社員写真支給待ち（リクスポ方式の人物切り抜き想定） */}
+          {/* TODO: 社員写真（切り抜き）支給待ち */}
           <img src="/images/TECNES_002.jpg" alt="" />
         </div>
       )}
       <div className="inner band__inner">
-        <p className="band__en en">NEXT INNING</p>
+        <p className="band__en en" aria-hidden="true">
+          NEXT INNING
+        </p>
         <h2 className="band__title">次の本気、はじめよう。</h2>
         <div className="cta-stack">
-          <a href={ENTRY_URL} className="btn btn--onband">
-            まずは話を聞いてみる
-            <span className="btn__arrow">▶</span>
+          <a href={ENTRY_URL} className="btn btn-cta">
+            まずは話を聞いてみる ▶
           </a>
           <p className="cta-micro">{CTA_MICRO}</p>
         </div>
@@ -181,20 +205,29 @@ const empathy = [
 const reasons = [
   {
     no: "01",
+    vlabel: "REPETITION.",
+    img: "/images/TECNES_002.jpg",
     eq: "反復練習 ＝ 技術習得",
     title: "「素振り」できたヤツは、\n現場でも伸びる。",
+    accentWord: "技術習得",
     txt: "電気設備の技術は、才能ではなく反復で身につく。毎日の素振りでスイングを固めたように、一つひとつの作業を繰り返して“体で覚える”。コツコツ続けられる元野球部は、未経験からでも確実にレベルアップしていく。",
   },
   {
     no: "02",
+    vlabel: "TEAMWORK.",
+    img: "/images/TECNES_007.jpg",
     eq: "チームプレー ＝ 班の連携",
     title: "現場は、\n9人で守る「チーム戦」。",
+    accentWord: "連携",
     txt: "TECNESの現場は一人では回らない。役割を分担し、声を掛け合い、班（チーム）で一つの工事を完成させる。ポジションを守り、カバーし合う——グラウンドで培った連携力が、そのまま武器になる。",
   },
   {
     no: "03",
+    vlabel: "GUTS.",
+    img: "/images/TECNES_005.jpg",
     eq: "根性・体力 ＝ 現場力",
     title: "鍛えた体と粘りは、\nここで“戦力”になる。",
+    accentWord: "現場力",
     txt: "暑さ寒さ、最後まで走り切る粘り強さ。厳しい練習を耐え抜いた経験は、現場で必ず活きる。頑張りが「気合」で終わらず、資格・技術・給与という結果に変わっていく場所だ。",
   },
 ];
@@ -214,6 +247,7 @@ const steps = [
     title: "素振りの年",
     txt: "先輩について現場の基本を覚える。道具の名前、安全のルール、体の使い方。分からなくて当たり前。まずは全力でついていく。",
     tag: "OJT・基礎",
+    goal: false,
   },
   {
     phase: "2〜3年目",
@@ -221,6 +255,7 @@ const steps = [
     title: "スタメン定着",
     txt: "任される作業が増え、資格も取得。自分のポジションを守れるように。後輩も入ってきて、教える側の一歩を踏み出す。",
     tag: "資格取得支援",
+    goal: false,
   },
   {
     phase: "4〜6年目",
@@ -228,6 +263,7 @@ const steps = [
     title: "エース格へ",
     txt: "現場の中心として判断を任される。班のメンバーをまとめ、段取りを組む。努力が役職・給与にはっきり反映される。",
     tag: "リーダー候補",
+    goal: false,
   },
   {
     phase: "その先",
@@ -235,35 +271,28 @@ const steps = [
     title: "監督（職長）",
     txt: "現場全体を指揮する職長・管理者へ。後進を育て、会社を背負う存在に。第二の野球人生の“優勝”を、ここで掴む。",
     tag: "職長・管理職",
+    goal: true,
   },
 ];
 
-const numbers = [
-  STATS.inexperienced,
-  STATS.athletes,
-  STATS.avgAge,
-  STATS.license,
-];
+const numbers = [STATS.inexperienced, STATS.athletes, STATS.avgAge, STATS.license];
 
 // 先輩の声
-// TODO: 実在の社員の声・写真に差し替え予定（写真は社員写真支給待ち。現在は現場写真を仮使用）
+// TODO: 実在の社員の声・写真に差し替え予定（写真は社員写真支給待ち）
 const voices = [
   {
-    img: "/images/TECNES_009.jpg",
     pos: "元・高校球児 / 内野手",
     catch: "「もう一度、本気になれる場所だった」",
     txt: "引退してから、どこか物足りない毎日でした。TECNESに入って、また“チームで一つのものを完成させる”感覚が戻ってきた。未経験でしたが、先輩が素振りのように基礎から教えてくれます。",
     name: "入社2年目 / T.K",
   },
   {
-    img: "/images/TECNES_005.jpg",
     pos: "元・大学野球部 / 投手",
     catch: "「努力が“数字”で返ってくる」",
     txt: "練習した分だけ上手くなる——野球で信じてきたことが、この仕事でもそのまま通用します。資格を取るたびに手当も上がる。頑張りがちゃんと給料に反映されるのが、やりがいです。",
     name: "入社4年目 / R.S",
   },
   {
-    img: "/images/TECNES_002.jpg",
     pos: "元・シニアリーグ / 捕手",
     catch: "「学歴の代わりに、資格が名刺になる」",
     txt: "高卒で入社して、最初は不安しかなかったです。でも資格を取るごとに任される仕事が増えて、今は後輩の指導も担当。勉強は苦手でしたが、現場で覚える勉強なら続けられました。",
@@ -272,26 +301,10 @@ const voices = [
 ];
 
 const joinSteps = [
-  {
-    no: "01",
-    title: "エントリー",
-    txt: "フォームから30秒で完了。履歴書はまだ不要です。",
-  },
-  {
-    no: "02",
-    title: "カジュアル面談",
-    txt: "私服OK・オンラインOK。仕事内容や給与のリアルを全部話します。",
-  },
-  {
-    no: "03",
-    title: "現場見学（希望者のみ）",
-    txt: "実際の現場と先輩の働き方を見てから決められます。",
-  },
-  {
-    no: "04",
-    title: "内定・入社",
-    txt: "最短2週間。入社日は相談OK。野球で言う“入団”です。",
-  },
+  { no: "STEP 01", title: "エントリー", txt: "フォームから30秒で完了。履歴書はまだ不要です。" },
+  { no: "STEP 02", title: "カジュアル面談", txt: "私服OK・オンラインOK。仕事内容や給与のリアルを全部話します。" },
+  { no: "STEP 03", title: "現場見学（希望者のみ）", txt: "実際の現場と先輩の働き方を見てから決められます。" },
+  { no: "STEP 04", title: "内定・入社", txt: "最短2週間。入社日は相談OK。野球で言う“入団”です。" },
 ];
 
 const faqs = [
@@ -317,14 +330,29 @@ const faqs = [
   },
 ];
 
-// 会社概要
-// TODO: クライアント支給情報に差し替え
+// 会社概要（出典: TECNES公式HP 会社概要）
 const company = [
   { label: "会社名", value: "株式会社TECNES" },
-  { label: "代表者", value: "―" },
-  { label: "所在地", value: "―" },
-  { label: "事業内容", value: "―" },
-  { label: "設立", value: "―" },
+  { label: "代表取締役", value: "田中 義和" },
+  { label: "本社所在地", value: "〒577-0063 大阪府東大阪市川俣1-6-10" },
+  { label: "会社設立", value: "平成18年（2006年）12月4日" },
+  { label: "資本金", value: "1,000万円" },
+  { label: "建設業許可番号", value: "国土交通大臣 許可（般-6）第27222号" },
+  {
+    label: "建設業の種類",
+    value:
+      "電気通信工事業／電気工事業／土木工事業／舗装工事業／とび・土木工事業／管工事業",
+  },
+  { label: "従業員数", value: "22名" },
+  {
+    label: "事業所",
+    value:
+      "西日本事業本部・大阪工事事務所（大阪府東大阪市川俣1-6-10）／東日本事業本部・千葉営業所（千葉県船橋市若松2-6-1 若松団地211）／仙台営業所（宮城県仙台市若林区種次字中野東36-3）",
+  },
+  {
+    label: "事業内容",
+    value: "一般電気工事／通信設備工事／電気土木工事／空調・衛生工事",
+  },
 ];
 
 /* ------------------------------------------------------------------
@@ -333,9 +361,21 @@ const company = [
 export default function Home() {
   useReveal();
   const stickyShow = useStickyCta();
+  const scrolled = useScrolledHeader();
 
   return (
     <main className="wrap">
+      {/* ============ HEADER ============ */}
+      <header className={`siteheader${scrolled ? " is-scrolled" : ""}`}>
+        <div className="siteheader__logo">
+          <img src="/images/logo.png" alt="TECNES" />
+          <span>TECNES</span>
+        </div>
+        <a href={ENTRY_URL} className="siteheader__cta">
+          応募する ▶
+        </a>
+      </header>
+
       {/* ============ HERO ============ */}
       <section className="hero" id="hero">
         <div className="hero__bg">
@@ -344,16 +384,28 @@ export default function Home() {
             alt="現場で電気設備工事に取り組むTECNESの技術者"
           />
         </div>
-        <div className="hero__en-watermark en">PLAY BALL</div>
+        <div className="hero__halftone" aria-hidden="true" />
+        <div className="hero__band" aria-hidden="true" />
+        <div className="hero__en-watermark en" aria-hidden="true">
+          PLAY BALL
+        </div>
 
-        <div className="hero__topbar">
-          <div className="hero__logo">
-            <img src="/images/logo.png" alt="TECNES" />
-            <span>TECNES</span>
+        {/* 切り抜き人物（斜めフレームで重ね配置） */}
+        <div className="hero__cutouts" aria-hidden="true">
+          <div className="hero__cutout hero__cutout--1">
+            <img src="/images/TECNES_009.jpg" alt="" />
           </div>
-          <a href={ENTRY_URL} className="hero__nav-cta">
-            応募する ▶
-          </a>
+          <div className="hero__cutout hero__cutout--2">
+            <img src="/images/TECNES_005.jpg" alt="" />
+          </div>
+        </div>
+
+        <div className="hero__roundbadge">
+          未経験OK
+          <br />
+          高卒・大卒
+          <br />
+          既卒
         </div>
 
         <div className="hero__inner">
@@ -397,7 +449,7 @@ export default function Home() {
           <div className="hero__actions">
             <div className="cta-stack">
               {/* TODO: CV手段確定後に調整 */}
-              <a href={ENTRY_URL} className="btn btn--primary btn--main">
+              <a href={ENTRY_URL} className="btn btn-cta btn--wrap">
                 まずは話を聞いてみる
                 <span className="btn__note">（30秒で応募完了）</span>
               </a>
@@ -409,13 +461,18 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="scrolldown en">SCROLL</div>
+        <div className="scrolldown en" aria-hidden="true">
+          SCROLL
+        </div>
       </section>
 
       {/* ============ EMPATHY ============ */}
-      <section className="section empathy">
+      <section className="section empathy halftone">
+        <span className="vlabel en" aria-hidden="true">
+          CHECK.
+        </span>
         <div className="inner">
-          <div className="empathy__head reveal">
+          <div className="section-head reveal">
             <span className="kicker">Are you the one?</span>
             <p className="empathy__title">
               一つでも当てはまるなら、
@@ -434,7 +491,7 @@ export default function Home() {
           </div>
 
           <p className="empathy__punch reveal">
-            その気持ち、全部“正解”だ。
+            その気持ち、<span className="u-line">全部“正解”だ。</span>
             <br />
             <small>
               TECNESは、元野球部の「らしさ」がそのまま強みになる会社。
@@ -446,22 +503,33 @@ export default function Home() {
       </section>
 
       {/* ============ REASONS ============ */}
-      <section className="section reasons" id="reasons">
+      <section className="section reasons halftone" id="reasons">
+        <span className="vlabel en" aria-hidden="true">
+          FEATURES.
+        </span>
         <div className="inner">
-          <div className="reasons__head reveal">
+          <div className="section-head reveal">
             <span className="kicker">Why baseball players win here</span>
-            <h2 className="sec-title">
+            <h2 className="section-title">
               なぜ、元野球部が
               <br />
-              <span className="accent">現場で活躍できるのか。</span>
+              <span className="accent">現場で活躍</span>できるのか。
             </h2>
           </div>
 
           <div className="reasons__grid">
             {reasons.map((r) => (
               <div className="rcard reveal" key={r.no}>
-                <div className="rcard__no en">{r.no}</div>
-                <div className="rcard__eq">{r.eq}</div>
+                <span className="rcard__vlabel en" aria-hidden="true">
+                  {r.vlabel}
+                </span>
+                <div className="rcard__photo">
+                  <img src={r.img} alt="" />
+                </div>
+                <div className="rcard__head">
+                  <span className="num-badge">{r.no}</span>
+                  <span className="rcard__eq">{r.eq}</span>
+                </div>
                 <h3 className="rcard__title">
                   {r.title.split("\n").map((l, i) => (
                     <span key={i}>
@@ -481,14 +549,17 @@ export default function Home() {
       <CtaBand />
 
       {/* ============ WORK ============ */}
-      <section className="section work" id="work">
+      <section className="section work halftone" id="work">
+        <span className="vlabel en" aria-hidden="true">
+          RECOMMEND.
+        </span>
         <div className="inner">
-          <div className="reveal">
+          <div className="section-head reveal">
             <span className="kicker">Our field</span>
-            <h2 className="sec-title">
+            <h2 className="section-title">
               仕事は、電気で社会を動かすこと。
               <br />
-              <span className="accent">言うなれば、“インフラの守備”だ。</span>
+              言うなれば、<span className="accent">“インフラの守備”</span>だ。
             </h2>
           </div>
 
@@ -521,16 +592,17 @@ export default function Home() {
       </section>
 
       {/* ============ STEP ============ */}
-      <section className="section step" id="step">
+      <section className="section step halftone" id="step">
+        <span className="vlabel en" aria-hidden="true">
+          ROADMAP.
+        </span>
         <div className="inner">
-          <div className="reveal">
+          <div className="section-head reveal">
             <span className="kicker">Growth roadmap</span>
-            <h2 className="sec-title">
-              素振りから、監督へ。
-              <br />
-              <span className="accent">成長のロードマップ。</span>
+            <h2 className="section-title">
+              素振りから、<span className="accent">監督</span>へ。
             </h2>
-            <p className="sec-lead" style={{ color: "rgba(255,255,255,0.82)" }}>
+            <p className="sec-lead">
               入社1年目の“素振り”から、現場を率いる“監督（職長）”まで。
               一段ずつ、確実に。あなたの第二の野球人生の道筋です。
             </p>
@@ -538,8 +610,8 @@ export default function Home() {
 
           <div className="step__timeline">
             {steps.map((s) => (
-              <div className="scard reveal" key={s.no}>
-                <div className="scard__phase">{s.phase}</div>
+              <div className={`scard reveal${s.goal ? " scard--goal" : ""}`} key={s.no}>
+                <span className="scard__flag step-flag">{s.phase}</span>
                 <div className="scard__no en">{s.no}</div>
                 <h3 className="scard__title">{s.title}</h3>
                 <p className="scard__txt">{s.txt}</p>
@@ -554,11 +626,16 @@ export default function Home() {
       <CtaBand />
 
       {/* ============ NUMBERS ============ */}
-      <section className="section numbers" id="numbers">
+      <section className="section numbers halftone" id="numbers">
+        <span className="vlabel en" aria-hidden="true">
+          NUMBERS.
+        </span>
         <div className="inner">
-          <div className="reveal">
+          <div className="section-head reveal">
             <span className="kicker">TECNES in numbers</span>
-            <h2 className="sec-title">数字で見る、TECNESという“チーム”。</h2>
+            <h2 className="section-title">
+              数字で見る、<span className="accent">TECNES</span>という“チーム”。
+            </h2>
           </div>
 
           <div className="numbers__grid">
@@ -580,10 +657,13 @@ export default function Home() {
 
       {/* ============ VOICE ============ */}
       <section className="section voice" id="voice">
+        <span className="vlabel en" aria-hidden="true">
+          VOICE.
+        </span>
         <div className="inner">
-          <div className="reveal">
+          <div className="section-head reveal">
             <span className="kicker">Teammates' voice</span>
-            <h2 className="sec-title">
+            <h2 className="section-title">
               グラウンドを卒業した、
               <br />
               <span className="accent">先輩たちの声。</span>
@@ -593,7 +673,7 @@ export default function Home() {
           <div className="voice__grid">
             {voices.map((v, i) => (
               <div className="vcard reveal" key={i}>
-                {/* TODO: 社員写真支給後、NO PHOTOを <img src={v.img}> 表示に戻す */}
+                {/* TODO: 社員写真支給後、NO PHOTOを <img> 表示に戻す */}
                 <div className="vcard__photo nophoto" aria-label="写真準備中">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="12" cy="8" r="4" />
@@ -601,8 +681,8 @@ export default function Home() {
                   </svg>
                   <span className="nophoto__txt en">NO PHOTO</span>
                 </div>
-                <div>
-                  <p className="vcard__pos">{v.pos}</p>
+                <p className="vcard__pos">{v.pos}</p>
+                <div className="vcard__body">
                   <p className="vcard__catch">{v.catch}</p>
                   <p className="vcard__txt">{v.txt}</p>
                   <p className="vcard__name">
@@ -619,13 +699,17 @@ export default function Home() {
       <CtaBand />
 
       {/* ============ HOW TO JOIN ============ */}
-      <section className="section join" id="join">
+      <section className="section join halftone" id="join">
+        <span className="vlabel en" aria-hidden="true">
+          FLOW.
+        </span>
         <div className="inner">
-          <div className="reveal" style={{ textAlign: "center" }}>
-            <span className="kicker" style={{ justifyContent: "center" }}>
-              How to join
-            </span>
-            <h2 className="sec-title">入社までは、たった4ステップ。</h2>
+          <div className="divider-arrow" aria-hidden="true" />
+          <div className="section-head reveal">
+            <span className="kicker">How to join</span>
+            <h2 className="section-title section-title--red">
+              入社までは、たった<span className="accent">4ステップ</span>。
+            </h2>
             <p className="sec-lead">
               選考というより、キャッチボール。まずは気軽に話すところから。
             </p>
@@ -634,7 +718,7 @@ export default function Home() {
           <div className="join__grid">
             {joinSteps.map((s) => (
               <div className="jcard reveal" key={s.no}>
-                <div className="jcard__no en">{s.no}</div>
+                <span className="step-flag">{s.no}</span>
                 <h3 className="jcard__title">{s.title}</h3>
                 <p className="jcard__txt">{s.txt}</p>
               </div>
@@ -644,13 +728,14 @@ export default function Home() {
       </section>
 
       {/* ============ FAQ ============ */}
-      <section className="section faq" id="faq">
+      <section className="section faq halftone" id="faq">
+        <span className="vlabel en" aria-hidden="true">
+          FAQ.
+        </span>
         <div className="inner-narrow">
-          <div className="reveal" style={{ textAlign: "center" }}>
-            <span className="kicker" style={{ justifyContent: "center" }}>
-              Before you step up
-            </span>
-            <h2 className="sec-title">その不安、全部つぶしておく。</h2>
+          <div className="section-head reveal">
+            <span className="kicker">Before you step up</span>
+            <h2 className="section-title">その不安、全部つぶしておく。</h2>
           </div>
 
           <div className="faq__list">
@@ -671,13 +756,14 @@ export default function Home() {
       </section>
 
       {/* ============ COMPANY ============ */}
-      <section className="section company" id="company">
+      <section className="section company halftone" id="company">
+        <span className="vlabel en" aria-hidden="true">
+          COMPANY.
+        </span>
         <div className="inner-narrow">
-          <div className="reveal" style={{ textAlign: "center" }}>
-            <span className="kicker" style={{ justifyContent: "center" }}>
-              Company
-            </span>
-            <h2 className="sec-title">運営会社</h2>
+          <div className="section-head reveal">
+            <span className="kicker">Company</span>
+            <h2 className="section-title">運営会社</h2>
           </div>
 
           <div className="ctable reveal">
@@ -695,13 +781,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ CTA ============ */}
+      {/* ============ 最終CTA + 登録フォーム ============ */}
       <section className="cta" id="entry">
-        <div className="cta__bg">
-          <img src="/images/TECNES_001.jpg" alt="" />
-        </div>
         <div className="cta__inner inner">
-          <p className="cta__lead en reveal">PLAY BALL — さあ、次の本気へ。</p>
+          <p className="cta__lead en reveal" aria-hidden="true">
+            PLAY BALL — さあ、次の本気へ。
+          </p>
           <h2 className="cta__copy reveal">
             バットを、
             <br />
@@ -712,31 +797,143 @@ export default function Home() {
             <br />
             あなたのその全力を、TECNESのチームで待っている。
           </p>
-          <div className="cta__actions reveal">
-            <div className="cta-stack">
-              <a href={ENTRY_URL} className="btn btn--primary btn--lg">
-                まずは話を聞いてみる
-                <span className="btn__arrow">▶</span>
-              </a>
-              <p className="cta-micro">{CTA_MICRO}</p>
+
+          {/* 登録フォーム */}
+          {/* TODO: 送信先（メール/フォームサービス）確定後に action と送信処理を実装 */}
+          <form
+            className="form-card reveal"
+            onSubmit={(e) => {
+              e.preventDefault();
+              // TODO: フォームサービス連携後に送信処理を実装
+            }}
+          >
+            <p className="form-card__title">
+              エントリー<span>（30秒で完了）</span>
+            </p>
+
+            <div className="form__row">
+              <label className="form__label" htmlFor="f-name">
+                お名前 <span className="badge-required">必須</span>
+              </label>
+              <input
+                id="f-name"
+                name="name"
+                type="text"
+                className="form__input"
+                placeholder="例）山田 太郎"
+                required
+              />
             </div>
-            <a href="#faq" className="btn btn--ghost btn--lg">
-              まず不安を解消する
-            </a>
-          </div>
+
+            <div className="form__row">
+              <label className="form__label" htmlFor="f-kana">
+                フリガナ <span className="badge-optional">任意</span>
+              </label>
+              <input
+                id="f-kana"
+                name="kana"
+                type="text"
+                className="form__input"
+                placeholder="例）ヤマダ タロウ"
+              />
+            </div>
+
+            <div className="form__row">
+              <span className="form__label">
+                性別 <span className="badge-optional">任意</span>
+              </span>
+              <div className="form__toggle">
+                <label>
+                  <input type="radio" name="gender" value="male" />
+                  <span>男性</span>
+                </label>
+                <label>
+                  <input type="radio" name="gender" value="female" />
+                  <span>女性</span>
+                </label>
+                <label>
+                  <input type="radio" name="gender" value="other" />
+                  <span>回答しない</span>
+                </label>
+              </div>
+            </div>
+
+            <div className="form__row">
+              <label className="form__label" htmlFor="f-tel">
+                電話番号 <span className="badge-required">必須</span>
+              </label>
+              <input
+                id="f-tel"
+                name="tel"
+                type="tel"
+                className="form__input"
+                placeholder="例）090-1234-5678"
+                required
+              />
+            </div>
+
+            <div className="form__row">
+              <label className="form__label" htmlFor="f-mail">
+                メールアドレス <span className="badge-required">必須</span>
+              </label>
+              <input
+                id="f-mail"
+                name="email"
+                type="email"
+                className="form__input"
+                placeholder="例）taro@example.com"
+                required
+              />
+            </div>
+
+            <div className="form__row">
+              <label className="form__label" htmlFor="f-msg">
+                ご質問・メッセージ <span className="badge-optional">任意</span>
+              </label>
+              <textarea
+                id="f-msg"
+                name="message"
+                className="form__textarea"
+                placeholder="質問だけでも大歓迎です。お気軽にどうぞ。"
+              />
+            </div>
+
+            <label className="form__consent">
+              <input type="checkbox" name="privacy" required />
+              <span>
+                {/* TODO: プライバシーポリシーページのURL確定後にリンク差し替え */}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  プライバシーポリシー
+                </a>
+                に同意する <span className="badge-required">必須</span>
+              </span>
+            </label>
+
+            <div className="form__submit">
+              <button type="submit" className="btn btn-submit">
+                送信する ▶
+              </button>
+              <p className="form__note">{CTA_MICRO}</p>
+            </div>
+          </form>
         </div>
       </section>
 
       {/* ============ FOOTER ============ */}
       <footer className="foot">
+        <p className="foot__catch">元野球部・体育会系のための採用サイト</p>
         <div className="foot__logo">TECNES</div>
-        <p>元野球部・体育会系のための採用サイト</p>
-        <p style={{ marginTop: 8 }}>© 2026 TECNES inc. All rights reserved.</p>
+        <div className="foot__info">
+          <p>株式会社TECNES</p>
+          <p>〒577-0063 大阪府東大阪市川俣1-6-10</p>
+          <p>建設業許可：国土交通大臣 許可（般-6）第27222号</p>
+        </div>
+        <p className="foot__copyright">© 2026 TECNES inc. All rights reserved.</p>
       </footer>
 
       {/* sticky CTA (mobile) */}
       <div className={`sticky-cta${stickyShow ? " is-show" : ""}`}>
-        <a href={ENTRY_URL} className="btn btn--primary">
+        <a href={ENTRY_URL} className="btn-cta btn">
           まずは話を聞いてみる ▶
         </a>
         <p className="sticky-cta__micro">{CTA_MICRO}</p>
