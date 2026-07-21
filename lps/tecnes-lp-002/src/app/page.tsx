@@ -593,9 +593,13 @@ export default function Home() {
           <div className="voice__grid">
             {voices.map((v, i) => (
               <div className="vcard reveal" key={i}>
-                {/* TODO: 社員写真支給待ち（現在は現場写真を仮使用） */}
-                <div className="vcard__photo">
-                  <img src={v.img} alt={`${v.pos}の先輩社員`} />
+                {/* TODO: 社員写真支給後、NO PHOTOを <img src={v.img}> 表示に戻す */}
+                <div className="vcard__photo nophoto" aria-label="写真準備中">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21c0-4.2 3.8-6.5 8-6.5s8 2.3 8 6.5" />
+                  </svg>
+                  <span className="nophoto__txt en">NO PHOTO</span>
                 </div>
                 <div>
                   <p className="vcard__pos">{v.pos}</p>
