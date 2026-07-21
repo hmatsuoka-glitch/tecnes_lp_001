@@ -880,6 +880,29 @@ a {
   height: 100%;
   object-fit: cover;
 }
+/* 写真支給までのNO PHOTOプレースホルダー */
+.nophoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px dashed rgba(255, 255, 255, 0.25);
+}
+.nophoto svg {
+  width: 44%;
+  height: auto;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.nophoto__txt {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.4);
+}
 .vcard__pos {
   font-size: 12px;
   font-weight: 800;
