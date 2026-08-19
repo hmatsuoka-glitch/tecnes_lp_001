@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 /* ------------------------------------------------------------------
    constants
@@ -10,7 +10,6 @@ import { useEffect, useRef, useState } from "react";
 const STATS = {
   inexperienced: { label: "未経験スタート", num: 80, unit: "%", note: "入社時に業界未経験" },
   athletes: { label: "体育会系出身", num: 6, unit: "割超", note: "元運動部が活躍中" },
-  avgAge: { label: "平均年齢", num: 29, unit: "歳", note: "若手が多い現場" },
   license: { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
 } as const;
 
@@ -21,7 +20,6 @@ const NAV_LINKS = [
   { href: "#reasons", label: "活躍理由" },
   { href: "#work", label: "仕事内容" },
   { href: "#step", label: "成長ロードマップ" },
-  { href: "#voice", label: "先輩の声" },
   { href: "#join", label: "入社の流れ" },
   { href: "#faq", label: "よくある質問" },
 ];
@@ -30,8 +28,6 @@ const FOOT_LINKS = [
   { href: "#reasons", label: "活躍理由" },
   { href: "#work", label: "仕事内容" },
   { href: "#step", label: "成長ロードマップ" },
-  { href: "#numbers", label: "数字で見るTECNES" },
-  { href: "#voice", label: "先輩の声" },
   { href: "#join", label: "入社までの流れ" },
   { href: "#faq", label: "よくある質問" },
   { href: "#company", label: "運営会社" },
@@ -120,53 +116,6 @@ function useStickyCta() {
 }
 
 /* ------------------------------------------------------------------
-   count up number
------------------------------------------------------------------- */
-function CountUp({ end, duration = 1400 }: { end: number; duration?: number }) {
-  const [n, setN] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const done = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const reduced =
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!("IntersectionObserver" in window)) {
-      setN(end);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !done.current) {
-          done.current = true;
-          if (reduced) {
-            setN(end);
-          } else {
-            const start = performance.now();
-            const tick = (now: number) => {
-              const p = Math.min((now - start) / duration, 1);
-              const eased = 1 - Math.pow(1 - p, 3);
-              setN(Math.round(eased * end));
-              if (p < 1) requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-          }
-          io.unobserve(el);
-        }
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -5% 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [end, duration]);
-
-  return <span ref={ref}>{n}</span>;
-}
-
-/* ------------------------------------------------------------------
    セクション見出し（英日2段組）
 ------------------------------------------------------------------ */
 function SecTtl({
@@ -210,9 +159,9 @@ function CtaBand() {
             href={LINE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn_dark btn_lg"
+            className="btn btn_line btn_lg"
           >
-            まずは話を聞いてみる ▶
+            公式LINEでカジュアル面談 ▶
           </a>
           <p className="cta-micro">{CTA_MICRO}</p>
         </div>
@@ -300,40 +249,6 @@ const steps = [
     txt: "現場全体を指揮する職長・管理者へ。後進を育て、会社を背負う存在に。第二の野球人生の“優勝”を、ここで掴む。",
     tag: "職長・管理職",
     goal: true,
-  },
-];
-
-const numbers = [STATS.inexperienced, STATS.athletes, STATS.avgAge, STATS.license];
-
-// 先輩の声
-// TODO: 実在の社員の声（証言テキスト・氏名の対応）に差し替え予定
-const voices = [
-  {
-    no: "01",
-    pos: "元・高校球児 / 内野手",
-    catch: "「もう一度、本気になれる場所だった」",
-    txt: "引退してから、どこか物足りない毎日でした。TECNESに入って、また“チームで一つのものを完成させる”感覚が戻ってきた。未経験でしたが、先輩が素振りのように基礎から教えてくれます。",
-    name: "T.K",
-    years: "入社2年目",
-    img: "/images/voice-tk.jpg",
-  },
-  {
-    no: "02",
-    pos: "元・大学野球部 / 投手",
-    catch: "「努力が“数字”で返ってくる」",
-    txt: "練習した分だけ上手くなる——野球で信じてきたことが、この仕事でもそのまま通用します。資格を取るたびに手当も上がる。頑張りがちゃんと給料に反映されるのが、やりがいです。",
-    name: "R.S",
-    years: "入社4年目",
-    img: "/images/voice-rs.jpg",
-  },
-  {
-    no: "03",
-    pos: "元・シニアリーグ / 捕手",
-    catch: "「学歴の代わりに、資格が名刺になる」",
-    txt: "高卒で入社して、最初は不安しかなかったです。でも資格を取るごとに任される仕事が増えて、今は後輩の指導も担当。勉強は苦手でしたが、現場で覚える勉強なら続けられました。",
-    name: "Y.M",
-    years: "入社3年目",
-    img: "/images/voice-ym.jpg",
   },
 ];
 
@@ -435,13 +350,6 @@ export default function Home() {
   const stickyShow = useStickyCta();
   const scrolled = useScrolledHeader();
   const [menuOpen, setMenuOpen] = useState(false);
-  const voiceSliderRef = useRef<HTMLDivElement>(null);
-
-  const scrollVoice = (dir: 1 | -1) => {
-    const el = voiceSliderRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * 320, behavior: "smooth" });
-  };
 
   return (
     <main className="wrap">
@@ -465,7 +373,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="siteheader__cta en"
             >
-              応募する ▶
+              LINEで応募 ▶
             </a>
             <button
               type="button"
@@ -490,12 +398,12 @@ export default function Home() {
         ))}
         <a
           href={LINE_URL}
-          className="btn btn_brand mobilemenu__cta"
+          className="btn btn_line mobilemenu__cta"
           onClick={() => setMenuOpen(false)}
           target="_blank"
           rel="noopener noreferrer"
         >
-          応募する ▶
+          LINEで応募 ▶
         </a>
       </div>
 
@@ -508,7 +416,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="floatbanner__btn"
         >
-          まずは話を聞いてみる
+          カジュアル面談へ ▶
         </a>
       </aside>
 
@@ -587,10 +495,10 @@ export default function Home() {
                 href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn_brand btn_lg"
+                className="btn btn_line btn_lg"
               >
-                まずは話を聞いてみる
-                <span className="btn__note">（公式LINEで30秒）</span>
+                公式LINEでカジュアル面談
+                <span className="btn__note">（友だち追加30秒）</span>
               </a>
               <p className="cta-micro">{CTA_MICRO}</p>
             </div>
@@ -784,113 +692,6 @@ export default function Home() {
       {/* CTAバンド 2 */}
       <CtaBand />
 
-      {/* ============ NUMBERS ============ */}
-      <section className="section numbers slant-band" id="numbers">
-        <div className="numbers__bg" aria-hidden="true">
-          <img src="/images/numbers-bg.jpg" alt="" />
-        </div>
-        <div className="inner">
-          <div className="sec-head_center reveal">
-            <SecTtl en="TECNES IN NUMBERS" jp="数字で見るTECNES" align="center" onDark />
-            <h2 className="big-ttl big-ttl_on-dark">
-              数字で見る、{highlightLine("TECNESという“チーム”。", "TECNES", "txt-bg txt-bg_brand")}
-            </h2>
-          </div>
-
-          <div className="numbers__grid">
-            {numbers.map((n, i) => (
-              <div
-                className="ncard reveal"
-                key={i}
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <p className="ncard__label">{n.label}</p>
-                <p className="ncard__value">
-                  <span className="ncard__num en">
-                    <CountUp end={n.num} />
-                  </span>
-                  <span className="ncard__unit">{n.unit}</span>
-                </p>
-                <p className="ncard__note">{n.note}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ VOICE ============ */}
-      <section className="section voice slant-t-up" id="voice">
-        <div className="inner">
-          <SecTtl en="TEAMMATES' VOICE" jp="先輩たちの声" align="left" />
-
-          <div className="voice__layout">
-            <h2 className="voice__vttl reveal-v">
-              グラウンドを卒業した、
-              {highlightLine("先輩たちの声。", "先輩たちの声", "txt-bg-v txt-bg_brand")}
-            </h2>
-
-            <div className="voice__col">
-              <div className="voice__slider" ref={voiceSliderRef}>
-                {voices.map((v, i) => (
-                  <div
-                    className="vcard reveal"
-                    key={i}
-                    style={{ animationDelay: `${i * 80}ms` }}
-                  >
-                    <span className="vcard__interview en">INTERVIEW {v.no}</span>
-                    <div className="vcard__panel">
-                      <div className="dia-img vcard__photo">
-                        <img src={v.img} alt="" />
-                      </div>
-                    </div>
-                    <div className="vcard__body">
-                      <p className="vcard__pos">{v.pos}</p>
-                      <p className="vcard__catch">{v.catch}</p>
-                      <p className="vcard__txt">{v.txt}</p>
-                      <p className="vcard__name">
-                        {v.years}
-                        <b>{v.name}</b>
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="voice__nav" aria-hidden="true">
-                <button
-                  type="button"
-                  className="voice__navbtn"
-                  aria-label="前へ"
-                  onClick={() => scrollVoice(-1)}
-                >
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  className="voice__navbtn"
-                  aria-label="次へ"
-                  onClick={() => scrollVoice(1)}
-                >
-                  ›
-                </button>
-              </div>
-              <div className="voice__cta">
-                <a
-                  href={LINE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn_dark"
-                >
-                  まずは話を聞いてみる ▶
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTAバンド 3 */}
-      <CtaBand />
-
       {/* ============ HOW TO JOIN ============ */}
       <section className="section join slant-band" id="join">
         <div className="inner">
@@ -1002,9 +803,9 @@ export default function Home() {
                   href={LINE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn_dark btn_lg"
+                  className="btn btn_line btn_lg"
                 >
-                  まずは話を聞いてみる ▶
+                  公式LINEでカジュアル面談 ▶
                 </a>
                 <p className="cta-micro">{CTA_MICRO}</p>
               </div>
@@ -1024,9 +825,9 @@ export default function Home() {
                 href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn_brand line-card__btn"
+                className="btn btn_line line-card__btn"
               >
-                公式LINEを開く ▶
+                公式LINEでカジュアル面談 ▶
               </a>
             </div>
           </div>
@@ -1058,7 +859,7 @@ export default function Home() {
         rel="noopener noreferrer"
         className={`bottombar${stickyShow ? " is-show" : ""}`}
       >
-        まずは話を聞いてみる ▶
+        公式LINEでカジュアル面談 ▶
       </a>
     </main>
   );
