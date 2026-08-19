@@ -306,7 +306,7 @@ const steps = [
 const numbers = [STATS.inexperienced, STATS.athletes, STATS.avgAge, STATS.license];
 
 // 先輩の声
-// TODO: 実在の社員の声・写真に差し替え予定（写真は社員写真支給待ち）
+// TODO: 実在の社員の声（証言テキスト・氏名の対応）に差し替え予定
 const voices = [
   {
     no: "01",
@@ -315,7 +315,7 @@ const voices = [
     txt: "引退してから、どこか物足りない毎日でした。TECNESに入って、また“チームで一つのものを完成させる”感覚が戻ってきた。未経験でしたが、先輩が素振りのように基礎から教えてくれます。",
     name: "T.K",
     years: "入社2年目",
-    img: "/images/TECNES_006.jpg",
+    img: "/images/voice-tk.jpg",
   },
   {
     no: "02",
@@ -324,7 +324,7 @@ const voices = [
     txt: "練習した分だけ上手くなる——野球で信じてきたことが、この仕事でもそのまま通用します。資格を取るたびに手当も上がる。頑張りがちゃんと給料に反映されるのが、やりがいです。",
     name: "R.S",
     years: "入社4年目",
-    img: "/images/TECNES_005.jpg",
+    img: "/images/voice-rs.jpg",
   },
   {
     no: "03",
@@ -333,7 +333,7 @@ const voices = [
     txt: "高卒で入社して、最初は不安しかなかったです。でも資格を取るごとに任される仕事が増えて、今は後輩の指導も担当。勉強は苦手でしたが、現場で覚える勉強なら続けられました。",
     name: "Y.M",
     years: "入社3年目",
-    img: "/images/TECNES_009.jpg",
+    img: "/images/voice-ym.jpg",
   },
 ];
 
@@ -342,25 +342,25 @@ const joinSteps = [
     no: "01",
     title: "エントリー",
     txt: "フォームから30秒で完了。履歴書はまだ不要です。",
-    img: "/images/TECNES_001.jpg",
+    img: "/images/join-01.jpg",
   },
   {
     no: "02",
     title: "カジュアル面談",
     txt: "私服OK・オンラインOK。仕事内容や給与のリアルを全部話します。",
-    img: "/images/TECNES_004.jpg",
+    img: "/images/join-02.jpg",
   },
   {
     no: "03",
     title: "現場見学（希望者のみ）",
     txt: "実際の現場と先輩の働き方を見てから決められます。",
-    img: "/images/TECNES_003.jpg",
+    img: "/images/join-03.jpg",
   },
   {
     no: "04",
     title: "内定・入社",
     txt: "最短2週間。入社日は相談OK。野球で言う“入団”です。",
-    img: "/images/TECNES_006.jpg",
+    img: "/images/join-04.jpg",
   },
 ];
 
@@ -516,8 +516,8 @@ export default function Home() {
       <section className="hero" id="hero">
         <div className="hero__bg">
           <img
-            src="/images/TECNES_007.jpg"
-            alt="現場で電気設備工事に取り組むTECNESの技術者"
+            src="/images/hero-bg.jpg"
+            alt="現場へ向かうTECNESのチーム"
           />
         </div>
         <div className="hero__en-watermark en" aria-hidden="true">
@@ -528,10 +528,10 @@ export default function Home() {
         {/* 切り抜き人物（斜めフレームで重ね配置） */}
         <div className="hero__cutouts" aria-hidden="true">
           <div className="hero__cutout hero__cutout--1">
-            <img src="/images/TECNES_009.jpg" alt="" />
+            <img src="/images/hero-cutout-1.jpg" alt="" />
           </div>
           <div className="hero__cutout hero__cutout--2">
-            <img src="/images/TECNES_005.jpg" alt="" />
+            <img src="/images/hero-cutout-2.jpg" alt="" />
           </div>
         </div>
 
@@ -643,7 +643,7 @@ export default function Home() {
           </div>
         </div>
         <div className="empathy__deco dia-img reveal" aria-hidden="true">
-          <img src="/images/TECNES_001.jpg" alt="" />
+          <img src="/images/empathy-deco.jpg" alt="" />
         </div>
       </section>
 
@@ -651,11 +651,11 @@ export default function Home() {
       <section className="section reasons slant-t-up" id="reasons">
         <div className="reasons__stripwrap reveal">
           <div className="reasons__strip" aria-hidden="true">
-            <img src="/images/TECNES_002.jpg" alt="" />
-            <img src="/images/TECNES_003.jpg" alt="" />
-            <img src="/images/TECNES_006.jpg" alt="" />
-            <img src="/images/TECNES_008.jpg" alt="" />
-            <img src="/images/TECNES_009.jpg" alt="" />
+            <img src="/images/reasons-01.jpg" alt="" />
+            <img src="/images/reasons-02.jpg" alt="" />
+            <img src="/images/reasons-03.jpg" alt="" />
+            <img src="/images/reasons-04.jpg" alt="" />
+            <img src="/images/reasons-05.jpg" alt="" />
           </div>
           <SecTtl en="WHY BASEBALL PLAYERS WIN HERE" jp="なぜ元野球部が活躍できるのか" onDark align="center" />
         </div>
@@ -737,10 +737,10 @@ export default function Home() {
 
             <div className="work__col-r">
               <div className="dia-img work__photo-a reveal">
-                <img src="/images/TECNES_009.jpg" alt="電気設備の施工に取り組む様子" />
+                <img src="/images/work-photo-a.jpg" alt="電気設備の施工に取り組む様子" />
               </div>
               <div className="dia-img dia-img_rev work__photo-b reveal">
-                <img src="/images/TECNES_002.jpg" alt="工具ベルトを装着した技術者" />
+                <img src="/images/work-photo-b.jpg" alt="現場のチームの様子" />
               </div>
             </div>
           </div>
@@ -777,7 +777,7 @@ export default function Home() {
           </div>
         </div>
         <div className="step__deco dia-img reveal" aria-hidden="true">
-          <img src="/images/TECNES_008.jpg" alt="" />
+          <img src="/images/step-deco.jpg" alt="" />
         </div>
       </section>
 
@@ -787,7 +787,7 @@ export default function Home() {
       {/* ============ NUMBERS ============ */}
       <section className="section numbers slant-band" id="numbers">
         <div className="numbers__bg" aria-hidden="true">
-          <img src="/images/TECNES_004.jpg" alt="" />
+          <img src="/images/numbers-bg.jpg" alt="" />
         </div>
         <div className="inner">
           <div className="sec-head_center reveal">
@@ -967,7 +967,7 @@ export default function Home() {
               </dl>
             </div>
             <div className="company__deco dia-img reveal" aria-hidden="true">
-              <img src="/images/TECNES_001.jpg" alt="" />
+              <img src="/images/company-deco.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -976,7 +976,7 @@ export default function Home() {
       {/* ============ 最終CTA + 登録フォーム ============ */}
       <section className="cta" id="entry">
         <div className="cta__bg" aria-hidden="true">
-          <img src="/images/TECNES_001.jpg" alt="" />
+          <img src="/images/entry-bg.jpg" alt="" />
         </div>
         <div className="cta__band slant-band_lg">
           <div className="cta__inner inner">
