@@ -14,13 +14,8 @@ const STATS = {
   license: { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
 } as const;
 
-// TODO: 公式LINEのカジュアル面談トークURL（友だち追加リンク等）に差し替え
-const LINE_URL = "#";
+const LINE_URL = "https://lmasters.aigrowthx.pro/r/cmszgyugv000511my7b7cz5z2";
 const CTA_MICRO = "履歴書不要・私服OK／質問だけでも大歓迎";
-
-function handleLineClick(e: React.MouseEvent<HTMLAnchorElement>) {
-  if (LINE_URL === "#") e.preventDefault();
-}
 
 const NAV_LINKS = [
   { href: "#reasons", label: "活躍理由" },
@@ -213,7 +208,6 @@ function CtaBand() {
         <div className="cta-stack">
           <a
             href={LINE_URL}
-            onClick={handleLineClick}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn_dark btn_lg"
@@ -467,7 +461,6 @@ export default function Home() {
           <div className="siteheader__actions">
             <a
               href={LINE_URL}
-              onClick={handleLineClick}
               target="_blank"
               rel="noopener noreferrer"
               className="siteheader__cta en"
@@ -498,10 +491,7 @@ export default function Home() {
         <a
           href={LINE_URL}
           className="btn btn_brand mobilemenu__cta"
-          onClick={(e) => {
-            handleLineClick(e);
-            setMenuOpen(false);
-          }}
+          onClick={() => setMenuOpen(false)}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -514,7 +504,6 @@ export default function Home() {
         <p className="floatbanner__ttl">公式LINEで相談</p>
         <a
           href={LINE_URL}
-          onClick={handleLineClick}
           target="_blank"
           rel="noopener noreferrer"
           className="floatbanner__btn"
@@ -596,7 +585,6 @@ export default function Home() {
             <div className="cta-stack">
               <a
                 href={LINE_URL}
-                onClick={handleLineClick}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn_brand btn_lg"
@@ -888,7 +876,6 @@ export default function Home() {
               <div className="voice__cta">
                 <a
                   href={LINE_URL}
-                  onClick={handleLineClick}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn_dark"
@@ -1013,7 +1000,6 @@ export default function Home() {
               <div className="cta-stack">
                 <a
                   href={LINE_URL}
-                  onClick={handleLineClick}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn_dark btn_lg"
@@ -1036,7 +1022,6 @@ export default function Home() {
               </p>
               <a
                 href={LINE_URL}
-                onClick={handleLineClick}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn_brand line-card__btn"
@@ -1069,7 +1054,6 @@ export default function Home() {
       {/* SP下部固定CTA */}
       <a
         href={LINE_URL}
-        onClick={handleLineClick}
         target="_blank"
         rel="noopener noreferrer"
         className={`bottombar${stickyShow ? " is-show" : ""}`}
