@@ -14,9 +14,13 @@ const STATS = {
   license: { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
 } as const;
 
-// TODO: CV手段確定後に調整（エントリーフォーム / LINE / マイナビ等のURLに差し替え）
-const ENTRY_URL = "#entry";
+// TODO: 公式LINEのカジュアル面談トークURL（友だち追加リンク等）に差し替え
+const LINE_URL = "#";
 const CTA_MICRO = "履歴書不要・私服OK／質問だけでも大歓迎";
+
+function handleLineClick(e: React.MouseEvent<HTMLAnchorElement>) {
+  if (LINE_URL === "#") e.preventDefault();
+}
 
 const NAV_LINKS = [
   { href: "#reasons", label: "活躍理由" },
@@ -207,7 +211,13 @@ function CtaBand() {
         </p>
         <h2 className="band__title reveal">次の本気、はじめよう。</h2>
         <div className="cta-stack">
-          <a href={ENTRY_URL} className="btn btn_dark btn_lg">
+          <a
+            href={LINE_URL}
+            onClick={handleLineClick}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn_dark btn_lg"
+          >
             まずは話を聞いてみる ▶
           </a>
           <p className="cta-micro">{CTA_MICRO}</p>
@@ -455,7 +465,13 @@ export default function Home() {
             ))}
           </nav>
           <div className="siteheader__actions">
-            <a href={ENTRY_URL} className="siteheader__cta en">
+            <a
+              href={LINE_URL}
+              onClick={handleLineClick}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="siteheader__cta en"
+            >
               応募する ▶
             </a>
             <button
@@ -480,9 +496,14 @@ export default function Home() {
           </a>
         ))}
         <a
-          href={ENTRY_URL}
+          href={LINE_URL}
           className="btn btn_brand mobilemenu__cta"
-          onClick={() => setMenuOpen(false)}
+          onClick={(e) => {
+            handleLineClick(e);
+            setMenuOpen(false);
+          }}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           応募する ▶
         </a>
@@ -490,8 +511,14 @@ export default function Home() {
 
       {/* ============ 右サイド固定バナー ============ */}
       <aside className="floatbanner" aria-label="お問い合わせ">
-        <p className="floatbanner__ttl">お問い合わせ</p>
-        <a href={ENTRY_URL} className="floatbanner__btn">
+        <p className="floatbanner__ttl">公式LINEで相談</p>
+        <a
+          href={LINE_URL}
+          onClick={handleLineClick}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="floatbanner__btn"
+        >
           まずは話を聞いてみる
         </a>
       </aside>
@@ -567,10 +594,15 @@ export default function Home() {
 
           <div className="hero__actions">
             <div className="cta-stack">
-              {/* TODO: CV手段確定後に調整 */}
-              <a href={ENTRY_URL} className="btn btn_brand btn_lg">
+              <a
+                href={LINE_URL}
+                onClick={handleLineClick}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn_brand btn_lg"
+              >
                 まずは話を聞いてみる
-                <span className="btn__note">（30秒で応募完了）</span>
+                <span className="btn__note">（公式LINEで30秒）</span>
               </a>
               <p className="cta-micro">{CTA_MICRO}</p>
             </div>
@@ -629,12 +661,14 @@ export default function Home() {
 
       {/* ============ REASONS ============ */}
       <section className="section reasons slant-t-up" id="reasons">
-        <div className="reasons__strip reveal" aria-hidden="true">
-          <img src="/images/TECNES_002.jpg" alt="" />
-          <img src="/images/TECNES_003.jpg" alt="" />
-          <img src="/images/TECNES_006.jpg" alt="" />
-          <img src="/images/TECNES_008.jpg" alt="" />
-          <img src="/images/TECNES_009.jpg" alt="" />
+        <div className="reasons__stripwrap reveal">
+          <div className="reasons__strip" aria-hidden="true">
+            <img src="/images/TECNES_002.jpg" alt="" />
+            <img src="/images/TECNES_003.jpg" alt="" />
+            <img src="/images/TECNES_006.jpg" alt="" />
+            <img src="/images/TECNES_008.jpg" alt="" />
+            <img src="/images/TECNES_009.jpg" alt="" />
+          </div>
           <SecTtl en="WHY BASEBALL PLAYERS WIN HERE" jp="なぜ元野球部が活躍できるのか" onDark align="center" />
         </div>
         <div className="inner">
@@ -852,7 +886,13 @@ export default function Home() {
                 </button>
               </div>
               <div className="voice__cta">
-                <a href={ENTRY_URL} className="btn btn_dark">
+                <a
+                  href={LINE_URL}
+                  onClick={handleLineClick}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn_dark"
+                >
                   まずは話を聞いてみる ▶
                 </a>
               </div>
@@ -971,130 +1011,39 @@ export default function Home() {
                 ENTRY
               </span>
               <div className="cta-stack">
-                <a href={ENTRY_URL} className="btn btn_dark btn_lg">
+                <a
+                  href={LINE_URL}
+                  onClick={handleLineClick}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn_dark btn_lg"
+                >
                   まずは話を聞いてみる ▶
                 </a>
+                <p className="cta-micro">{CTA_MICRO}</p>
               </div>
             </div>
 
-            {/* 登録フォーム */}
-            {/* TODO: 送信先（メール/フォームサービス）確定後に action と送信処理を実装 */}
-            <form
-              className="form-card reveal"
-              onSubmit={(e) => {
-                e.preventDefault();
-                // TODO: フォームサービス連携後に送信処理を実装
-              }}
-            >
-              <p className="form-card__title">
-                エントリー<span>（30秒で完了）</span>
+            {/* 公式LINEでのカジュアル面談導線 */}
+            <div className="line-card reveal">
+              <p className="line-card__title">
+                公式LINEで、<span className="txt-bg txt-bg_brand">カジュアル面談</span>へ
               </p>
-
-              <div className="form__row">
-                <label className="form__label" htmlFor="f-name">
-                  お名前 <span className="badge-required">必須</span>
-                </label>
-                <input
-                  id="f-name"
-                  name="name"
-                  type="text"
-                  className="form__input"
-                  placeholder="例）山田 太郎"
-                  required
-                />
-              </div>
-
-              <div className="form__row">
-                <label className="form__label" htmlFor="f-kana">
-                  フリガナ <span className="badge-optional">任意</span>
-                </label>
-                <input
-                  id="f-kana"
-                  name="kana"
-                  type="text"
-                  className="form__input"
-                  placeholder="例）ヤマダ タロウ"
-                />
-              </div>
-
-              <div className="form__row">
-                <span className="form__label">
-                  性別 <span className="badge-optional">任意</span>
-                </span>
-                <div className="form__toggle">
-                  <label>
-                    <input type="radio" name="gender" value="male" />
-                    <span>男性</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="gender" value="female" />
-                    <span>女性</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="gender" value="other" />
-                    <span>回答しない</span>
-                  </label>
-                </div>
-              </div>
-
-              <div className="form__row">
-                <label className="form__label" htmlFor="f-tel">
-                  電話番号 <span className="badge-required">必須</span>
-                </label>
-                <input
-                  id="f-tel"
-                  name="tel"
-                  type="tel"
-                  className="form__input"
-                  placeholder="例）090-1234-5678"
-                  required
-                />
-              </div>
-
-              <div className="form__row">
-                <label className="form__label" htmlFor="f-mail">
-                  メールアドレス <span className="badge-required">必須</span>
-                </label>
-                <input
-                  id="f-mail"
-                  name="email"
-                  type="email"
-                  className="form__input"
-                  placeholder="例）taro@example.com"
-                  required
-                />
-              </div>
-
-              <div className="form__row">
-                <label className="form__label" htmlFor="f-msg">
-                  ご質問・メッセージ <span className="badge-optional">任意</span>
-                </label>
-                <textarea
-                  id="f-msg"
-                  name="message"
-                  className="form__textarea"
-                  placeholder="質問だけでも大歓迎です。お気軽にどうぞ。"
-                />
-              </div>
-
-              <label className="form__consent">
-                <input type="checkbox" name="privacy" required />
-                <span>
-                  {/* TODO: プライバシーポリシーページのURL確定後にリンク差し替え */}
-                  <a href="#" onClick={(e) => e.preventDefault()}>
-                    プライバシーポリシー
-                  </a>
-                  に同意する <span className="badge-required">必須</span>
-                </span>
-              </label>
-
-              <div className="form__submit">
-                <button type="submit" className="btn btn_brand">
-                  送信する ▶
-                </button>
-                <p className="form__note">{CTA_MICRO}</p>
-              </div>
-            </form>
+              <p className="line-card__txt">
+                友だち追加後、トーク画面からそのままカジュアル面談の日程調整ができます。
+                <br />
+                質問だけでも大歓迎。まずは気軽にメッセージしてください。
+              </p>
+              <a
+                href={LINE_URL}
+                onClick={handleLineClick}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn_brand line-card__btn"
+              >
+                公式LINEを開く ▶
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -1118,7 +1067,13 @@ export default function Home() {
       </footer>
 
       {/* SP下部固定CTA */}
-      <a href={ENTRY_URL} className={`bottombar${stickyShow ? " is-show" : ""}`}>
+      <a
+        href={LINE_URL}
+        onClick={handleLineClick}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`bottombar${stickyShow ? " is-show" : ""}`}
+      >
         まずは話を聞いてみる ▶
       </a>
     </main>

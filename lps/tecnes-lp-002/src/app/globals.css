@@ -976,11 +976,11 @@ a {
     display: none;
   }
   .hero__roundbadge {
-    top: 96px;
+    top: 14px;
     right: 4%;
-    width: 92px;
-    height: 92px;
-    font-size: 10px;
+    width: 84px;
+    height: 84px;
+    font-size: 9.5px;
     line-height: 1.4;
   }
   .scrolldown {
@@ -1084,11 +1084,14 @@ a {
 .reasons {
   background: #fff;
 }
+.reasons__stripwrap {
+  position: relative;
+  margin-top: 60px;
+}
 .reasons__strip {
   position: relative;
   display: flex;
   height: 420px;
-  margin-top: 60px;
   overflow: hidden;
 }
 .reasons__strip::after {
@@ -1104,7 +1107,7 @@ a {
   height: 100%;
   object-fit: cover;
 }
-.reasons__strip .sec-ttl {
+.reasons__stripwrap .sec-ttl {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -1112,10 +1115,13 @@ a {
   transform: translate(-50%, -50%);
   text-align: center;
   width: max-content;
+  max-width: 90%;
+  pointer-events: none;
 }
-.reasons__strip .sec-ttl__jp {
+.reasons__stripwrap .sec-ttl__jp {
   left: 50%;
   transform: translateX(-50%);
+  white-space: nowrap;
 }
 .reasons__grid {
   margin-top: 64px;
@@ -1935,142 +1941,29 @@ details[open] .qa__icon {
   }
 }
 
-/* 登録フォーム（白カード） */
-.form-card {
+/* 公式LINE カジュアル面談カード */
+.line-card {
   margin: 46px auto 0;
   width: min(680px, 100%);
   background: #fff;
   color: var(--tc-ink);
   padding: clamp(28px, 5vw, 44px);
-  text-align: left;
-}
-.form-card__title {
   text-align: center;
+}
+.line-card__title {
   font-weight: 700;
-  font-size: clamp(19px, 4.6vw, 24px);
+  font-size: clamp(19px, 4.6vw, 26px);
 }
-.form-card__title span {
-  color: var(--tc-purple);
-}
-.form__row {
-  margin-top: 22px;
-}
-.form__label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 14px;
-}
-.badge-required {
-  display: inline-block;
-  background: var(--tc-purple);
-  color: #fff;
-  font-size: 10.5px;
-  font-weight: 700;
-  padding: 2px 8px;
-  letter-spacing: 0.06em;
-}
-.badge-optional {
-  display: inline-block;
-  background: var(--tc-text-sub);
-  color: #fff;
-  font-size: 10.5px;
-  font-weight: 700;
-  padding: 2px 8px;
-  letter-spacing: 0.06em;
-}
-.form__input,
-.form__textarea {
-  margin-top: 8px;
-  width: 100%;
-  border: 1.5px solid var(--tc-line);
-  padding: 12px 14px;
+.line-card__txt {
+  margin-top: 18px;
   font-size: 15px;
-  font-family: inherit;
-  color: var(--tc-ink);
-  background: var(--tc-paper);
-  transition: border-color 0.2s ease;
-}
-.form__input:focus,
-.form__textarea:focus {
-  outline: none;
-  border-color: var(--tc-purple);
-  background: #fff;
-}
-.form__textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-.form__toggle {
-  margin-top: 8px;
-  display: flex;
-  gap: 10px;
-}
-.form__toggle label {
-  flex: 1;
-  cursor: pointer;
-}
-.form__toggle input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.form__toggle span {
-  display: block;
-  text-align: center;
-  border: 1.5px solid var(--tc-line);
-  padding: 10px 6px;
-  font-weight: 700;
-  font-size: 14px;
+  line-height: 1.95;
   color: var(--tc-text-sub);
-  transition: all 0.15s ease;
 }
-.form__toggle input:checked + span {
-  background: var(--tc-purple);
-  border-color: var(--tc-purple);
-  color: #fff;
-}
-.form__consent {
-  margin-top: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 10px;
-  font-size: 13.5px;
-  font-weight: 500;
-}
-.form__consent input {
-  width: 18px;
-  height: 18px;
-  margin-top: 3px;
-  accent-color: var(--tc-purple);
-}
-.form__consent a {
-  color: var(--tc-purple);
-  text-decoration: underline;
-}
-.form__submit {
-  margin-top: 26px;
-  text-align: center;
-}
-.form__submit .btn {
+.line-card__btn {
+  margin-top: 28px;
   width: 100%;
   max-width: 340px;
-}
-.form__note {
-  margin-top: 14px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--tc-text-sub);
-}
-@media (max-width: 767px) {
-  .form__toggle {
-    flex-wrap: wrap;
-  }
-  .form__toggle label {
-    flex: 1 1 30%;
-  }
 }
 
 /* =========================================================
