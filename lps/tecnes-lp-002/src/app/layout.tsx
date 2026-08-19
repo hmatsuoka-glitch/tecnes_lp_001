@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const notoSansJP = Noto_Sans_JP({
+const jp = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
+  variable: "--font-jp",
   display: "swap",
-  variable: "--font-noto-sans-jp",
+});
+const en = Montserrat({
+  subsets: ["latin"],
+  weight: ["700"],
+  style: ["normal", "italic"],
+  variable: "--font-en",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={notoSansJP.variable}>
+    <html lang="ja" className={`${jp.variable} ${en.variable}`}>
       <body>
         {/* JS有効時のみ .js-anim を付与（スクロールアニメの初期非表示はこのクラス配下でのみ有効。
             no-js環境では全コンテンツが最初から表示される） */}
