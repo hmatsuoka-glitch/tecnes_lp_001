@@ -171,7 +171,7 @@ function CtaBand() {
       {SHOW_BAND_PHOTO && (
         <div className="band__photo">
           {/* TODO: 社員写真（切り抜き）支給待ち */}
-          <img src="/images/TECNES_002.jpg" alt="" />
+          <img src="/images/reason-01-team.jpg" alt="" />
         </div>
       )}
       <div className="inner band__inner">
@@ -206,7 +206,7 @@ const reasons = [
   {
     no: "01",
     vlabel: "REPETITION.",
-    img: "/images/TECNES_002.jpg",
+    img: "/images/reason-01-team.jpg",
     eq: "反復練習 ＝ 技術習得",
     title: "「素振り」できたヤツは、\n現場でも伸びる。",
     accentWord: "技術習得",
@@ -215,7 +215,7 @@ const reasons = [
   {
     no: "02",
     vlabel: "TEAMWORK.",
-    img: "/images/TECNES_007.jpg",
+    img: "/images/reason-02-teamwork.jpg",
     eq: "チームプレー ＝ 班の連携",
     title: "現場は、\n9人で守る「チーム戦」。",
     accentWord: "連携",
@@ -224,7 +224,7 @@ const reasons = [
   {
     no: "03",
     vlabel: "GUTS.",
-    img: "/images/TECNES_005.jpg",
+    img: "/images/reason-03-guts.jpg",
     eq: "根性・体力 ＝ 現場力",
     title: "鍛えた体と粘りは、\nここで“戦力”になる。",
     accentWord: "現場力",
@@ -380,8 +380,8 @@ export default function Home() {
       <section className="hero" id="hero">
         <div className="hero__bg">
           <img
-            src="/images/TECNES_007.jpg"
-            alt="現場で電気設備工事に取り組むTECNESの技術者"
+            src="/images/hero-team.jpg"
+            alt="現場へ向かうTECNESのチーム"
           />
         </div>
         <div className="hero__halftone" aria-hidden="true" />
@@ -393,10 +393,10 @@ export default function Home() {
         {/* 切り抜き人物（斜めフレームで重ね配置） */}
         <div className="hero__cutouts" aria-hidden="true">
           <div className="hero__cutout hero__cutout--1">
-            <img src="/images/TECNES_009.jpg" alt="" />
+            <img src="/images/hero-cutout-1.jpg" alt="" />
           </div>
           <div className="hero__cutout hero__cutout--2">
-            <img src="/images/TECNES_005.jpg" alt="" />
+            <img src="/images/hero-cutout-2.jpg" alt="" />
           </div>
         </div>
 
@@ -565,7 +565,7 @@ export default function Home() {
 
           <div className="work__grid">
             <div className="work__photo reveal">
-              <img src="/images/TECNES_005.jpg" alt="電気設備の施工に取り組む様子" />
+              <img src="/images/work-photo.jpg" alt="電気設備の施工に取り組む様子" />
               <span className="work__photo-badge">電気設備 施工・保守</span>
             </div>
             <div className="work__body reveal">
