@@ -227,22 +227,27 @@ a {
 .btn {
   position: relative;
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 256px;
-  height: 60px;
-  padding-right: 56px;
+  min-width: 256px;
+  max-width: 100%;
+  padding: 14px 28px;
+  padding-right: 76px;
   border-radius: 0;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.05em;
+  line-height: 1.3;
   color: var(--tc-ink);
   background: var(--tc-tint);
   border: none;
   font-family: inherit;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
-  white-space: nowrap;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 .btn::before {
   content: "";
@@ -299,8 +304,8 @@ a {
   background: var(--tc-purple-dark);
 }
 .btn_lg {
-  width: 340px;
-  height: 72px;
+  min-width: 340px;
+  padding-block: 18px;
   font-size: 20px;
 }
 /* 公式LINE（LINEブランドグリーン・ピル型） */
@@ -308,7 +313,8 @@ a {
   background: #06c755;
   color: #fff;
   border-radius: 9999px;
-  padding-right: 0;
+  padding-left: 32px;
+  padding-right: 32px;
   gap: 10px;
 }
 .btn_line::before,
@@ -329,7 +335,18 @@ a {
   .btn,
   .btn_lg {
     width: 100%;
+    min-width: 0;
     max-width: 320px;
+    padding-left: 20px;
+    padding-right: 60px;
+  }
+  .btn_line {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .btn_lg {
+    font-size: 16px;
+    padding-block: 14px;
   }
 }
 
